@@ -168,6 +168,52 @@
       "publisher": {
         "@id": "https://www.otticorusca.ch/#studio"
       }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.otticorusca.ch/#domande",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Che differenza c’è tra ottico, optometrista e oculista?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "L’oculista è un medico: diagnostica e cura le malattie dell’occhio. L’ottico realizza occhiali e lenti a contatto; l’optometrista è l’ottico con formazione superiore, specializzato nell’esame della vista. Per misurare la vista ci si può rivolgere direttamente a un ottico diplomato federale; se emergono segni che richiedono un accertamento medico, lo studio indirizza all’oculista."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Che cosa significa «ottico diplomato federale (maestro ottico)»?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "È il diploma federale superiore della professione di ottico in Svizzera. Oltre alla formazione di base comprende l’esame della vista e l’applicazione di lenti a contatto. Marco Rusca esercita la professione da oltre quarant’anni."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ogni quanto conviene controllare la vista?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In assenza di disturbi, ogni due anni circa. Prima, se nota cambiamenti: fatica a leggere, mal di testa, difficoltà alla guida di sera, stanchezza davanti allo schermo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Perché non riesco ad abituarmi alle lenti progressive?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Le cause più frequenti sono tre: una correzione non del tutto esatta, una centratura imprecisa, una lente o una montatura non adatte all’uso reale. Conviene far verificare misure e montaggio prima di rinunciare."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Dove si trova lo studio e come si prende appuntamento?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Savosa, in Via Emilio Maraini 27, zona Crocifisso, alle porte di Lugano. Lo studio riceve solo su appuntamento: per telefono allo 091 966 32 68 oppure con il modulo qui sotto."
+          }
+        }
+      ]
     }
   ]
 }
@@ -487,6 +533,14 @@
   .areas > div:hover::after { width: 100%; }
   .areas h3 { font-size: var(--step-2); font-weight: 400; line-height: 1.2; font-variation-settings: "opsz" 24; }
   .areas p { margin-top: .9rem; color: var(--ink-3); }
+  .more { display: block; width: fit-content; margin-top: .9rem; font-family: var(--sans); font-size: .92rem; color: var(--blue-2); text-decoration: underline; text-underline-offset: .18em; }
+  .more:hover { color: var(--ink-2); }
+
+  /* Domande frequenti */
+  .qa > div { padding-block: 1.7rem; border-top: 1px solid var(--line); }
+  .qa > div:last-child { border-bottom: 1px solid var(--line); }
+  .qa h3 { font-size: var(--step-2); font-weight: 400; line-height: 1.25; max-width: 32ch; font-variation-settings: "opsz" 24; }
+  .qa p { margin-top: .7rem; max-width: 60ch; color: var(--ink-3); }
 
   /* Manifesto */
   .manifesto { background: var(--ink); color: var(--paper); }
@@ -529,6 +583,9 @@
   .site-foot address { font-style: normal; font-family: var(--sans); font-size: .95rem; line-height: 1.7; color: rgba(244,247,250,.82); position: relative; }
   .site-foot address a { text-decoration: none; }
   .site-foot address a:hover { text-decoration: underline; text-underline-offset: .18em; }
+  .foot-links { position: relative; margin-top: 1.4rem; display: flex; flex-wrap: wrap; gap: .4rem 1.5rem; font-family: var(--sans); font-size: .95rem; }
+  .foot-links a { color: var(--ice); text-decoration: none; }
+  .foot-links a:hover { text-decoration: underline; text-underline-offset: .18em; }
   .site-foot .legal { margin-top: 3rem; padding-top: 1.25rem; border-top: 1px solid var(--line-d); font-family: var(--sans); font-size: .8rem; color: rgba(244,247,250,.55); display: flex; flex-wrap: wrap; gap: .5rem 2rem; justify-content: space-between; position: relative; }
 
   /* ---------- Reduced motion ---------- */
@@ -709,7 +766,7 @@
         <p class="lead reveal">Ogni visita segue lo stesso percorso, che si tratti di un primo paio di occhiali, di una correzione complessa o di lenti a contatto.</p>
         <ol class="steps" id="steps">
           <li class="reveal"><span class="n">1</span><h3>Il colloquio</h3><p>Prima di qualsiasi misura, una conversazione: come usa gli occhi durante la giornata, a che distanza lavora, quanto tempo passa davanti a uno schermo, se guida di notte, se ha già portato lenti progressive o lenti a contatto. La correzione giusta dipende da queste risposte, e da altre ancora.</p></li>
-          <li class="reveal"><span class="n">2</span><h3>L’esame della vista</h3><p>Una refrazione completa, non un test rapido. Si misura tutto ciò che serve a definire la correzione esatta, con la calma necessaria per non lasciare nulla all’approssimazione.</p></li>
+          <li class="reveal"><span class="n">2</span><h3>L’esame della vista</h3><p>Una refrazione completa, non un test rapido. Si misura tutto ciò che serve a definire la correzione esatta, con la calma necessaria per non lasciare nulla all’approssimazione. <a class="more" href="esame-della-vista/">Come si svolge l’esame della vista</a></p></li>
           <li class="reveal"><span class="n">3</span><h3>La scelta di lenti e montatura</h3><p>Le lenti si scelgono in base alla correzione e all’uso reale; la montatura in base al viso e alla correzione che dovrà portare. È la regola opposta a quella di molti negozi: prima la vista, poi l’estetica. Fatte nell’ordine giusto, le due cose vanno d’accordo.</p></li>
           <li class="reveal"><span class="n">4</span><h3>Il montaggio e la regolazione</h3><p>Il maestro ottico esegue personalmente centratura, montaggio e regolazione finale. Un’ottima lente montata con qualche millimetro di errore smette di essere un’ottima lente.</p></li>
           <li class="reveal"><span class="n">5</span><h3>Il controllo</h3><p>Dopo alcune settimane si verifica che l’adattamento sia completo e che tutto funzioni come previsto. Per le lenti a contatto i controlli fanno parte dell’applicazione e vengono programmati fin dall’inizio.</p></li>
@@ -799,9 +856,9 @@
       <div class="prose">
         <p class="lead reveal">Occhiali e lenti a contatto sono le due specializzazioni dello studio. In entrambi i casi l’obiettivo è lo stesso: una correzione esatta, portata con comfort, che duri nel tempo.</p>
         <div class="areas">
-          <div class="reveal" style="--i:0"><h3>Occhiali e lenti progressive</h3><p>Lenti monofocali, progressive e da lavoro, calcolate sui suoi parametri e sull’uso che ne farà. Montature scelte per la correzione che devono portare, oltre che per il viso. Regolazioni e piccole riparazioni curate nello studio.</p></div>
-          <div class="reveal" style="--i:1"><h3>Lenti a contatto</h3><p>Applicazione di lenti a contatto dalla prima prova ai controlli periodici. Ogni lente viene scelta e adattata all’occhio che la porta, con l’istruzione necessaria per usarla bene e in sicurezza.</p></div>
-          <div class="reveal" style="--i:2"><h3>Correzioni difficili</h3><p>Astigmatismi elevati, differenze marcate tra i due occhi, presbiopie complesse, difficoltà di adattamento alle lenti progressive: i casi in cui l’esperienza fa la differenza, e che uno studio su appuntamento può seguire con il tempo necessario.</p></div>
+          <div class="reveal" style="--i:0"><h3>Occhiali e lenti progressive</h3><p>Lenti monofocali, progressive e da lavoro, calcolate sui suoi parametri e sull’uso che ne farà. Montature scelte per la correzione che devono portare, oltre che per il viso. Regolazioni e piccole riparazioni curate nello studio.</p><a class="more" href="lenti-progressive/">Lenti progressive: come si scelgono</a></div>
+          <div class="reveal" style="--i:1"><h3>Lenti a contatto</h3><p>Applicazione di lenti a contatto dalla prima prova ai controlli periodici. Ogni lente viene scelta e adattata all’occhio che la porta, con l’istruzione necessaria per usarla bene e in sicurezza.</p><a class="more" href="lenti-a-contatto/">Lenti a contatto: come avviene l’applicazione</a></div>
+          <div class="reveal" style="--i:2"><h3>Correzioni difficili</h3><p>Astigmatismi elevati, differenze marcate tra i due occhi, presbiopie complesse, difficoltà di adattamento alle lenti progressive: i casi in cui l’esperienza fa la differenza, e che uno studio su appuntamento può seguire con il tempo necessario.</p><a class="more" href="lenti-progressive/#adattamento">Se non ci si abitua alle progressive</a></div>
         </div>
       </div>
     </div>
@@ -813,6 +870,19 @@
       <div>
         <p class="big" id="words">Questo studio è per chi porta gli occhiali dalla mattina alla sera e non si accontenta di vedere «abbastanza bene». Per chi ha una correzione difficile. Per chi ha già provato altrove senza trovarsi bene. Per chi preferisce affidarsi a una persona, non a un’insegna.</p>
         <p class="aside reveal">Non è lo studio adatto a chi cerca l’occhiale più economico o la promozione del momento: per quello esistono catene ben organizzate. Qui si viene per un’altra ragione.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq" id="domande">
+    <div class="wrap split">
+      <h2 class="reveal">Domande frequenti</h2>
+      <div class="qa">
+        <div class="reveal"><h3>Che differenza c’è tra ottico, optometrista e oculista?</h3><p>L’oculista è un medico: diagnostica e cura le malattie dell’occhio. L’ottico realizza occhiali e lenti a contatto; l’optometrista è l’ottico con formazione superiore, specializzato nell’esame della vista. Per misurare la vista ci si può rivolgere direttamente a un ottico diplomato federale; se emergono segni che richiedono un accertamento medico, lo studio indirizza all’oculista.</p></div>
+        <div class="reveal"><h3>Che cosa significa «ottico diplomato federale (maestro ottico)»?</h3><p>È il diploma federale superiore della professione di ottico in Svizzera. Oltre alla formazione di base comprende l’esame della vista e l’applicazione di lenti a contatto. Marco Rusca esercita la professione da oltre quarant’anni.</p></div>
+        <div class="reveal"><h3>Ogni quanto conviene controllare la vista?</h3><p>In assenza di disturbi, ogni due anni circa. Prima, se nota cambiamenti: fatica a leggere, mal di testa, difficoltà alla guida di sera, stanchezza davanti allo schermo.</p></div>
+        <div class="reveal"><h3>Perché non riesco ad abituarmi alle lenti progressive?</h3><p>Le cause più frequenti sono tre: una correzione non del tutto esatta, una centratura imprecisa, una lente o una montatura non adatte all’uso reale. Conviene far verificare misure e montaggio prima di rinunciare. <a class="more" href="lenti-progressive/">Lenti progressive: da cosa dipende il risultato</a></p></div>
+        <div class="reveal"><h3>Dove si trova lo studio e come si prende appuntamento?</h3><p>A Savosa, in Via Emilio Maraini 27, zona Crocifisso, alle porte di Lugano. Lo studio riceve solo su appuntamento: per telefono allo 091 966 32 68 oppure con il modulo qui sotto.</p></div>
       </div>
     </div>
   </section>
@@ -861,7 +931,7 @@
   </svg>
   <div class="wrap split">
     <div><p class="name">Rusca</p><p class="tagline">La scelta di chi tiene alla propria vista.</p></div>
-    <address>Marco Rusca, ottico diplomato federale SHFA (maestro ottico)<br>Studio di ottica e contattologia, su appuntamento<br>Via Emilio Maraini 27, 6942 Savosa<br><a href="tel:+41919663268">091 966 32 68</a><br><a href="mailto:eye-marcorusca@hotmail.com">eye-marcorusca@hotmail.com</a></address>
+    <div><address>Marco Rusca, ottico diplomato federale SHFA (maestro ottico)<br>Studio di ottica e contattologia, su appuntamento<br>Via Emilio Maraini 27, 6942 Savosa<br><a href="tel:+41919663268">091 966 32 68</a><br><a href="mailto:eye-marcorusca@hotmail.com">eye-marcorusca@hotmail.com</a></address><p class="foot-links"><a href="esame-della-vista/">Esame della vista</a><a href="lenti-progressive/">Lenti progressive</a><a href="lenti-a-contatto/">Lenti a contatto</a></p></div>
   </div>
   <div class="wrap legal">
     <span>© <span id="anno">2026</span> Studio ottico Rusca, Savosa</span>

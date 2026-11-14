@@ -4,12 +4,14 @@ Sito dello Studio ottico Rusca: Marco Rusca, ottico diplomato federale (maestro 
 
 Indirizzo: **https://www.otticorusca.ch** (dominio registrato su GoDaddy). Versione inglese: **https://www.otticorusca.ch/en/**.
 
-Sito statico di una sola pagina, in italiano (`index.html`) e in inglese (`en/index.html`). Non servono server, database né installazioni, e il sito non usa cookie né servizi esterni (anche i caratteri tipografici sono inclusi nel repository).
+Sito statico in italiano e in inglese: la pagina principale e tre pagine dedicate a esame della vista, lenti progressive e lenti a contatto. Non servono server, database né installazioni, e il sito non usa cookie né servizi esterni (anche i caratteri tipografici sono inclusi nel repository).
 
 | File | A cosa serve |
 | --- | --- |
 | `index.html` | Il sito in italiano (lingua principale) |
 | `en/index.html` | Il sito in inglese |
+| `esame-della-vista/`, `lenti-progressive/`, `lenti-a-contatto/` | Pagine dedicate ai servizi (in inglese sotto `en/`) |
+| `tools/` | Programmi che generano la versione inglese e le pagine dei servizi |
 | `fonts/` | Caratteri Newsreader e Hanken Grotesk, con la loro licenza (SIL Open Font License) |
 | `favicon.svg`, `apple-touch-icon.png` | Icona nella scheda del browser e sulla schermata Home del telefono |
 | `og-image.png`, `og-image-en.png` | Anteprima mostrata quando il link viene condiviso (WhatsApp, social) |
@@ -36,9 +38,16 @@ Scaricare il repository come ZIP (**Code → Download ZIP**), poi nella dashboar
 
 ## Modifiche frequenti
 
-Ogni modifica a testi o contatti va fatta **in entrambi i file**: `index.html` (italiano) e `en/index.html` (inglese).
+Solo `index.html` (la pagina italiana) si modifica a mano. La pagina inglese e le pagine dei servizi vengono generate, quindi una modifica fatta direttamente lì va persa alla generazione successiva.
 
+1. Modificare il testo in `index.html`.
+2. Se il testo esiste anche in inglese, aggiornare la coppia italiano/inglese nell'elenco `T` di `tools/build_en.py`.
+3. I testi delle pagine dei servizi sono in `PAGES`, dentro `tools/build_pages.py`, in italiano e in inglese.
+4. Rigenerare: `python3 tools/build_en.py && python3 tools/build_pages.py`, poi pubblicare le modifiche.
+
+Dove si trovano le cose in `index.html`:
 
 - **Email che riceve le richieste del modulo**: attributo `data-email` del modulo con `id="richiesta"`.
 - **Telefono, email, indirizzo**: cercare `091 966 32 68`, `eye-marcorusca@hotmail.com`, `Via Emilio Maraini` (compaiono in più punti).
 - **Ritratto di Marco Rusca**: sostituire il monogramma "MR" seguendo il commento nella sezione con `id="marco-rusca"`.
+- **Domande frequenti**: sezione con `id="domande"`; le stesse domande sono ripetute nei dati strutturati in cima alla pagina.

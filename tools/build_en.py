@@ -1,0 +1,284 @@
+"""Generate the English home page (en/index.html) from the Italian one (index.html).
+
+The list T holds every Italian text with its English translation: when a text changes in index.html,
+change it here too, then run:  python3 tools/build_en.py && python3 tools/build_pages.py
+"""
+import os, re
+
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+IT = os.path.join(REPO, 'index.html')
+SITE = 'https://www.otticorusca.ch/'
+
+it = open(IT, encoding='utf-8').read()
+
+
+def rep(s, a, b, count=None):
+    n = s.count(a)
+    assert n >= 1, ('missing', a[:90])
+    if count is not None:
+        assert n == count, (n, a[:90])
+    return s.replace(a, b)
+
+
+# ---------------------------------------------------------------- shared additions
+LANG_CSS = '''  .lang { display: flex; align-items: center; gap: .1rem; font-family: var(--sans); font-size: .8rem; letter-spacing: .05em; }
+  .lang a { text-decoration: none; color: rgba(244,247,250,.6); padding: .35rem .5rem; border-radius: 999px; transition: color .3s, box-shadow .3s; }
+  .lang a:hover { color: var(--paper); }
+  .lang a[aria-current] { color: var(--paper); box-shadow: inset 0 0 0 1px rgba(244,247,250,.35); }
+'''
+if '.lang {' not in it:
+    it = rep(it, '  .head-actions { display: flex; align-items: center; gap: 1.1rem; }\n',
+             '  .head-actions { display: flex; align-items: center; gap: 1.1rem; }\n' + LANG_CSS, 1)
+
+
+def lang_nav(current, it_href, en_href, label):
+    a_it = f'<a href="{it_href}" lang="it" hreflang="it"' + (' aria-current="page"' if current == 'it' else '') + '>IT</a>'
+    a_en = f'<a href="{en_href}" lang="en" hreflang="en"' + (' aria-current="page"' if current == 'en' else '') + '>EN</a>'
+    return f'<nav class="lang" aria-label="{label}">{a_it}{a_en}</nav>'
+
+
+ALTERNATES = (f'<link rel="alternate" hreflang="it" href="{SITE}">\n'
+              f'<link rel="alternate" hreflang="en" href="{SITE}en/">\n'
+              f'<link rel="alternate" hreflang="x-default" href="{SITE}">')
+
+if 'hreflang="en"' not in it:
+    it = rep(it, f'<link rel="canonical" href="{SITE}">', f'<link rel="canonical" href="{SITE}">\n' + ALTERNATES, 1)
+    it = rep(it, '    <div class="head-actions">\n',
+             '    <div class="head-actions">\n      ' + lang_nav('it', './', 'en/', 'Lingua') + '\n', 1)
+    it = rep(it, '<a href="mailto:eye-marcorusca@hotmail.com">eye-marcorusca@hotmail.com</a></p>\n</div>',
+             '<a href="mailto:eye-marcorusca@hotmail.com">eye-marcorusca@hotmail.com</a><br><a href="en/" lang="en" hreflang="en">English version</a></p>\n</div>', 1)
+open(IT, 'w', encoding='utf-8').write(it)
+
+# ---------------------------------------------------------------- English page
+en = it
+EN_JSONLD = '<script type="application/ld+json">\n{\n  "@context": "https://schema.org",\n  "@graph": [\n    {\n      "@type": "Optician",\n      "@id": "https://www.otticorusca.ch/#studio",\n      "name": "Studio ottico Rusca",\n      "alternateName": [\n        "Ottico Rusca",\n        "Rusca Marco, ottico"\n      ],\n      "description": "Optical practice in Savosa, on the edge of Lugano, by appointment: eye examinations, prescription glasses, progressive lenses and contact lenses. Marco Rusca, Swiss federally certified optician (master optician), more than forty years of practice.",\n      "url": "https://www.otticorusca.ch/",\n      "image": "https://www.otticorusca.ch/og-image.png",\n      "telephone": "+41919663268",\n      "email": "eye-marcorusca@hotmail.com",\n      "address": {\n        "@type": "PostalAddress",\n        "streetAddress": "Via Emilio Maraini 27",\n        "postalCode": "6942",\n        "addressLocality": "Savosa",\n        "addressRegion": "TI",\n        "addressCountry": "CH"\n      },\n      "geo": {\n        "@type": "GeoCoordinates",\n        "latitude": 46.01683,\n        "longitude": 8.94424\n      },\n      "hasMap": "https://www.google.com/maps/search/?api=1&query=Studio+ottico+Rusca%2C+Via+Emilio+Maraini+27%2C+6942+Savosa&query_place_id=ChIJw0RDq34yhEcRZd4bjoxRZnE",\n      "areaServed": [\n        {\n          "@type": "City",\n          "name": "Savosa"\n        },\n        {\n          "@type": "City",\n          "name": "Lugano"\n        },\n        {\n          "@type": "AdministrativeArea",\n          "name": "Luganese"\n        },\n        {\n          "@type": "AdministrativeArea",\n          "name": "Canton of Ticino"\n        }\n      ],\n      "knowsAbout": [\n        "Eye examination",\n        "Refraction",\n        "Progressive lenses",\n        "Occupational lenses",\n        "Contact lenses",\n        "Astigmatism",\n        "Presbyopia"\n      ],\n      "hasOfferCatalog": {\n        "@type": "OfferCatalog",\n        "name": "Services",\n        "itemListElement": [\n          {\n            "@type": "Offer",\n            "itemOffered": {\n              "@type": "Service",\n              "name": "Eye examination"\n            }\n          },\n          {\n            "@type": "Offer",\n            "itemOffered": {\n              "@type": "Service",\n              "name": "Prescription glasses"\n            }\n          },\n          {\n            "@type": "Offer",\n            "itemOffered": {\n              "@type": "Service",\n              "name": "Progressive lenses"\n            }\n          },\n          {\n            "@type": "Offer",\n            "itemOffered": {\n              "@type": "Service",\n              "name": "Occupational (office) lenses"\n            }\n          },\n          {\n            "@type": "Offer",\n            "itemOffered": {\n              "@type": "Service",\n              "name": "Contact lens fitting"\n            }\n          },\n          {\n            "@type": "Offer",\n            "itemOffered": {\n              "@type": "Service",\n              "name": "Adjustment and repair of glasses"\n            }\n          }\n        ]\n      },\n      "founder": {\n        "@id": "https://www.otticorusca.ch/#marco-rusca"\n      },\n      "sameAs": [\n        "https://www.local.ch/it/d/savosa/6942/ottico/rusca-marco-NcHW8Whr9MO1ePPfZew7Yw"\n      ]\n    },\n    {\n      "@type": "Person",\n      "@id": "https://www.otticorusca.ch/#marco-rusca",\n      "name": "Marco Rusca",\n      "jobTitle": "Swiss federally certified optician (master optician)",\n      "hasCredential": {\n        "@type": "EducationalOccupationalCredential",\n        "credentialCategory": "diploma",\n        "name": "Swiss federal diploma in optics (SHFA)"\n      },\n      "worksFor": {\n        "@id": "https://www.otticorusca.ch/#studio"\n      }\n    },\n    {\n      "@type": "WebSite",\n      "@id": "https://www.otticorusca.ch/#website",\n      "url": "https://www.otticorusca.ch/",\n      "name": "Studio ottico Rusca",\n      "inLanguage": [\n        "it-CH",\n        "en"\n      ],\n      "publisher": {\n        "@id": "https://www.otticorusca.ch/#studio"\n      }\n    },\n    {\n      "@type": "FAQPage",\n      "@id": "https://www.otticorusca.ch/#domande",\n      "mainEntity": [\n        {\n          "@type": "Question",\n          "name": "What is the difference between an optician, an optometrist and an ophthalmologist?",\n          "acceptedAnswer": {\n            "@type": "Answer",\n            "text": "An ophthalmologist is a medical doctor who diagnoses and treats eye diseases. An optician makes glasses and fits contact lenses; an optometrist is an optician with higher training, specialised in eye examinations. To have your eyesight measured you can go directly to a federally certified optician; if anything calls for a medical check, the practice refers you to an ophthalmologist."\n          }\n        },\n        {\n          "@type": "Question",\n          "name": "What does “Swiss federally certified optician (master optician)” mean?",\n          "acceptedAnswer": {\n            "@type": "Answer",\n            "text": "It is the higher federal diploma of the optician’s profession in Switzerland. Beyond basic training it covers eye examinations and contact lens fitting. Marco Rusca has practised the profession for more than forty years."\n          }\n        },\n        {\n          "@type": "Question",\n          "name": "How often should I have my eyes tested?",\n          "acceptedAnswer": {\n            "@type": "Answer",\n            "text": "If you have no complaints, about every two years. Sooner if you notice changes: difficulty reading, headaches, trouble driving at night, tiredness in front of a screen."\n          }\n        },\n        {\n          "@type": "Question",\n          "name": "Why can’t I get used to my progressive lenses?",\n          "acceptedAnswer": {\n            "@type": "Answer",\n            "text": "The three most common causes are a correction that is not quite exact, imprecise centring, or a lens or frame that does not suit how the glasses are really used. It is worth having the measurements and the fitting checked before giving up."\n          }\n        },\n        {\n          "@type": "Question",\n          "name": "Where is the practice and how do I make an appointment?",\n          "acceptedAnswer": {\n            "@type": "Answer",\n            "text": "In Savosa, at Via Emilio Maraini 27, in the Crocifisso area, on the edge of Lugano. The practice sees clients by appointment only: by phone on +41 91 966 32 68 or with the form below."\n          }\n        }\n      ]\n    }\n  ]\n}\n</script>'
+
+# paths one level down
+for a, b in [('url("fonts/', 'url("../fonts/'), ('href="fonts/', 'href="../fonts/'),
+             ('href="favicon.svg"', 'href="../favicon.svg"'), ('href="apple-touch-icon.png"', 'href="../apple-touch-icon.png"')]:
+    en = rep(en, a, b)
+
+en = rep(en, lang_nav('it', './', 'en/', 'Lingua'), lang_nav('en', '../', './', 'Language'), 1)
+en = rep(en, '<a href="en/" lang="en" hreflang="en">English version</a>', '<a href="../" lang="it" hreflang="it">Versione italiana</a>', 1)
+
+# structured data (English block generated by seo_edits.jsonld)
+_ld_a = en.index('<script type="application/ld+json">'); _ld_b = en.index('</script>', _ld_a) + len('</script>')
+en = en[:_ld_a] + EN_JSONLD + en[_ld_b:]
+
+# head
+T = [
+    ('<html lang="it-CH">', '<html lang="en">'),
+    # FAQ, links to the service pages, footer links
+    ('<h3>Che differenza c’è tra ottico, optometrista e oculista?</h3>', '<h3>What is the difference between an optician, an optometrist and an ophthalmologist?</h3>'),
+    ('<p>L’oculista è un medico: diagnostica e cura le malattie dell’occhio. L’ottico realizza occhiali e lenti a contatto; l’optometrista è l’ottico con formazione superiore, specializzato nell’esame della vista. Per misurare la vista ci si può rivolgere direttamente a un ottico diplomato federale; se emergono segni che richiedono un accertamento medico, lo studio indirizza all’oculista.', '<p>An ophthalmologist is a medical doctor who diagnoses and treats eye diseases. An optician makes glasses and fits contact lenses; an optometrist is an optician with higher training, specialised in eye examinations. To have your eyesight measured you can go directly to a federally certified optician; if anything calls for a medical check, the practice refers you to an ophthalmologist.'),
+    ('<h3>Che cosa significa «ottico diplomato federale (maestro ottico)»?</h3>', '<h3>What does “Swiss federally certified optician (master optician)” mean?</h3>'),
+    ('<p>È il diploma federale superiore della professione di ottico in Svizzera. Oltre alla formazione di base comprende l’esame della vista e l’applicazione di lenti a contatto. Marco Rusca esercita la professione da oltre quarant’anni.', '<p>It is the higher federal diploma of the optician’s profession in Switzerland. Beyond basic training it covers eye examinations and contact lens fitting. Marco Rusca has practised the profession for more than forty years.'),
+    ('<h3>Ogni quanto conviene controllare la vista?</h3>', '<h3>How often should I have my eyes tested?</h3>'),
+    ('<p>In assenza di disturbi, ogni due anni circa. Prima, se nota cambiamenti: fatica a leggere, mal di testa, difficoltà alla guida di sera, stanchezza davanti allo schermo.', '<p>If you have no complaints, about every two years. Sooner if you notice changes: difficulty reading, headaches, trouble driving at night, tiredness in front of a screen.'),
+    ('<h3>Perché non riesco ad abituarmi alle lenti progressive?</h3>', '<h3>Why can’t I get used to my progressive lenses?</h3>'),
+    ('<p>Le cause più frequenti sono tre: una correzione non del tutto esatta, una centratura imprecisa, una lente o una montatura non adatte all’uso reale. Conviene far verificare misure e montaggio prima di rinunciare.', '<p>The three most common causes are a correction that is not quite exact, imprecise centring, or a lens or frame that does not suit how the glasses are really used. It is worth having the measurements and the fitting checked before giving up.'),
+    ('<h3>Dove si trova lo studio e come si prende appuntamento?</h3>', '<h3>Where is the practice and how do I make an appointment?</h3>'),
+    ('<p>A Savosa, in Via Emilio Maraini 27, zona Crocifisso, alle porte di Lugano. Lo studio riceve solo su appuntamento: per telefono allo 091 966 32 68 oppure con il modulo qui sotto.', '<p>In Savosa, at Via Emilio Maraini 27, in the Crocifisso area, on the edge of Lugano. The practice sees clients by appointment only: by phone on +41 91 966 32 68 or with the form below.'),
+    ('>Come si svolge l’esame della vista</a>', '>How the eye examination works</a>'),
+    ('>Lenti progressive: come si scelgono</a>', '>Progressive lenses: how they are chosen</a>'),
+    ('>Lenti a contatto: come avviene l’applicazione</a>', '>Contact lenses: how the fitting works</a>'),
+    ('>Se non ci si abitua alle progressive</a>', '>If you cannot get used to progressives</a>'),
+    ('>Lenti progressive: da cosa dipende il risultato</a>', '>Progressive lenses: what the result depends on</a>'),
+    ('<h2 class="reveal">Domande frequenti</h2>', '<h2 class="reveal">Frequently asked questions</h2>'),
+    ('/">Esame della vista</a>', '/">Eye examination</a>'),
+    ('/">Lenti progressive</a>', '/">Progressive lenses</a>'),
+    ('/">Lenti a contatto</a>', '/">Contact lenses</a>'),
+    ('href="esame-della-vista/', 'href="eye-examination/'),
+    ('href="lenti-progressive/', 'href="progressive-lenses/'),
+    ('href="lenti-a-contatto/', 'href="contact-lenses/'),
+    ('#adattamento"', '#adapting"'),
+    ('<title>Ottico a Savosa, Lugano | Studio ottico Rusca</title>', '<title>Optician in Lugano (Savosa) | Studio ottico Rusca</title>'),
+    ('content="Studio ottico Rusca a Savosa, alle porte di Lugano: esame della vista, occhiali, lenti progressive e lenti a contatto. Ottico diplomato federale (maestro ottico), oltre quarant\'anni di pratica. Su appuntamento."',
+     'content="Rusca optical practice in Savosa, on the edge of Lugano: eye examinations, glasses, progressive lenses and contact lenses. Swiss federally certified optician (master optician), more than forty years of practice. By appointment."'),
+    ('content="Studio ottico Rusca – Ottico a Savosa, Lugano"', 'content="Studio ottico Rusca – Optician in Savosa, Lugano"'),
+    ('content="Uno studio, non un negozio. Ottico diplomato federale (maestro ottico), riceve su appuntamento a Savosa."',
+     'content="A practice, not a shop. Swiss federally certified optician (master optician), seeing clients by appointment in Savosa."'),
+    ('<meta property="og:image" content="https://www.otticorusca.ch/og-image.png">', '<meta property="og:image" content="https://www.otticorusca.ch/og-image-en.png">'),
+    ('Lo studio ottico Rusca si trova a Savosa, in zona Crocifisso, alle porte di Lugano. Riceve su appuntamento chi arriva da Lugano, dal Luganese e dal resto del Ticino. ',
+     'The Rusca optical practice is in Savosa, in the Crocifisso area, on the edge of Lugano. It sees clients by appointment from Lugano, the surrounding area and the rest of Ticino. '),
+    ('>Indicazioni stradali</a>', '>Directions</a>'),
+    ('<meta property="og:locale" content="it_CH">', '<meta property="og:locale" content="en_GB">\n<meta property="og:locale:alternate" content="it_CH">'),
+    (f'<meta property="og:url" content="{SITE}">', f'<meta property="og:url" content="{SITE}en/">'),
+    (f'<link rel="canonical" href="{SITE}">', f'<link rel="canonical" href="{SITE}en/">'),
+
+    # header, menu
+    ('>Vai al contenuto<', '>Skip to content<'),
+    ('aria-label="Rusca, studio ottico – inizio pagina"', 'aria-label="Rusca, optician – back to top"'),
+    ('<span class="role">Studio ottico, Lugano – Crocifisso</span>', '<span class="role">Optical practice, Lugano – Crocifisso</span>'),
+    ('aria-label="Sezioni"', 'aria-label="Sections"'),
+    ('>Lo studio</a>', '>The practice</a>'),
+    ('>Il metodo<', '>The method<'),
+    ('<a href="#montature">Montature</a>', '<a href="#montature">Frames</a>'),
+    ('>Competenze</a>', '>Expertise</a>'),
+    ('>Appuntamento</a>', '>Appointment</a>'),
+    ('>Richiedere un appuntamento<', '>Request an appointment<'),
+    ('aria-label="Apri il menu"', 'aria-label="Open menu"'),
+    ("open ? 'Chiudi il menu' : 'Apri il menu'", "open ? 'Close menu' : 'Open menu'"),
+
+    # hero
+    ('Prima degli occhiali, l’ottico.', 'Before the glasses, the optician.'),
+    ('aria-label="In breve"', 'aria-label="At a glance"'),
+    ('Studio di ottica e contattologia, su appuntamento', 'Optics and contact lens practice, by appointment'),
+    ('<span>Studio di ottica e contattologia</span>', '<span>Optics and contact lens practice</span>'),
+    ('Si riceve esclusivamente su appuntamento.', 'Strictly by appointment.'),
+    ('Si riceve su appuntamento', 'By appointment only'),
+    ('Marco Rusca, ottico diplomato federale (maestro ottico), mette oltre quarant’anni di pratica al servizio di una cosa sola: la vista di chi si affida a lui. Una persona alla volta, con il tempo che una misurazione seria richiede.',
+     'Marco Rusca, Swiss federally certified optician (master optician), puts more than forty years of practice at the service of one thing only: the eyesight of those who place their trust in him. One person at a time, with the time a serious measurement requires.'),
+    ('<span class="also">oppure </span>', '<span class="also">or </span>'),
+    ('Muova il cursore sul titolo: gli occhiali lo mettono a fuoco.', 'Move the cursor over the headline: the glasses bring it into focus.'),
+
+    # credentials strip
+    ('aria-label="Titoli"', 'aria-label="Credentials"'),
+    ('Ottico diplomato federale (maestro ottico)</span>', 'Swiss federally certified optician (master optician)</span>'),
+    ('Già docente al Centro Professionale Tecnico</span>', 'Former lecturer at the Centro Professionale Tecnico</span>'),
+    ('Oltre quarant’anni di pratica</span>', 'More than forty years of practice</span>'),
+
+    # the practice
+    ('Uno studio, non un negozio.', 'A practice, not a shop.'),
+    ('<b>anni di pratica</b>Una persona alla volta, su appuntamento, con il tempo che serve.',
+     '<b>years of practice</b>One person at a time, by appointment, with all the time it takes.'),
+    ('Qui non troverà scaffali di montature da provare in fretta, né il cartello con l’offerta del mese. Troverà uno studio che considera la vista una cosa troppo seria per essere trattata di corsa.',
+     'Here you will not find shelves of frames to try on in a hurry, nor a sign announcing this month’s offer. You will find a practice that considers eyesight far too serious a matter to be rushed.'),
+    ('La differenza tra un occhiale qualunque e un occhiale giusto non sta nella montatura. Sta nella precisione con cui la vista è stata misurata, nella scelta delle lenti in base a come vengono usate davvero, e nella cura con cui sono state centrate, montate e regolate. È un lavoro da ottico. Qui lo fa un maestro ottico, personalmente, dall’inizio alla fine.',
+     'The difference between any pair of glasses and the right pair is not in the frame. It lies in how precisely the eyes were measured, in choosing lenses for how they will actually be used, and in the care with which they were centred, fitted and adjusted. That is an optician’s work. Here it is done by a master optician, personally, from start to finish.'),
+    ('Schema di una lente che porta a fuoco un fascio di raggi paralleli', 'Diagram of a lens bringing a beam of parallel rays to a focus'),
+    ('>fuoco</text>', '>focus</text>'),
+    ('>distanza focale</text>', '>focal length</text>'),
+    ('>raggi paralleli</text>', '>parallel rays</text>'),
+    ('Una lente corregge solo se è calcolata e centrata per l’occhio che la porta. Pochi millimetri di errore nel montaggio bastano a vanificare un’ottima lente.',
+     'A lens only corrects properly if it is calculated and centred for the eye that wears it. An error of a few millimetres in fitting is enough to undo an excellent lens.'),
+
+    # comparison
+    ('La differenza si vede.', 'You can see the difference.'),
+    ('Trascini il cursore. A sinistra, come si vede con una correzione approssimativa; a destra, con una correzione misurata come si deve. Fino all’ultima riga.',
+     'Drag the slider. On the left, how you see with an approximate correction; on the right, with a correction measured properly. Right down to the last line.'),
+    ('Vedere bene non è questione di fortuna. È una misura fatta bene.', 'Seeing well is not a matter of luck. It is a measurement done well.'),
+    ('>correzione approssimativa<', '>approximate correction<'),
+    ('>correzione misurata<', '>measured correction<'),
+    ('aria-label="Confronto: trascini per passare dalla visione sfocata a quella nitida"', 'aria-label="Comparison: drag to move from blurred to sharp vision"'),
+    ('La tavola è una semplificazione. In studio la misura si fa con la strumentazione e il tempo che servono, non con un cursore.',
+     'The chart is a simplification. In the practice, the measurement is made with the proper instruments and all the time it takes, not with a slider.'),
+
+    # method
+    ('Ogni visita segue lo stesso percorso, che si tratti di un primo paio di occhiali, di una correzione complessa o di lenti a contatto.',
+     'Every visit follows the same path, whether it is a first pair of glasses, a complex prescription or contact lenses.'),
+    ('<h3>Il colloquio</h3>', '<h3>The conversation</h3>'),
+    ('Prima di qualsiasi misura, una conversazione: come usa gli occhi durante la giornata, a che distanza lavora, quanto tempo passa davanti a uno schermo, se guida di notte, se ha già portato lenti progressive o lenti a contatto. La correzione giusta dipende da queste risposte, e da altre ancora.',
+     'Before any measurement, a conversation: how you use your eyes during the day, at what distance you work, how much time you spend in front of a screen, whether you drive at night, whether you have worn progressive lenses or contact lenses before. The right correction depends on these answers, and on others besides.'),
+    ('<h3>L’esame della vista</h3>', '<h3>The eye examination</h3>'),
+    ('Una refrazione completa, non un test rapido. Si misura tutto ciò che serve a definire la correzione esatta, con la calma necessaria per non lasciare nulla all’approssimazione.',
+     'A complete refraction, not a quick test. Everything needed to define the exact correction is measured, calmly enough that nothing is left to approximation.'),
+    ('<h3>La scelta di lenti e montatura</h3>', '<h3>Choosing lenses and frame</h3>'),
+    ('Le lenti si scelgono in base alla correzione e all’uso reale; la montatura in base al viso e alla correzione che dovrà portare. È la regola opposta a quella di molti negozi: prima la vista, poi l’estetica. Fatte nell’ordine giusto, le due cose vanno d’accordo.',
+     'Lenses are chosen according to the prescription and to real use; the frame according to the face and to the correction it will have to carry. It is the opposite of the rule in many shops: eyesight first, then looks. Done in the right order, the two go together.'),
+    ('<h3>Il montaggio e la regolazione</h3>', '<h3>Fitting and adjustment</h3>'),
+    ('Il maestro ottico esegue personalmente centratura, montaggio e regolazione finale. Un’ottima lente montata con qualche millimetro di errore smette di essere un’ottima lente.',
+     'The master optician personally carries out centring, fitting and final adjustment. An excellent lens fitted a few millimetres off stops being an excellent lens.'),
+    ('<h3>Il controllo</h3>', '<h3>The follow-up</h3>'),
+    ('Dopo alcune settimane si verifica che l’adattamento sia completo e che tutto funzioni come previsto. Per le lenti a contatto i controlli fanno parte dell’applicazione e vengono programmati fin dall’inizio.',
+     'After a few weeks we check that you have fully adapted and that everything works as it should. For contact lenses, check-ups are part of the fitting and are scheduled from the very start.'),
+
+    # frames
+    ('La montatura giusta esiste. Ma si sceglie dopo la misura.', 'The right frame exists. But it is chosen after the measurement.'),
+    ('Ogni montatura impone dei vincoli alle lenti: dimensione, curvatura, distanza dagli occhi. Con una correzione forte, una lente grande diventa spessa e pesante; con una progressiva, un’altezza insufficiente compromette la zona di lettura. Per questo qui la montatura si sceglie insieme all’ottico, dopo l’esame e non prima.',
+     'Every frame places constraints on the lenses: size, curvature, distance from the eyes. With a strong prescription, a large lens becomes thick and heavy; with a progressive, too little height compromises the reading area. That is why, here, the frame is chosen together with the optician, after the examination and not before.'),
+    ('<span class="tag">Acetato</span>', '<span class="tag">Acetate</span>'),
+    ('<span class="tag">Metallo</span>', '<span class="tag">Metal</span>'),
+    ('<span class="tag">Titanio</span>', '<span class="tag">Titanium</span>'),
+    ('<h3>Tonda</h3>', '<h3>Round</h3>'),
+    ('<h3>Rettangolare</h3>', '<h3>Rectangular</h3>'),
+    ('<h3>Sottile</h3>', '<h3>Slim</h3>'),
+    ('Il classico che ringiovanisce il viso. Lente alta: la scelta più comoda per le progressive.',
+     'The classic that makes a face look younger. A tall lens: the most comfortable choice for progressives.'),
+    ('Leggera e discreta. Con correzioni elevate il diametro va valutato con attenzione, prima di ordinare le lenti.',
+     'Light and discreet. With strong prescriptions the diameter needs careful assessment before the lenses are ordered.'),
+    ('Struttura e carattere. Con una lente bassa servono progressive di ultima generazione, calcolate sulla montatura scelta.',
+     'Structure and character. A shallow lens calls for latest-generation progressives, calculated for the chosen frame.'),
+    ('Quasi invisibile, pesa pochi grammi. Per chi porta gli occhiali dodici ore al giorno e vuole dimenticarli.',
+     'Almost invisible, weighing just a few grams. For those who wear glasses twelve hours a day and want to forget them.'),
+    ('Le montature in studio sono una selezione, non un catalogo: si provano con calma, con la correzione già definita, e si regolano sul viso prima di ordinare le lenti.',
+     'The frames in the practice are a selection, not a catalogue: they are tried on calmly, with the correction already defined, and adjusted to the face before the lenses are ordered.'),
+
+    # Marco Rusca
+    ('Ci sono ottici che vendono occhiali e ottici che si occupano di vista. Marco Rusca appartiene alla seconda categoria da oltre quarant’anni.',
+     'There are opticians who sell glasses and opticians who take care of eyesight. Marco Rusca has belonged to the second kind for more than forty years.'),
+    ('Ottico diplomato federale (maestro ottico) e, per anni, docente al Centro Professionale Tecnico: chi insegna una professione la conosce fino in fondo. Lo studio nasce da una convinzione semplice, maturata in decenni di pratica: la vista si misura con pazienza e si corregge con precisione, e nessuna delle due cose si fa bene di fretta.',
+     'Swiss federally certified optician (master optician) and, for many years, a lecturer at the Centro Professionale Tecnico: those who teach a profession know it inside out. The practice grew from a simple conviction, formed over decades of practice: eyesight is measured with patience and corrected with precision, and neither can be done well in a hurry.'),
+    ('Diploma federale conseguito alla Scuola superiore svizzera di ottica (SHFA)', 'Federal diploma from the Swiss Higher School of Optics (SHFA)'),
+    ('<span class="t">Segue ogni cliente in prima persona</span>', '<span class="t">Looks after every client personally</span>'),
+    ('Esame, scelta, montaggio e regolazione: dall’inizio alla fine, senza passaggi di mano', 'Examination, choice, fitting and adjustment: from start to finish, never handed on to someone else'),
+    ('Per anni ha insegnato il mestiere, oltre a esercitarlo', 'For many years he taught the craft as well as practising it'),
+    ('Un’esperienza che non si improvvisa, soprattutto nei casi difficili', 'Experience that cannot be improvised, especially in difficult cases'),
+
+    # expertise
+    ('Di cosa si occupa lo studio', 'What the practice does'),
+    ('Occhiali e lenti a contatto sono le due specializzazioni dello studio. In entrambi i casi l’obiettivo è lo stesso: una correzione esatta, portata con comfort, che duri nel tempo.',
+     'Glasses and contact lenses are the practice’s two specialities. In both cases the aim is the same: an exact correction, worn in comfort, that lasts.'),
+    ('<h3>Occhiali e lenti progressive</h3>', '<h3>Glasses and progressive lenses</h3>'),
+    ('Lenti monofocali, progressive e da lavoro, calcolate sui suoi parametri e sull’uso che ne farà. Montature scelte per la correzione che devono portare, oltre che per il viso. Regolazioni e piccole riparazioni curate nello studio.',
+     'Single-vision, progressive and occupational lenses, calculated on your measurements and on how you will use them. Frames chosen for the correction they must carry as well as for the face. Adjustments and small repairs handled in the practice.'),
+    ('<h3>Lenti a contatto</h3>', '<h3>Contact lenses</h3>'),
+    ('Applicazione di lenti a contatto dalla prima prova ai controlli periodici. Ogni lente viene scelta e adattata all’occhio che la porta, con l’istruzione necessaria per usarla bene e in sicurezza.',
+     'Contact lens fitting from the first trial to regular check-ups. Every lens is chosen and adapted to the eye that wears it, with the guidance needed to use it well and safely.'),
+    ('<h3>Correzioni difficili</h3>', '<h3>Complex prescriptions</h3>'),
+    ('Astigmatismi elevati, differenze marcate tra i due occhi, presbiopie complesse, difficoltà di adattamento alle lenti progressive: i casi in cui l’esperienza fa la differenza, e che uno studio su appuntamento può seguire con il tempo necessario.',
+     'High astigmatism, marked differences between the two eyes, complex presbyopia, difficulty adapting to progressive lenses: the cases where experience makes the difference, and which a practice working by appointment can follow with the time they need.'),
+
+    # manifesto
+    ('La scelta di chi tiene alla propria vista.', 'The choice for those who care about their eyesight.'),
+    ('Questo studio è per chi porta gli occhiali dalla mattina alla sera e non si accontenta di vedere «abbastanza bene». Per chi ha una correzione difficile. Per chi ha già provato altrove senza trovarsi bene. Per chi preferisce affidarsi a una persona, non a un’insegna.',
+     'This practice is for people who wear glasses from morning to night and are not content to see “well enough”. For those with a difficult prescription. For those who have tried elsewhere without success. For those who would rather trust a person than a shop sign.'),
+    ('Non è lo studio adatto a chi cerca l’occhiale più economico o la promozione del momento: per quello esistono catene ben organizzate. Qui si viene per un’altra ragione.',
+     'It is not the right practice for those looking for the cheapest glasses or the latest promotion: well-organised chains exist for that. People come here for a different reason.'),
+
+    # appointment
+    ('<dt>Telefono</dt>', '<dt>Phone</dt>'),
+    ('<dt>Studio</dt>', '<dt>Practice</dt>'),
+    ('<dt>Orari</dt>', '<dt>Opening hours</dt>'),
+    ('Il modo più semplice è una telefonata. In alternativa, lasci i suoi recapiti: riceverà una chiamata per concordare data e ora.',
+     'The simplest way is a phone call. Alternatively, leave your details and you will be called back to arrange a date and time.'),
+    ('<label>Nome e cognome<', '<label>Full name<'),
+    ('<label>Telefono<', '<label>Phone<'),
+    ('<label>Email (facoltativa)<', '<label>Email (optional)<'),
+    ('<label>Prima visita o già cliente<', '<label>First visit or existing client<'),
+    ('<option>Prima visita</option>', '<option>First visit</option>'),
+    ('<option>Già cliente</option>', '<option>Existing client</option>'),
+    ('<label>Motivo della visita<', '<label>Reason for the visit<'),
+    ('<option>Esame della vista e nuovi occhiali</option>', '<option>Eye examination and new glasses</option>'),
+    ('<option>Lenti a contatto</option>', '<option>Contact lenses</option>'),
+    ('<option>Controllo, regolazione o riparazione</option>', '<option>Check-up, adjustment or repair</option>'),
+    ('<option>Una correzione che finora non ha funzionato</option>', '<option>A correction that has not worked so far</option>'),
+    ('<option>Altro</option>', '<option>Other</option>'),
+    ('<label>Note (facoltative)<', '<label>Notes (optional)<'),
+    ('placeholder="Giorni e orari preferiti, o qualsiasi cosa sia utile sapere prima della visita"',
+     'placeholder="Preferred days and times, or anything useful to know before the visit"'),
+    ('>Inviare la richiesta<', '>Send request<'),
+    ('La richiesta arriva per email allo studio tramite il servizio FormSubmit e serve solo a ricontattarla.', 'Your request reaches the practice by email via the FormSubmit service and is used only to contact you.'),
+
+    # script messages and the email it composes
+    ("'Per poterla richiamare servono nome e numero di telefono.'", "'To be called back, please give your name and phone number.'"),
+    ("'Invio in corso…'", "'Sending…'"),
+    ("'Grazie, la richiesta è stata inviata. Riceverà una chiamata al più presto per fissare l’appuntamento.'", "'Thank you, your request has been sent. You will receive a call shortly to arrange your appointment.'"),
+    ("'Non è stato possibile inviare la richiesta da qui: si sta aprendo il suo programma di posta con il messaggio già compilato. In alternativa può chiamare lo 091 966 32 68.'", "'The request could not be sent from here: your email app is opening with the message already filled in. Alternatively, please call +41 91 966 32 68.'"),
+
+    # footer
+    ('Marco Rusca, ottico diplomato federale SHFA (maestro ottico)', 'Marco Rusca, Swiss federally certified optician, SHFA (master optician)'),
+    ('Titolare e responsabile del sito:', 'Owner and person responsible for this website:'),
+
+    # international phone format for visitors from abroad
+    ('>091 966 32 68<', '>+41 91 966 32 68<'),
+]
+for a, b in T:
+    en = rep(en, a, b)
+
+os.makedirs(os.path.join(REPO, 'en'), exist_ok=True)
+open(os.path.join(REPO, 'en', 'index.html'), 'w', encoding='utf-8').write(en)
+
+# ---------------------------------------------------------------- robots (the sitemap is written by build_pages.py)
+open(os.path.join(REPO, 'robots.txt'), 'w').write(f'User-agent: *\nAllow: /\n\nSitemap: {SITE}sitemap.xml\n')
+print('ok', len(it), len(en))

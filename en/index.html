@@ -169,6 +169,52 @@
       "publisher": {
         "@id": "https://www.otticorusca.ch/#studio"
       }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.otticorusca.ch/#domande",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the difference between an optician, an optometrist and an ophthalmologist?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An ophthalmologist is a medical doctor who diagnoses and treats eye diseases. An optician makes glasses and fits contact lenses; an optometrist is an optician with higher training, specialised in eye examinations. To have your eyesight measured you can go directly to a federally certified optician; if anything calls for a medical check, the practice refers you to an ophthalmologist."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does “Swiss federally certified optician (master optician)” mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is the higher federal diploma of the optician’s profession in Switzerland. Beyond basic training it covers eye examinations and contact lens fitting. Marco Rusca has practised the profession for more than forty years."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How often should I have my eyes tested?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If you have no complaints, about every two years. Sooner if you notice changes: difficulty reading, headaches, trouble driving at night, tiredness in front of a screen."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why can’t I get used to my progressive lenses?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The three most common causes are a correction that is not quite exact, imprecise centring, or a lens or frame that does not suit how the glasses are really used. It is worth having the measurements and the fitting checked before giving up."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where is the practice and how do I make an appointment?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In Savosa, at Via Emilio Maraini 27, in the Crocifisso area, on the edge of Lugano. The practice sees clients by appointment only: by phone on +41 91 966 32 68 or with the form below."
+          }
+        }
+      ]
     }
   ]
 }
@@ -488,6 +534,14 @@
   .areas > div:hover::after { width: 100%; }
   .areas h3 { font-size: var(--step-2); font-weight: 400; line-height: 1.2; font-variation-settings: "opsz" 24; }
   .areas p { margin-top: .9rem; color: var(--ink-3); }
+  .more { display: block; width: fit-content; margin-top: .9rem; font-family: var(--sans); font-size: .92rem; color: var(--blue-2); text-decoration: underline; text-underline-offset: .18em; }
+  .more:hover { color: var(--ink-2); }
+
+  /* Domande frequenti */
+  .qa > div { padding-block: 1.7rem; border-top: 1px solid var(--line); }
+  .qa > div:last-child { border-bottom: 1px solid var(--line); }
+  .qa h3 { font-size: var(--step-2); font-weight: 400; line-height: 1.25; max-width: 32ch; font-variation-settings: "opsz" 24; }
+  .qa p { margin-top: .7rem; max-width: 60ch; color: var(--ink-3); }
 
   /* Manifesto */
   .manifesto { background: var(--ink); color: var(--paper); }
@@ -530,6 +584,9 @@
   .site-foot address { font-style: normal; font-family: var(--sans); font-size: .95rem; line-height: 1.7; color: rgba(244,247,250,.82); position: relative; }
   .site-foot address a { text-decoration: none; }
   .site-foot address a:hover { text-decoration: underline; text-underline-offset: .18em; }
+  .foot-links { position: relative; margin-top: 1.4rem; display: flex; flex-wrap: wrap; gap: .4rem 1.5rem; font-family: var(--sans); font-size: .95rem; }
+  .foot-links a { color: var(--ice); text-decoration: none; }
+  .foot-links a:hover { text-decoration: underline; text-underline-offset: .18em; }
   .site-foot .legal { margin-top: 3rem; padding-top: 1.25rem; border-top: 1px solid var(--line-d); font-family: var(--sans); font-size: .8rem; color: rgba(244,247,250,.55); display: flex; flex-wrap: wrap; gap: .5rem 2rem; justify-content: space-between; position: relative; }
 
   /* ---------- Reduced motion ---------- */
@@ -710,7 +767,7 @@
         <p class="lead reveal">Every visit follows the same path, whether it is a first pair of glasses, a complex prescription or contact lenses.</p>
         <ol class="steps" id="steps">
           <li class="reveal"><span class="n">1</span><h3>The conversation</h3><p>Before any measurement, a conversation: how you use your eyes during the day, at what distance you work, how much time you spend in front of a screen, whether you drive at night, whether you have worn progressive lenses or contact lenses before. The right correction depends on these answers, and on others besides.</p></li>
-          <li class="reveal"><span class="n">2</span><h3>The eye examination</h3><p>A complete refraction, not a quick test. Everything needed to define the exact correction is measured, calmly enough that nothing is left to approximation.</p></li>
+          <li class="reveal"><span class="n">2</span><h3>The eye examination</h3><p>A complete refraction, not a quick test. Everything needed to define the exact correction is measured, calmly enough that nothing is left to approximation. <a class="more" href="eye-examination/">How the eye examination works</a></p></li>
           <li class="reveal"><span class="n">3</span><h3>Choosing lenses and frame</h3><p>Lenses are chosen according to the prescription and to real use; the frame according to the face and to the correction it will have to carry. It is the opposite of the rule in many shops: eyesight first, then looks. Done in the right order, the two go together.</p></li>
           <li class="reveal"><span class="n">4</span><h3>Fitting and adjustment</h3><p>The master optician personally carries out centring, fitting and final adjustment. An excellent lens fitted a few millimetres off stops being an excellent lens.</p></li>
           <li class="reveal"><span class="n">5</span><h3>The follow-up</h3><p>After a few weeks we check that you have fully adapted and that everything works as it should. For contact lenses, check-ups are part of the fitting and are scheduled from the very start.</p></li>
@@ -800,9 +857,9 @@
       <div class="prose">
         <p class="lead reveal">Glasses and contact lenses are the practice’s two specialities. In both cases the aim is the same: an exact correction, worn in comfort, that lasts.</p>
         <div class="areas">
-          <div class="reveal" style="--i:0"><h3>Glasses and progressive lenses</h3><p>Single-vision, progressive and occupational lenses, calculated on your measurements and on how you will use them. Frames chosen for the correction they must carry as well as for the face. Adjustments and small repairs handled in the practice.</p></div>
-          <div class="reveal" style="--i:1"><h3>Contact lenses</h3><p>Contact lens fitting from the first trial to regular check-ups. Every lens is chosen and adapted to the eye that wears it, with the guidance needed to use it well and safely.</p></div>
-          <div class="reveal" style="--i:2"><h3>Complex prescriptions</h3><p>High astigmatism, marked differences between the two eyes, complex presbyopia, difficulty adapting to progressive lenses: the cases where experience makes the difference, and which a practice working by appointment can follow with the time they need.</p></div>
+          <div class="reveal" style="--i:0"><h3>Glasses and progressive lenses</h3><p>Single-vision, progressive and occupational lenses, calculated on your measurements and on how you will use them. Frames chosen for the correction they must carry as well as for the face. Adjustments and small repairs handled in the practice.</p><a class="more" href="progressive-lenses/">Progressive lenses: how they are chosen</a></div>
+          <div class="reveal" style="--i:1"><h3>Contact lenses</h3><p>Contact lens fitting from the first trial to regular check-ups. Every lens is chosen and adapted to the eye that wears it, with the guidance needed to use it well and safely.</p><a class="more" href="contact-lenses/">Contact lenses: how the fitting works</a></div>
+          <div class="reveal" style="--i:2"><h3>Complex prescriptions</h3><p>High astigmatism, marked differences between the two eyes, complex presbyopia, difficulty adapting to progressive lenses: the cases where experience makes the difference, and which a practice working by appointment can follow with the time they need.</p><a class="more" href="progressive-lenses/#adapting">If you cannot get used to progressives</a></div>
         </div>
       </div>
     </div>
@@ -814,6 +871,19 @@
       <div>
         <p class="big" id="words">This practice is for people who wear glasses from morning to night and are not content to see “well enough”. For those with a difficult prescription. For those who have tried elsewhere without success. For those who would rather trust a person than a shop sign.</p>
         <p class="aside reveal">It is not the right practice for those looking for the cheapest glasses or the latest promotion: well-organised chains exist for that. People come here for a different reason.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq" id="domande">
+    <div class="wrap split">
+      <h2 class="reveal">Frequently asked questions</h2>
+      <div class="qa">
+        <div class="reveal"><h3>What is the difference between an optician, an optometrist and an ophthalmologist?</h3><p>An ophthalmologist is a medical doctor who diagnoses and treats eye diseases. An optician makes glasses and fits contact lenses; an optometrist is an optician with higher training, specialised in eye examinations. To have your eyesight measured you can go directly to a federally certified optician; if anything calls for a medical check, the practice refers you to an ophthalmologist.</p></div>
+        <div class="reveal"><h3>What does “Swiss federally certified optician (master optician)” mean?</h3><p>It is the higher federal diploma of the optician’s profession in Switzerland. Beyond basic training it covers eye examinations and contact lens fitting. Marco Rusca has practised the profession for more than forty years.</p></div>
+        <div class="reveal"><h3>How often should I have my eyes tested?</h3><p>If you have no complaints, about every two years. Sooner if you notice changes: difficulty reading, headaches, trouble driving at night, tiredness in front of a screen.</p></div>
+        <div class="reveal"><h3>Why can’t I get used to my progressive lenses?</h3><p>The three most common causes are a correction that is not quite exact, imprecise centring, or a lens or frame that does not suit how the glasses are really used. It is worth having the measurements and the fitting checked before giving up. <a class="more" href="progressive-lenses/">Progressive lenses: what the result depends on</a></p></div>
+        <div class="reveal"><h3>Where is the practice and how do I make an appointment?</h3><p>In Savosa, at Via Emilio Maraini 27, in the Crocifisso area, on the edge of Lugano. The practice sees clients by appointment only: by phone on +41 91 966 32 68 or with the form below.</p></div>
       </div>
     </div>
   </section>
@@ -862,7 +932,7 @@
   </svg>
   <div class="wrap split">
     <div><p class="name">Rusca</p><p class="tagline">The choice for those who care about their eyesight.</p></div>
-    <address>Marco Rusca, Swiss federally certified optician, SHFA (master optician)<br>Optics and contact lens practice, by appointment<br>Via Emilio Maraini 27, 6942 Savosa<br><a href="tel:+41919663268">+41 91 966 32 68</a><br><a href="mailto:eye-marcorusca@hotmail.com">eye-marcorusca@hotmail.com</a></address>
+    <div><address>Marco Rusca, Swiss federally certified optician, SHFA (master optician)<br>Optics and contact lens practice, by appointment<br>Via Emilio Maraini 27, 6942 Savosa<br><a href="tel:+41919663268">+41 91 966 32 68</a><br><a href="mailto:eye-marcorusca@hotmail.com">eye-marcorusca@hotmail.com</a></address><p class="foot-links"><a href="eye-examination/">Eye examination</a><a href="progressive-lenses/">Progressive lenses</a><a href="contact-lenses/">Contact lenses</a></p></div>
   </div>
   <div class="wrap legal">
     <span>© <span id="anno">2026</span> Studio ottico Rusca, Savosa</span>

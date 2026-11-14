@@ -12,4 +12,40 @@
     <xhtml:link rel="alternate" hreflang="it" href="https://www.otticorusca.ch/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.otticorusca.ch/en/"/>
   </url>
+  <url>
+    <loc>https://www.otticorusca.ch/esame-della-vista/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.otticorusca.ch/esame-della-vista/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.otticorusca.ch/en/eye-examination/"/>
+  </url>
+  <url>
+    <loc>https://www.otticorusca.ch/en/eye-examination/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.otticorusca.ch/esame-della-vista/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.otticorusca.ch/en/eye-examination/"/>
+  </url>
+  <url>
+    <loc>https://www.otticorusca.ch/lenti-progressive/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.otticorusca.ch/lenti-progressive/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.otticorusca.ch/en/progressive-lenses/"/>
+  </url>
+  <url>
+    <loc>https://www.otticorusca.ch/en/progressive-lenses/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.otticorusca.ch/lenti-progressive/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.otticorusca.ch/en/progressive-lenses/"/>
+  </url>
+  <url>
+    <loc>https://www.otticorusca.ch/lenti-a-contatto/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.otticorusca.ch/lenti-a-contatto/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.otticorusca.ch/en/contact-lenses/"/>
+  </url>
+  <url>
+    <loc>https://www.otticorusca.ch/en/contact-lenses/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.otticorusca.ch/lenti-a-contatto/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.otticorusca.ch/en/contact-lenses/"/>
+  </url>
 </urlset>
