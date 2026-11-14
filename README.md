@@ -12,6 +12,7 @@ Sito statico di una sola pagina, in italiano (`index.html`) e in inglese (`en/in
 | `en/index.html` | Il sito in inglese |
 | `fonts/` | Caratteri Newsreader e Hanken Grotesk, con la loro licenza (SIL Open Font License) |
 | `favicon.svg`, `apple-touch-icon.png` | Icona nella scheda del browser e sulla schermata Home del telefono |
+| `og-image.png`, `og-image-en.png` | Anteprima mostrata quando il link viene condiviso (WhatsApp, social) |
 | `sitemap.xml`, `robots.txt` | Aiutano Google a trovare e collegare le due lingue |
 | `.nojekyll` | Dice a GitHub Pages di pubblicare i file così come sono |
 

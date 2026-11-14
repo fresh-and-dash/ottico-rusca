@@ -3,12 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Rusca – Optician in Savosa, Lugano | Swiss federally certified optician (master optician)</title>
-<meta name="description" content="Optics and contact lens practice in Savosa (Lugano), by appointment. Marco Rusca, Swiss federally certified optician (master optician), more than forty years of practice. Eye examinations, glasses, contact lenses, complex prescriptions.">
+<title>Optician in Lugano (Savosa) | Studio ottico Rusca</title>
+<meta name="description" content="Rusca optical practice in Savosa, on the edge of Lugano: eye examinations, glasses, progressive lenses and contact lenses. Swiss federally certified optician (master optician), more than forty years of practice. By appointment.">
 <meta name="theme-color" content="#0A1C33">
-<meta property="og:title" content="Rusca – Optician in Savosa, Lugano">
+<meta property="og:title" content="Studio ottico Rusca – Optician in Savosa, Lugano">
 <meta property="og:description" content="A practice, not a shop. Swiss federally certified optician (master optician), seeing clients by appointment in Savosa.">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Studio ottico Rusca">
+<meta property="og:image" content="https://www.otticorusca.ch/og-image-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="geo.region" content="CH-TI">
+<meta name="geo.placename" content="Savosa">
+<meta name="geo.position" content="46.01683;8.94424">
+<meta name="ICBM" content="46.01683, 8.94424">
 <meta property="og:locale" content="en_GB">
 <meta property="og:locale:alternate" content="it_CH">
 <meta property="og:url" content="https://www.otticorusca.ch/en/">
@@ -24,15 +33,144 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Optician",
-  "name": "Rusca Marco – Studio ottico",
-  "description": "Optics and contact lens practice, by appointment. Swiss federally certified optician (master optician).",
-  "url": "https://www.otticorusca.ch/en/",
-  "telephone": "+41919663268",
-  "email": "eye-marcorusca@hotmail.com",
-  "address": { "@type": "PostalAddress", "streetAddress": "Via Emilio Maraini 27", "postalCode": "6942", "addressLocality": "Savosa", "addressRegion": "Ticino", "addressCountry": "CH" },
-  "areaServed": "Lugano and Ticino",
-  "founder": { "@type": "Person", "name": "Marco Rusca", "jobTitle": "Swiss federally certified optician (master optician)" }
+  "@graph": [
+    {
+      "@type": "Optician",
+      "@id": "https://www.otticorusca.ch/#studio",
+      "name": "Studio ottico Rusca",
+      "alternateName": [
+        "Ottico Rusca",
+        "Rusca Marco, ottico"
+      ],
+      "description": "Optical practice in Savosa, on the edge of Lugano, by appointment: eye examinations, prescription glasses, progressive lenses and contact lenses. Marco Rusca, Swiss federally certified optician (master optician), more than forty years of practice.",
+      "url": "https://www.otticorusca.ch/",
+      "image": "https://www.otticorusca.ch/og-image.png",
+      "telephone": "+41919663268",
+      "email": "eye-marcorusca@hotmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Via Emilio Maraini 27",
+        "postalCode": "6942",
+        "addressLocality": "Savosa",
+        "addressRegion": "TI",
+        "addressCountry": "CH"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 46.01683,
+        "longitude": 8.94424
+      },
+      "hasMap": "https://www.google.com/maps/search/?api=1&query=Studio+ottico+Rusca%2C+Via+Emilio+Maraini+27%2C+6942+Savosa&query_place_id=ChIJw0RDq34yhEcRZd4bjoxRZnE",
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Savosa"
+        },
+        {
+          "@type": "City",
+          "name": "Lugano"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Luganese"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Canton of Ticino"
+        }
+      ],
+      "knowsAbout": [
+        "Eye examination",
+        "Refraction",
+        "Progressive lenses",
+        "Occupational lenses",
+        "Contact lenses",
+        "Astigmatism",
+        "Presbyopia"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Eye examination"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Prescription glasses"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Progressive lenses"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Occupational (office) lenses"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Contact lens fitting"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Adjustment and repair of glasses"
+            }
+          }
+        ]
+      },
+      "founder": {
+        "@id": "https://www.otticorusca.ch/#marco-rusca"
+      },
+      "sameAs": [
+        "https://www.local.ch/it/d/savosa/6942/ottico/rusca-marco-NcHW8Whr9MO1ePPfZew7Yw"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.otticorusca.ch/#marco-rusca",
+      "name": "Marco Rusca",
+      "jobTitle": "Swiss federally certified optician (master optician)",
+      "hasCredential": {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "diploma",
+        "name": "Swiss federal diploma in optics (SHFA)"
+      },
+      "worksFor": {
+        "@id": "https://www.otticorusca.ch/#studio"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.otticorusca.ch/#website",
+      "url": "https://www.otticorusca.ch/",
+      "name": "Studio ottico Rusca",
+      "inLanguage": [
+        "it-CH",
+        "en"
+      ],
+      "publisher": {
+        "@id": "https://www.otticorusca.ch/#studio"
+      }
+    }
+  ]
 }
 </script>
 
@@ -180,7 +318,7 @@
 
   .hero-stage { position: relative; flex: 1 1 auto; min-height: clamp(18rem, 44svh, 34rem); touch-action: pan-y; }
   .hero-copy { position: absolute; inset: 0; display: flex; align-items: center; padding-inline: max(1.25rem, calc((100% - 74rem) / 2)); }
-  .hero-copy h1 { font-size: var(--step-4); line-height: .98; font-weight: 400; letter-spacing: -0.02em; font-variation-settings: "opsz" 72; max-width: 11ch; text-wrap: balance; }
+  .hero-copy h1, .hero-copy .h1 { font-size: var(--step-4); line-height: .98; font-weight: 400; letter-spacing: -0.02em; font-variation-settings: "opsz" 72; max-width: 11ch; text-wrap: balance; }
   .js .hero-copy.blurred { filter: blur(var(--blur, 6px)); opacity: var(--blur-op, .5); will-change: filter; }
   @media (hover: none) { .js .hero-copy.blurred { --blur: 3px; --blur-op: .62; } }
   .hero-copy.clone { inset: auto; left: 0; top: 0; will-change: transform; }
@@ -365,6 +503,8 @@
   .contact dd { margin: .15rem 0 0; }
   .contact a { text-decoration: none; }
   .contact a:hover { text-decoration: underline; text-underline-offset: .18em; }
+  .contact .where { margin-top: 1.8rem; max-width: 36ch; font-family: var(--sans); font-size: .92rem; line-height: 1.55; color: var(--ink-3); }
+  .contact .where a { display: inline-block; margin-top: .5rem; color: var(--blue-2); text-decoration: underline; text-underline-offset: .18em; }
   .card { background: var(--paper); border-radius: 18px; padding: clamp(1.5rem, 4vw, 2.5rem); box-shadow: 0 30px 60px -45px rgba(10,28,51,.5), 0 0 0 1px var(--line); }
   form.request { display: grid; gap: 1.35rem; font-family: var(--sans); }
   form.request label { display: grid; gap: .4rem; font-size: .9rem; color: var(--ink-3); }
@@ -451,8 +591,8 @@
     <div class="hero-stage" id="stage">
       <div class="hero-copy blurred"><h1>Before the glasses, the optician.</h1></div>
       <div class="glasses" id="glasses" aria-hidden="true">
-        <div class="lens lens-l"><div class="hero-copy clone"><h1>Before the glasses, the optician.</h1></div></div>
-        <div class="lens lens-r"><div class="hero-copy clone"><h1>Before the glasses, the optician.</h1></div></div>
+        <div class="lens lens-l"><div class="hero-copy clone"><div class="h1">Before the glasses, the optician.</div></div></div>
+        <div class="lens lens-r"><div class="hero-copy clone"><div class="h1">Before the glasses, the optician.</div></div></div>
         <svg class="frame" viewBox="0 0 640 240" fill="none" stroke="url(#brass)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
           <ellipse class="draw" cx="160" cy="120" rx="118" ry="84" pathLength="1"/>
           <ellipse class="draw" cx="480" cy="120" rx="118" ry="84" pathLength="1"/>
@@ -660,7 +800,7 @@
       <div class="prose">
         <p class="lead reveal">Glasses and contact lenses are the practice’s two specialities. In both cases the aim is the same: an exact correction, worn in comfort, that lasts.</p>
         <div class="areas">
-          <div class="reveal" style="--i:0"><h3>Glasses</h3><p>Single-vision, progressive and occupational lenses, calculated on your measurements and on how you will use them. Frames chosen for the correction they must carry as well as for the face. Adjustments and small repairs handled in the practice.</p></div>
+          <div class="reveal" style="--i:0"><h3>Glasses and progressive lenses</h3><p>Single-vision, progressive and occupational lenses, calculated on your measurements and on how you will use them. Frames chosen for the correction they must carry as well as for the face. Adjustments and small repairs handled in the practice.</p></div>
           <div class="reveal" style="--i:1"><h3>Contact lenses</h3><p>Contact lens fitting from the first trial to regular check-ups. Every lens is chosen and adapted to the eye that wears it, with the guidance needed to use it well and safely.</p></div>
           <div class="reveal" style="--i:2"><h3>Complex prescriptions</h3><p>High astigmatism, marked differences between the two eyes, complex presbyopia, difficulty adapting to progressive lenses: the cases where experience makes the difference, and which a practice working by appointment can follow with the time they need.</p></div>
         </div>
@@ -685,9 +825,10 @@
         <dl class="reveal" style="--i:1">
           <div><dt>Phone</dt><dd><a href="tel:+41919663268">+41 91 966 32 68</a></dd></div>
           <div><dt>Email</dt><dd><a href="mailto:eye-marcorusca@hotmail.com">eye-marcorusca@hotmail.com</a></dd></div>
-          <div><dt>Practice</dt><dd><a href="https://www.google.com/maps/search/?api=1&query=Via+Emilio+Maraini+27%2C+6942+Savosa" target="_blank" rel="noopener">Via Emilio Maraini 27<br>6942 Savosa</a></dd></div>
+          <div><dt>Practice</dt><dd><a href="https://www.google.com/maps/search/?api=1&query=Studio+ottico+Rusca%2C+Via+Emilio+Maraini+27%2C+6942+Savosa&query_place_id=ChIJw0RDq34yhEcRZd4bjoxRZnE" target="_blank" rel="noopener">Via Emilio Maraini 27<br>6942 Savosa</a></dd></div>
           <div><dt>Opening hours</dt><dd>Strictly by appointment.</dd></div>
         </dl>
+        <p class="where reveal" style="--i:2">The Rusca optical practice is in Savosa, in the Crocifisso area, on the edge of Lugano. It sees clients by appointment from Lugano, the surrounding area and the rest of Ticino. <a href="https://www.google.com/maps/dir/?api=1&destination=Via+Emilio+Maraini+27%2C+6942+Savosa&destination_place_id=ChIJw0RDq34yhEcRZd4bjoxRZnE" target="_blank" rel="noopener">Directions</a></p>
       </div>
       <div class="prose">
         <p class="lead reveal">The simplest way is a phone call. Alternatively, leave your details and you will be called back to arrange a date and time.</p>
