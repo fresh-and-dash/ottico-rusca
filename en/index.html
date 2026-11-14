@@ -128,6 +128,7 @@
   .btn::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.22) 50%, transparent 70%); transform: translateX(-120%); transition: transform .7s var(--ease); }
   .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 30px -10px rgba(47,116,200, .6); }
   .btn:hover::before { transform: translateX(120%); }
+  .btn:disabled { opacity: .6; cursor: progress; transform: none; box-shadow: none; }
 
   /* ---------- Header ---------- */
   .site-head { position: fixed; inset: 0 0 auto 0; z-index: 50; color: var(--paper); border-bottom: 1px solid transparent; transition: background-color .4s var(--ease), border-color .4s; }
@@ -692,6 +693,7 @@
         <p class="lead reveal">The simplest way is a phone call. Alternatively, leave your details and you will be called back to arrange a date and time.</p>
         <div class="card reveal" style="--i:1; margin-top:2rem">
           <form class="request" id="richiesta" data-email="eye-marcorusca@hotmail.com" novalidate>
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
             <div class="row">
               <label>Full name<span class="field"><input type="text" name="nome" autocomplete="name" required></span></label>
               <label>Phone<span class="field"><input type="tel" name="telefono" autocomplete="tel" required></span></label>
@@ -702,7 +704,7 @@
               <option>Eye examination and new glasses</option><option>Contact lenses</option><option>Check-up, adjustment or repair</option><option>A correction that has not worked so far</option><option>Other</option>
             </select></span></label>
             <label>Notes (optional)<span class="field"><textarea name="note" placeholder="Preferred days and times, or anything useful to know before the visit"></textarea></span></label>
-            <div class="foot"><button class="btn" type="submit">Send request</button><span class="note">No data is stored on this website.</span></div>
+            <div class="foot"><button class="btn" type="submit">Send request</button><span class="note">Your request reaches the practice by email via the FormSubmit service and is used only to contact you.</span></div>
             <p class="form-status" role="status" aria-live="polite"></p>
           </form>
         </div>
@@ -838,17 +840,40 @@
     paint(); window.addEventListener('scroll', function () { requestAnimationFrame(paint); }, { passive: true }); window.addEventListener('resize', paint);
   }
 
-  /* appointment form */
-  var form = document.getElementById('richiesta'), status = form.querySelector('.form-status');
+  /* appointment form: emailed to the practice through FormSubmit; the mail app is the fallback */
+  var form = document.getElementById('richiesta'), status = form.querySelector('.form-status'), btn = form.querySelector('button[type="submit"]');
+  var MSG = {
+    missing: 'To be called back, please give your name and phone number.',
+    sending: 'Sending…',
+    sent: 'Thank you, your request has been sent. You will receive a call shortly to arrange your appointment.',
+    fallback: 'The request could not be sent from here: your email app is opening with the message already filled in. Alternatively, please call +41 91 966 32 68.'
+  };
+  var show = function (t) { status.textContent = t; status.classList.add('is-visible'); };
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    var nome = form.nome.value.trim(), tel = form.telefono.value.trim();
-    if (!nome || !tel) { status.textContent = 'To be called back, please give your name and phone number.'; status.classList.add('is-visible'); (nome ? form.telefono : form.nome).focus(); return; }
-    var righe = ['Appointment request', '', 'Name: ' + nome, 'Phone: ' + tel, 'Email: ' + (form.email.value.trim() || '—'), 'First visit or existing client: ' + form.cliente.value, 'Reason: ' + form.motivo.value, 'Notes: ' + (form.note.value.trim() || '—')];
+    if (form._honey.value) return;
+    var nome = form.nome.value.trim(), tel = form.telefono.value.trim(), mail = form.email.value.trim();
+    if (!nome || !tel) { show(MSG.missing); (nome ? form.telefono : form.nome).focus(); return; }
     var to = form.getAttribute('data-email');
-    if (to) { window.location.href = 'mailto:' + to + '?subject=' + encodeURIComponent('Appointment request – ' + nome) + '&body=' + encodeURIComponent(righe.join('\n')); status.textContent = 'Your email app is opening with the request already filled in.'; }
-    else { status.textContent = 'Thank you. To arrange your appointment, please call +41 91 966 32 68.'; }
-    status.classList.add('is-visible');
+    var dati = {
+      'Nome': nome, 'Telefono': tel, 'Email': mail || '—',
+      'Prima visita o già cliente': form.cliente.value, 'Motivo della visita': form.motivo.value,
+      'Note': form.note.value.trim() || '—',
+      'Lingua del sito': document.documentElement.lang.indexOf('en') === 0 ? 'inglese' : 'italiano',
+      _subject: 'Richiesta di appuntamento – ' + nome, _template: 'table'
+    };
+    if (mail) dati._replyto = mail;
+    var fallback = function () {
+      var righe = Object.keys(dati).filter(function (k) { return k.charAt(0) !== '_'; }).map(function (k) { return k + ': ' + dati[k]; });
+      window.location.href = 'mailto:' + to + '?subject=' + encodeURIComponent(dati._subject) + '&body=' + encodeURIComponent(righe.join('\n'));
+      show(MSG.fallback);
+    };
+    btn.disabled = true; show(MSG.sending);
+    fetch('https://formsubmit.co/ajax/' + to, {
+      method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(dati)
+    }).then(function (r) { return r.json(); }).then(function (j) {
+      if (j && String(j.success) === 'true') { form.reset(); show(MSG.sent); } else { fallback(); }
+    }).catch(fallback).then(function () { btn.disabled = false; });
   });
 })();
 </script>
