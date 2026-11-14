@@ -2,6 +2,8 @@
 
 Sito dello Studio ottico Rusca: Marco Rusca, ottico diplomato federale (maestro ottico), Via Emilio Maraini 27, 6942 Savosa.
 
+Indirizzo: **https://www.otticorusca.ch** (dominio registrato su GoDaddy).
+
 Sito statico di una sola pagina: tutto il codice è in `index.html`. Non servono server, database né installazioni, e il sito non usa cookie né servizi esterni (anche i caratteri tipografici sono inclusi nel repository).
 
 | File | A cosa serve |
@@ -17,11 +19,11 @@ Sito statico di una sola pagina: tutto il codice è in `index.html`. Non servono
 
 Per aggiornare il sito: aprire `index.html` qui su GitHub, icona della matita, modificare, **Commit changes**. Il sito si aggiorna da solo.
 
-### Con un dominio proprio (es. `www.ottico-rusca.ch`)
+### Dominio `www.otticorusca.ch`
 
-1. Prima di toccare il DNS: **Settings → Pages → Custom domain** → scrivere il dominio → **Save**.
-2. Presso il registrar del dominio:
-   - `www` → record **CNAME** verso l'indirizzo `…github.io` dell'account
+1. Il dominio è indicato nel file `CNAME` (`www.otticorusca.ch`) e compare in **Settings → Pages → Custom domain**.
+2. Nel DNS di GoDaddy:
+   - `www` → record **CNAME** verso `fresh-and-dash.github.io`
    - dominio senza `www` → quattro record **A**: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
 3. Quando GitHub conferma il dominio, attivare **Enforce HTTPS**. Le modifiche DNS possono richiedere fino a 24 ore.
 
