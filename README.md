@@ -2,15 +2,17 @@
 
 Sito dello Studio ottico Rusca: Marco Rusca, ottico diplomato federale (maestro ottico), Via Emilio Maraini 27, 6942 Savosa.
 
-Indirizzo: **https://www.otticorusca.ch** (dominio registrato su GoDaddy).
+Indirizzo: **https://www.otticorusca.ch** (dominio registrato su GoDaddy). Versione inglese: **https://www.otticorusca.ch/en/**.
 
-Sito statico di una sola pagina: tutto il codice è in `index.html`. Non servono server, database né installazioni, e il sito non usa cookie né servizi esterni (anche i caratteri tipografici sono inclusi nel repository).
+Sito statico di una sola pagina, in italiano (`index.html`) e in inglese (`en/index.html`). Non servono server, database né installazioni, e il sito non usa cookie né servizi esterni (anche i caratteri tipografici sono inclusi nel repository).
 
 | File | A cosa serve |
 | --- | --- |
-| `index.html` | Il sito |
+| `index.html` | Il sito in italiano (lingua principale) |
+| `en/index.html` | Il sito in inglese |
 | `fonts/` | Caratteri Newsreader e Hanken Grotesk, con la loro licenza (SIL Open Font License) |
 | `favicon.svg`, `apple-touch-icon.png` | Icona nella scheda del browser e sulla schermata Home del telefono |
+| `sitemap.xml`, `robots.txt` | Aiutano Google a trovare e collegare le due lingue |
 | `.nojekyll` | Dice a GitHub Pages di pubblicare i file così come sono |
 
 ## Pubblicazione con GitHub Pages
@@ -31,7 +33,10 @@ Per aggiornare il sito: aprire `index.html` qui su GitHub, icona della matita, m
 
 Scaricare il repository come ZIP (**Code → Download ZIP**), poi nella dashboard di Lovable: **+** nel campo del prompt → **Import project to Lovable** → **Upload code** → caricare lo ZIP → **Start import**. Lovable ricostruisce il sito con la propria tecnologia: confrontare il risultato con l'originale, soprattutto gli effetti, e chiedere a Lovable di correggere le differenze.
 
-## Modifiche frequenti (in `index.html`)
+## Modifiche frequenti
+
+Ogni modifica a testi o contatti va fatta **in entrambi i file**: `index.html` (italiano) e `en/index.html` (inglese).
+
 
 - **Email che riceve le richieste del modulo**: attributo `data-email` del modulo con `id="richiesta"`.
 - **Telefono, email, indirizzo**: cercare `091 966 32 68`, `eye-marcorusca@hotmail.com`, `Via Emilio Maraini` (compaiono in più punti).
