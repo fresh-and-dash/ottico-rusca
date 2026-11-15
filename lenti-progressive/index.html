@@ -383,10 +383,32 @@
 
   /* Person */
   .person { background: var(--paper-2); }
-  .portrait { position: relative; margin-top: 2rem; max-width: 22rem; aspect-ratio: 4 / 5; border-radius: 18px; overflow: hidden; background: linear-gradient(160deg, var(--ink-3), var(--ink)); display: grid; place-items: center; box-shadow: 0 40px 70px -40px rgba(10,28,51,.8); }
-  .portrait::after { content: ""; position: absolute; inset: 0; background: radial-gradient(60% 50% at 70% 25%, rgba(127,182,234,.18), transparent 60%); }
-  .portrait span { font-style: italic; font-size: clamp(4.5rem, 8vw, 7.5rem); line-height: 1; letter-spacing: -.04em; color: var(--ice); font-variation-settings: "opsz" 72; }
-  .portrait svg { position: absolute; width: 78%; left: 11%; bottom: 8%; opacity: .5; }
+  .portrait { position: relative; margin: 2.4rem 0 0; max-width: 24rem; }
+  .portrait-frame { position: relative; aspect-ratio: 4 / 5; border-radius: 18px; overflow: hidden; isolation: isolate; background: var(--ink-3); outline: 1px solid rgba(47,116,200,.38); outline-offset: 12px; box-shadow: 0 50px 80px -50px rgba(10,28,51,.8); }
+  .portrait-frame img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 1.6s var(--ease), filter 1.4s var(--ease); }
+  .portrait-frame::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(110deg, transparent 36%, rgba(255,255,255,.2) 50%, transparent 64%); transform: translateX(-120%); }
+  .portrait-badge { position: absolute; z-index: 2; left: 1rem; bottom: 1rem; display: grid; gap: .1rem; padding: .7rem 1rem .75rem; border-radius: 12px; color: var(--paper); background: rgba(10,28,51,.55); border: 1px solid rgba(244,247,250,.2); -webkit-backdrop-filter: blur(10px) saturate(140%); backdrop-filter: blur(10px) saturate(140%); font-family: var(--sans); font-size: .9rem; line-height: 1.3; }
+  .portrait-badge b { font-weight: 500; font-size: .98rem; }
+  .portrait figcaption { margin-top: 1.7rem; font-family: var(--sans); font-size: .98rem; line-height: 1.5; color: var(--mist); max-width: 30ch; }
+  @media (hover: hover) { .portrait:hover .portrait-frame img { transform: scale(1.03); } }
+  @media (prefers-reduced-motion: no-preference) {
+    .js .portrait { opacity: 0; transform: translateY(24px); transition: opacity 1s var(--ease), transform 1s var(--ease); }
+    .js .portrait.is-in { opacity: 1; transform: none; }
+    .js .portrait .portrait-frame img { filter: blur(12px); transform: scale(1.08); }
+    .js .portrait.is-in .portrait-frame img { filter: none; transform: none; }
+    .js .portrait.is-in:hover .portrait-frame img { transform: scale(1.03); }
+    .js .portrait.is-in .portrait-frame::after { animation: portrait-sheen 1.8s var(--ease) .7s 1 both; }
+  }
+  @keyframes portrait-sheen { to { transform: translateX(120%); } }
+  /* a face beside the words: hero and appointment */
+  .hero-lead { display: flex; align-items: flex-start; gap: 1.1rem; }
+  .hero-avatar { flex: none; width: 3.6rem; height: 3.6rem; margin-top: .25rem; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 1px rgba(197,224,247,.6), 0 0 0 5px rgba(127,182,234,.12), 0 14px 26px -12px rgba(0,0,0,.65); }
+  @media (max-width: 30em) { .hero-avatar { width: 3rem; height: 3rem; } }
+  .host { margin-top: 1.8rem; display: flex; align-items: center; gap: 1rem; }
+  .host-img { flex: none; width: 4.25rem; height: 4.25rem; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 1px rgba(47,116,200,.35), 0 0 0 5px rgba(127,182,234,.14), 0 14px 26px -14px rgba(10,28,51,.6); }
+  .host p { margin: 0; display: grid; gap: .1rem; }
+  .host b { font-family: var(--serif); font-weight: 400; font-size: var(--step-1); line-height: 1.25; color: var(--ink-2); font-variation-settings: "opsz" 20; }
+  .host span { font-family: var(--sans); font-size: .95rem; color: var(--mist); }
   .titles { list-style: none; margin-top: 2.5rem; padding: 0; max-width: 60ch; }
   .titles li { padding-block: 1.1rem; border-top: 1px solid var(--line); display: grid; gap: .15rem; position: relative; }
   .titles li::before { content: ""; position: absolute; left: 0; top: -1px; height: 1px; width: 0; background: var(--blue); transition: width 1.2s var(--ease); }
@@ -669,6 +691,7 @@
     .js .manifesto .big .w { opacity: 1 !important; transition: none; }
     .btn::before { display: none; }
     .titles li::before { transition: none; }
+    .portrait-frame img { transition: none; }
     .js .book, .js .book-floor { animation: none; }
     .tg img { transition: none; }
     .tg:hover img { transform: none; }
@@ -816,7 +839,10 @@
 
   <section class="cta-band">
     <div class="wrap split">
-      <h2 class="reveal">Per le sue lenti progressive, a Savosa, Lugano</h2>
+      <div>
+        <h2 class="reveal">Per le sue lenti progressive, a Savosa, Lugano</h2>
+        <div class="host reveal"><img class="host-img" src="../img/marco-rusca-avatar-240.jpg" width="240" height="240" alt="" loading="lazy" decoding="async"><p><b>La riceve Marco Rusca</b><span>ottico diplomato federale (maestro ottico), di persona</span></p></div>
+      </div>
       <div class="prose">
         <p class="lead reveal">Si parte sempre dall’esame della vista. Lo studio riceve solo su appuntamento.</p>
         <div class="actions reveal">

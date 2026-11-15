@@ -220,10 +220,12 @@ PAGES = [
 UI = {
     'it': {'lang': 'it-CH', 'home': SITE, 'skip': 'Vai al contenuto', 'cta': 'Richiedere un appuntamento', 'phone': '091 966 32 68',
            'related': 'Altri servizi dello studio', 'open': 'Apri il menu', 'close': 'Chiudi il menu', 'og': 'og-image.png', 'locale': 'it_CH',
-           'area': 'Canton Ticino', 'crumb_label': 'Percorso'},
+           'area': 'Canton Ticino', 'crumb_label': 'Percorso', 'host_t': 'La riceve Marco Rusca',
+           'host_d': 'ottico diplomato federale (maestro ottico), di persona'},
     'en': {'lang': 'en', 'home': SITE + 'en/', 'skip': 'Skip to content', 'cta': 'Request an appointment', 'phone': '+41 91 966 32 68',
            'related': 'Other services', 'open': 'Open menu', 'close': 'Close menu', 'og': 'og-image-en.png', 'locale': 'en_GB',
-           'area': 'Canton of Ticino', 'crumb_label': 'Breadcrumb'},
+           'area': 'Canton of Ticino', 'crumb_label': 'Breadcrumb', 'host_t': 'Marco Rusca will see you',
+           'host_d': 'Swiss federally certified optician (master optician), in person'},
 }
 
 PAGE_CSS = '''
@@ -430,7 +432,10 @@ def build(lang, page):
 
   <section class="cta-band">
     <div class="wrap split">
-      <h2 class="reveal">{c['cta_h']}</h2>
+      <div>
+        <h2 class="reveal">{c['cta_h']}</h2>
+        <div class="host reveal"><img class="host-img" src="{'../' if lang == 'it' else '../../'}img/marco-rusca-avatar-240.jpg" width="240" height="240" alt="" loading="lazy" decoding="async"><p><b>{ui['host_t']}</b><span>{ui['host_d']}</span></p></div>
+      </div>
       <div class="prose">
         <p class="lead reveal">{c['cta_p']}</p>
         <div class="actions reveal">
