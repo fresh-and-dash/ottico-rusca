@@ -68,6 +68,15 @@ en = en[:_ld_a] + EN_JSONLD + en[_ld_b:]
 # head
 T = [
     ('<html lang="it-CH">', '<html lang="en">'),
+    # facts row, reviews heading
+    ('<span class="fv">Diploma federale</span>', '<span class="fv">Federal diploma</span>'),
+    ('<span class="fv">Oltre 40 anni</span>', '<span class="fv">Over 40 years</span>'),
+    ('<span class="fl">di pratica professionale</span>', '<span class="fl">of professional practice</span>'),
+    ('<span class="fv">Già docente</span>', '<span class="fv">Former lecturer</span>'),
+    ('<span class="fl">al Centro Professionale Tecnico</span>', '<span class="fl">at the Centro Professionale Tecnico</span>'),
+    ('<span class="fv">Su appuntamento</span>', '<span class="fv">By appointment</span>'),
+    ('<span class="fl">una persona alla volta</span>', '<span class="fl">one person at a time</span>'),
+    ('<h2>Cosa dicono i clienti</h2>', '<h2>What clients say</h2>'),
     # FAQ, links to the service pages, footer links
     ('<h3>Che differenza c’è tra ottico, optometrista e oculista?</h3>', '<h3>What is the difference between an optician, an optometrist and an ophthalmologist?</h3>'),
     ('<p>L’oculista è un medico: diagnostica e cura le malattie dell’occhio. L’ottico realizza occhiali e lenti a contatto; l’optometrista è l’ottico con formazione superiore, specializzato nell’esame della vista. Per misurare la vista ci si può rivolgere direttamente a un ottico diplomato federale; se emergono segni che richiedono un accertamento medico, lo studio indirizza all’oculista.', '<p>An ophthalmologist is a medical doctor who diagnoses and treats eye diseases. An optician makes glasses and fits contact lenses; an optometrist is an optician with higher training, specialised in eye examinations. To have your eyesight measured you can go directly to a federally certified optician; if anything calls for a medical check, the practice refers you to an ophthalmologist.'),
@@ -130,10 +139,8 @@ T = [
     ('Marco Rusca, ottico diplomato federale (maestro ottico), mette oltre quarant’anni di pratica al servizio di una cosa sola: la vista di chi si affida a lui. Una persona alla volta, con il tempo che una misurazione seria richiede.',
      'Marco Rusca, Swiss federally certified optician (master optician), puts more than forty years of practice at the service of one thing only: the eyesight of those who place their trust in him. One person at a time, with the time a serious measurement requires.'),
     ('<span class="also">oppure </span>', '<span class="also">or </span>'),
-    ('Muova il cursore sul titolo: gli occhiali lo mettono a fuoco.', 'Move the cursor over the headline: the glasses bring it into focus.'),
 
     # credentials strip
-    ('aria-label="Titoli"', 'aria-label="Credentials"'),
     ('Ottico diplomato federale (maestro ottico)</span>', 'Swiss federally certified optician (master optician)</span>'),
     ('Già docente al Centro Professionale Tecnico</span>', 'Former lecturer at the Centro Professionale Tecnico</span>'),
     ('Oltre quarant’anni di pratica</span>', 'More than forty years of practice</span>'),

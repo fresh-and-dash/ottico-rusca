@@ -50,4 +50,5 @@ Dove si trovano le cose in `index.html`:
 - **Email che riceve le richieste del modulo**: attributo `data-email` del modulo con `id="richiesta"`.
 - **Telefono, email, indirizzo**: cercare `091 966 32 68`, `eye-marcorusca@hotmail.com`, `Via Emilio Maraini` (compaiono in più punti).
 - **Ritratto di Marco Rusca**: sostituire il monogramma "MR" seguendo il commento nella sezione con `id="marco-rusca"`.
+- **Recensioni Google**: la sezione con `id="recensioni"` si riempie da sola con i dati di Google (media, numero di recensioni e fino a tre recensioni da 4 o 5 stelle). Resta nascosta finché nell'attributo `data-key` non c'è una chiave API di Google Places (New), limitata al sito www.otticorusca.ch; la stessa chiave va messa anche in `en/index.html`, oppure basta rigenerare la pagina inglese.
 - **Domande frequenti**: sezione con `id="domande"`; le stesse domande sono ripetute nei dati strutturati in cima alla pagina.
