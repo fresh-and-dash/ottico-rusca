@@ -168,7 +168,6 @@ T = [
     ('<span>Gira il libro</span>', '<span>Turn the book over</span>'),
     ('Un libro sulle lenti a contatto, scritto da chi le applica.', 'A book on contact lenses, written by someone who fits them.'),
     ('Marco Rusca è l’autore di <cite>Lenti a contatto. Guida pratica per tutti</cite>: una guida scritta per rispondere con chiarezza, e con parole semplici, alle domande di chi porta le lenti a contatto o pensa di cominciare.', 'Marco Rusca is the author of <cite>Lenti a contatto. Guida pratica per tutti</cite> (Contact lenses: a practical guide for everyone), written to answer clearly, and in plain words, the questions of people who wear contact lenses or are thinking of starting.'),
-    ('<p class="libro-q-h">Dalla quarta di copertina</p>', '<p class="libro-q-h">From the back cover, in translation</p>'),
     ('<li>Sono migliori degli occhiali?</li>', '<li>Are they better than glasses?</li>'),
     ('<li>È vero che impediscono il progredire della miopia?</li>', '<li>Is it true that they stop short-sightedness from progressing?</li>'),
     ('<li>Da che età e fino a quando si possono portare?</li>', '<li>From what age, and until when, can they be worn?</li>'),
