@@ -575,8 +575,6 @@
   .fg-d { font-family: var(--sans); font-size: .9rem; line-height: 1.4; color: var(--mist); }
   @media (max-width: 30em) { .fg-cap { padding: 0 .8rem .8rem; } .fg-b { font-size: 1.04rem; } .fg-d { font-size: .82rem; } }
   @media (hover: hover) {
-    .fg:hover { transform: translateY(-4px); box-shadow: 0 44px 64px -36px rgba(0,0,0,.85), 0 0 0 1px rgba(127,182,234,.55); }
-    .fg:hover .fg-media img { transform: scale(1.05); }
     .fg:hover::after { transform: translateX(120%); }
   }
   .js .fg-grid.is-collapsed .fg:nth-child(n+7) { display: none; }
@@ -590,7 +588,6 @@
     .js .fg .fg-media img { filter: blur(8px); transform: scale(1.08); }
     .js .fg.is-in { opacity: 1; translate: 0 0; }
     .js .fg.is-in .fg-media img { filter: none; transform: none; }
-    .js .fg.is-in:hover .fg-media img { transform: scale(1.05); }
     .fg-grid.is-filtering .fg:not([hidden]) { animation: fg-pop .55s var(--ease) both; animation-delay: calc(var(--k, 0) * 45ms); }
   }
   @keyframes fg-pop { from { opacity: 0; transform: translateY(10px) scale(.97); } }
