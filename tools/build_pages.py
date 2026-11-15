@@ -9,6 +9,57 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = 'https://www.otticorusca.ch/'
 TODAY = datetime.date.today().isoformat()
 
+# brands shown on the «Montature e marche» page: (name, IT line, EN line, [(image, IT description, EN description)])
+BRANDS = [
+    ('Silhouette', 'Montature leggerissime, anche senza cerchio. Austria.', 'Very light frames, including rimless. Austria.',
+     [('silhouette-1', 'senza cerchio, color bronzo', 'rimless, bronze'), ('silhouette-2', 'ovale, ambra trasparente', 'oval, transparent amber'),
+      ('silhouette-3', 'ovale, verde acqua trasparente', 'oval, transparent aqua green')]),
+    ('Porsche Design', 'Titanio, made in Japan.', 'Titanium, made in Japan.',
+     [('porsche-design-1', 'titanio nero, aste rosse', 'black titanium, red temples'), ('porsche-design-2', 'senza cerchio, nera', 'rimless, black'),
+      ('porsche-design-3', 'ovale in titanio, nera', 'oval titanium, black')]),
+    ('Chopard', 'Montature gioiello.', 'Jewellery-inspired frames.',
+     [('chopard-1', 'senza cerchio, color oro rosa', 'rimless, rose gold colour')]),
+    ('Furla', 'Acetato e dettagli metallici.', 'Acetate with metal details.',
+     [('furla-1', 'squadrata, acetato nero', 'square, black acetate'), ('furla-2', 'tonda, acetato nero', 'round, black acetate'),
+      ('furla-3', 'squadrata, tartarugata', 'square, tortoiseshell')]),
+    ('Lamarca', 'Acetati colorati, made in Italy.', 'Coloured acetates, made in Italy.',
+     [('lamarca-1', 'a farfalla, nera con verde e rosso', 'cat-eye, black with green and red'), ('lamarca-2', 'tonda, mosaico blu e arancio', 'round, blue and orange mosaic'),
+      ('lamarca-3', 'a rombo, blu e ocra', 'diamond-shaped, blue and ochre')]),
+    ('ic! berlin', 'Metallo sottilissimo, design berlinese.', 'Ultra-thin metal, Berlin design.',
+     [('ic-berlin-1', 'tonda, metallo sottile', 'round, thin metal')]),
+    ('Titanflex', 'Metallo flessibile, Eschenbach Germania.', 'Flexible metal, Eschenbach Germany.',
+     [('titanflex-1', 'rettangolare, metallo grafite', 'rectangular, graphite metal'), ('titanflex-2', 'tonda, metallo color bronzo', 'round, bronze metal')]),
+    ('Airlight', 'Acciaio, fabbricazione francese.', 'Steel, made in France.',
+     [('airlight-1', 'ovale, acciaio rosso', 'oval, red steel'), ('airlight-2', 'tonda, metallo blu', 'round, blue metal')]),
+    ('Clark e Trevi 1971', 'Acetati di Trevi Coliseum, made in Italy.', 'Acetates by Trevi Coliseum, made in Italy.',
+     [('trevi-coliseum-1', 'Clark, tartarugata con blu', 'Clark, tortoiseshell with blue'), ('trevi-coliseum-2', 'Trevi 1971, a farfalla, rosso e lilla', 'Trevi 1971, cat-eye, red and lilac')]),
+    ('Marius Morel 1880', 'Acetato lavorato a mano.', 'Handmade acetate.',
+     [('marius-morel-1', 'tonda, acetato color corno', 'round, horn-coloured acetate')]),
+    ('Dolce&amp;Gabbana', 'Acetato con dettagli dorati.', 'Acetate with gold details.',
+     [('dolce-gabbana-1', 'squadrata, nera e oro', 'square, black and gold')]),
+    ('Alberto Puccini', 'Acetato e strass, Italia.', 'Acetate and rhinestones, Italy.',
+     [('alberto-puccini-1', 'squadrata, nera con strass', 'square, black with rhinestones')]),
+    ('Humphrey’s', 'Acetati colorati, Eschenbach Germania.', 'Coloured acetates, Eschenbach Germany.',
+     [('humphreys-1', 'tonda, sfumata blu e verde', 'round, blue-to-green gradient')]),
+    ('Police', 'Acetato, stile contemporaneo.', 'Acetate, contemporary style.',
+     [('police-1', 'tonda, verde trasparente', 'round, transparent green')]),
+    ('Ray-Ban', 'Il classico, anche da vista.', 'The classic, for prescription glasses too.',
+     [('ray-ban-1', 'rettangolare, nera', 'rectangular, black')]),
+    ('Gambini', 'Acetati leggeri.', 'Lightweight acetates.',
+     [('gambini-1', 'tonda, blu trasparente', 'round, transparent blue')]),
+]
+
+
+def brand_blocks(lang):
+    pre = '../img/montature/' if lang == 'it' else '../../img/montature/'
+    out = []
+    for name, it_line, en_line, imgs in BRANDS:
+        plain = name.replace('&amp;', '&')
+        out.append({'name': name, 'line': it_line if lang == 'it' else en_line,
+                    'imgs': [(pre + f, (f'Montatura {plain}: {d_it}' if lang == 'it' else f'{plain} frame: {d_en}')) for f, d_it, d_en in imgs]})
+    return out
+
+
 PAGES = [
     {
         'key': 'esame',
@@ -149,6 +200,73 @@ PAGES = [
         },
     },
     {
+        'key': 'correzioni',
+        'it': {
+            'slug': 'correzioni-difficili', 'name': 'Correzioni difficili',
+            'title': 'Correzioni difficili a Lugano | Studio ottico Rusca, Savosa',
+            'desc': 'Astigmatismo elevato, forti miopie, differenze tra i due occhi, progressive difficili: a Savosa, Lugano, con Marco Rusca, maestro ottico da oltre 40 anni.',
+            'h1': 'Correzioni difficili',
+            'lead': 'Quando la correzione è complessa, un occhiale «quasi giusto» non basta. Sono i casi in cui contano di più l’esperienza, il tempo dedicato alla misura e la precisione del montaggio.',
+            'teaser': 'Astigmatismi elevati, forti correzioni, casi complessi.',
+            'sections': [
+                ('Che cosa rende difficile una correzione', None, [
+                    ('p', 'Una correzione è difficile quando un piccolo errore, nella misura o nel montaggio, si sente subito: la vista non è nitida, gli occhi si stancano, ci si abitua a fatica. Succede soprattutto in questi casi:'),
+                    ('ul', ['<strong>Astigmatismo elevato</strong>, dove anche un piccolo scarto nell’asse si nota;',
+                            '<strong>Miopie e ipermetropie forti</strong>, con lenti che rischiano di diventare spesse e pesanti e di deformare le immagini ai bordi;',
+                            '<strong>Differenze marcate tra i due occhi</strong> (anisometropia), che possono rendere faticosa la visione con entrambi;',
+                            '<strong>Presbiopia con esigenze particolari</strong>: molte ore al computer, distanze di lettura insolite, lavori di precisione;',
+                            '<strong>Difficoltà di adattamento</strong> a occhiali nuovi, soprattutto alle lenti progressive.']),
+                ]),
+                ('Perché l’esperienza fa la differenza', None, [
+                    ('p', 'In questi casi la misura richiede più tempo e più verifiche: la correzione viene provata, confrontata e rifinita prima di essere confermata. Conta poi la scelta di lente, materiale e montatura, che deve essere adatta alla correzione che porterà. E conta il montaggio: le lenti vanno centrate sugli occhi al millimetro, e l’occhiale va regolato sul viso.'),
+                    ('p', 'Marco Rusca è ottico diplomato federale (maestro ottico) e lavora con correzioni di questo tipo da oltre quarant’anni. Ha insegnato ottica al Centro Professionale Tecnico ed è stato chiamato come esperto federale agli esami di maestria.'),
+                ]),
+                ('Come si svolge', None, [
+                    ('steps', [('Il colloquio', 'Che cosa non funziona con gli occhiali di oggi, come usa gli occhi durante la giornata, quali distanze contano per lei. Porti gli occhiali che usa: dicono molto.'),
+                               ('La misura', 'Una refrazione completa, un occhio alla volta e poi insieme, con le verifiche che una correzione complessa richiede.'),
+                               ('La scelta', 'Lente, materiale e montatura si scelgono insieme, in funzione della correzione: spessore, peso, campo visivo e comfort.'),
+                               ('Il montaggio e la consegna', 'Centratura precisa, regolazione sul viso e verifica della visione con gli occhiali finiti. Se qualcosa non convince, si verifica insieme.')]),
+                ]),
+                ('Ottico e oculista', None, [
+                    ('p', 'L’ottico corregge la vista; diagnosi e cura delle malattie dell’occhio spettano al medico. Se durante l’esame emergono segni che richiedono un accertamento, ad esempio una vista che non migliora con le lenti, lo studio indirizza all’oculista.'),
+                ]),
+            ],
+            'cta_h': 'Per una correzione difficile, a Savosa, Lugano', 'cta_p': 'Porti con sé gli occhiali che usa oggi. Lo studio riceve solo su appuntamento.',
+        },
+        'en': {
+            'slug': 'difficult-prescriptions', 'name': 'Difficult prescriptions',
+            'title': 'Difficult prescriptions in Lugano | Studio ottico Rusca, Savosa',
+            'desc': 'High astigmatism, strong prescriptions, large differences between the eyes, difficult progressives: in Savosa, Lugano, with Marco Rusca, master optician for over 40 years.',
+            'h1': 'Difficult prescriptions',
+            'lead': 'When a prescription is complex, glasses that are “almost right” are not enough. These are the cases where experience, time spent on the measurement and precise fitting matter most.',
+            'teaser': 'High astigmatism, strong prescriptions, complex cases.',
+            'sections': [
+                ('What makes a prescription difficult', None, [
+                    ('p', 'A prescription is difficult when a small error, in the measurement or the fitting, is noticed straight away: vision is not sharp, the eyes tire, getting used to the glasses is hard. This happens above all in these cases:'),
+                    ('ul', ['<strong>High astigmatism</strong>, where even a small deviation in the axis is noticeable;',
+                            '<strong>Strong short- or long-sightedness</strong>, with lenses that risk becoming thick and heavy and distorting images at the edges;',
+                            '<strong>Large differences between the two eyes</strong> (anisometropia), which can make seeing with both eyes tiring;',
+                            '<strong>Presbyopia with particular needs</strong>: many hours at the computer, unusual reading distances, precision work;',
+                            '<strong>Difficulty getting used</strong> to new glasses, especially progressive lenses.']),
+                ]),
+                ('Why experience makes the difference', None, [
+                    ('p', 'In these cases the measurement takes more time and more checks: the correction is tried, compared and refined before it is confirmed. Then comes the choice of lens, material and frame, which must suit the prescription it will carry. And the fitting matters: the lenses must be centred on the eyes to the millimetre, and the glasses adjusted to the face.'),
+                    ('p', 'Marco Rusca is a Swiss federally certified optician (master optician) and has worked with prescriptions like these for more than forty years. He has taught optics at the Centro Professionale Tecnico and has served as a federal expert at the master optician examinations.'),
+                ]),
+                ('How it works', None, [
+                    ('steps', [('The conversation', 'What does not work with your current glasses, how you use your eyes during the day, which distances matter to you. Bring the glasses you use: they say a lot.'),
+                               ('The measurement', 'A complete refraction, one eye at a time and then both together, with the checks a complex prescription requires.'),
+                               ('The choice', 'Lens, material and frame are chosen together, according to the prescription: thickness, weight, field of view and comfort.'),
+                               ('Fitting and delivery', 'Precise centring, adjustment to the face and a check of your vision with the finished glasses. If something is not right, it is checked together.')]),
+                ]),
+                ('Optician and ophthalmologist', None, [
+                    ('p', 'The optician corrects eyesight; diagnosing and treating eye diseases is the doctor’s role. If the examination shows signs that call for a medical check, for example vision that does not improve with lenses, the practice refers you to an ophthalmologist.'),
+                ]),
+            ],
+            'cta_h': 'For a difficult prescription, in Savosa, Lugano', 'cta_p': 'Bring the glasses you use today. The practice sees clients by appointment only.',
+        },
+    },
+    {
         'key': 'contatto',
         'it': {
             'slug': 'lenti-a-contatto', 'name': 'Lenti a contatto',
@@ -215,6 +333,59 @@ PAGES = [
             'cta_h': 'For your contact lenses, in Savosa, Lugano', 'cta_p': 'For those who already wear them and for those starting out. The practice sees clients by appointment only.',
         },
     },
+    {
+        'key': 'montature',
+        'it': {
+            'slug': 'montature', 'name': 'Montature e marche',
+            'title': 'Montature e marche di occhiali a Lugano | Studio ottico Rusca',
+            'desc': 'Silhouette, Porsche Design, Chopard, Furla, Lamarca, ic! berlin e altre marche: montature scelte con cura a Savosa, Lugano, dopo l’esame della vista.',
+            'h1': 'Montature e marche',
+            'lead': 'Le montature dello studio sono una selezione, non un catalogo: marche scelte per la qualità dei materiali e della lavorazione, da provare con calma e da regolare sul viso.',
+            'teaser': 'Le marche dello studio, scelte una per una.',
+            'sections': [
+                ('Le marche in studio', 'marche', [
+                    ('brands', brand_blocks('it')),
+                    ('p', 'Una selezione indicativa: i modelli disponibili cambiano nel tempo. Se cerca una marca o un modello in particolare, lo dica quando prende appuntamento.'),
+                ]),
+                ('Prima la misura, poi la montatura', None, [
+                    ('p', 'Ogni montatura impone dei vincoli alle lenti. Per questo, nello studio, si sceglie dopo l’esame della vista e insieme all’ottico, tenendo conto di quattro cose:'),
+                    ('ul', ['<strong>La correzione</strong>: con lenti forti contano dimensione e forma, per contenere spessore e peso;',
+                            '<strong>Le lenti progressive</strong>: serve un’altezza sufficiente per la zona di lettura;',
+                            '<strong>Il viso</strong>: ponte, aste e appoggio sul naso devono calzare senza segnare;',
+                            '<strong>L’uso</strong>: leggerezza per chi porta gli occhiali tutto il giorno, robustezza per lo sport o il lavoro.']),
+                ]),
+                ('Regolazioni e riparazioni', None, [
+                    ('p', 'Le montature vengono regolate sul viso alla consegna e, quando serve, anche in seguito: un occhiale che si sposta o preme perde precisione. Le piccole riparazioni sono curate nello studio.'),
+                ]),
+            ],
+            'cta_h': 'Per scegliere la montatura, a Savosa, Lugano', 'cta_p': 'Si comincia dall’esame della vista. Lo studio riceve solo su appuntamento.',
+        },
+        'en': {
+            'slug': 'frames', 'name': 'Frames and brands',
+            'title': 'Eyeglass frames and brands in Lugano | Studio ottico Rusca',
+            'desc': 'Silhouette, Porsche Design, Chopard, Furla, Lamarca, ic! berlin and other brands: frames chosen with care in Savosa, Lugano, after the eye examination.',
+            'h1': 'Frames and brands',
+            'lead': 'The frames at the practice are a selection, not a catalogue: brands chosen for the quality of their materials and craftsmanship, to be tried on at leisure and adjusted to your face.',
+            'teaser': 'The practice’s brands, chosen one by one.',
+            'sections': [
+                ('The brands at the practice', 'brands', [
+                    ('brands', brand_blocks('en')),
+                    ('p', 'An indicative selection: the models available change over time. If you are looking for a particular brand or model, mention it when you book.'),
+                ]),
+                ('First the measurement, then the frame', None, [
+                    ('p', 'Every frame places constraints on the lenses. That is why, at the practice, it is chosen after the eye examination and together with the optician, taking four things into account:'),
+                    ('ul', ['<strong>The prescription</strong>: with strong lenses, size and shape matter to keep thickness and weight down;',
+                            '<strong>Progressive lenses</strong>: the frame needs enough height for the reading zone;',
+                            '<strong>The face</strong>: bridge, temples and nose pads must fit without leaving marks;',
+                            '<strong>The use</strong>: lightness for those who wear glasses all day, sturdiness for sport or work.']),
+                ]),
+                ('Adjustments and repairs', None, [
+                    ('p', 'Frames are adjusted to the face on delivery and, when needed, afterwards too: glasses that slip or press lose precision. Small repairs are taken care of at the practice.'),
+                ]),
+            ],
+            'cta_h': 'To choose your frame, in Savosa, Lugano', 'cta_p': 'It starts with the eye examination. The practice sees clients by appointment only.',
+        },
+    },
 ]
 
 UI = {
@@ -256,6 +427,14 @@ PAGE_CSS = '''
   .page-body .prose ul.titles { margin-top: 0; padding-left: 0; max-width: 60ch; }
   .page-body .titles a { text-decoration: none; }
   .page-body .titles a:hover { text-decoration: underline; text-underline-offset: .18em; }
+  .brand-list { display: grid; gap: 1rem; }
+  .brand { display: grid; gap: .9rem; padding: 1.15rem 1.15rem 1.2rem; background: #fff; border-radius: 16px; box-shadow: 0 0 0 1px var(--line), 0 26px 46px -40px rgba(10,28,51,.55); }
+  .brand-h { display: flex; flex-wrap: wrap; align-items: baseline; gap: .15rem .9rem; }
+  .brand h3 { font-size: var(--step-2); font-weight: 400; line-height: 1.2; font-variation-settings: "opsz" 24; }
+  .page-body .prose .brand-h p { margin: 0; max-width: none; font-family: var(--sans); font-size: .95rem; color: var(--mist); }
+  .brand-imgs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .6rem; }
+  .brand-imgs img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 10px; background: #F5F7F7; }
+  .page-body .brand-list + p { margin-top: 1.4rem; }
   .page-photo { margin: 2rem 0 0; max-width: 62ch; }
   .page-photo img { display: block; width: 100%; height: auto; border-radius: 18px; box-shadow: 0 30px 60px -45px rgba(10,28,51,.65); }
   .page-photo figcaption { margin-top: .8rem; }
@@ -304,6 +483,13 @@ def body_html(blocks):
             out.append(f'        <p class="reveal">{val}</p>')
         elif kind == 'ul':
             out.append('        <ul class="reveal">' + ''.join(f'<li>{x}</li>' for x in val) + '</ul>')
+        elif kind == 'brands':
+            rows = []
+            for b in val:
+                imgs = ''.join(f'<img src="{src}-600.jpg" srcset="{src}-600.jpg 600w, {src}-1200.jpg 1200w" sizes="(min-width: 60em) 14rem, 30vw" '
+                               f'width="1200" height="900" loading="lazy" decoding="async" alt="{alt}">' for src, alt in b['imgs'])
+                rows.append(f'<div class="brand reveal"><div class="brand-h"><h3>{b["name"]}</h3><p>{b["line"]}</p></div><div class="brand-imgs">{imgs}</div></div>')
+            out.append('        <div class="brand-list">' + ''.join(rows) + '</div>')
         elif kind == 'photo':
             out.append(f'        <figure class="page-photo reveal"><img src="{val["src"]}-960.jpg" srcset="{val["src"]}-960.jpg 960w, {val["src"]}-1600.jpg 1600w" '
                        f'sizes="(min-width: 60em) 52vw, 100vw" width="1600" height="1200" loading="lazy" decoding="async" alt="{val["alt"]}">'
@@ -484,7 +670,8 @@ HOME_IMAGES = ['img/studio-strumenti-1600.jpg', 'img/studio-sala-esame-1200.jpg'
                'img/montature/silhouette-1-1200.jpg', 'img/montature/porsche-design-1-1200.jpg', 'img/montature/furla-1-1200.jpg', 'img/montature/lamarca-1-1200.jpg', 'img/montature/titanflex-1-1200.jpg', 'img/montature/airlight-1-1200.jpg', 'img/montature/trevi-coliseum-1-1200.jpg', 'img/montature/chopard-1-1200.jpg', 'img/montature/ic-berlin-1-1200.jpg', 'img/montature/police-1-1200.jpg', 'img/montature/humphreys-1-1200.jpg', 'img/montature/ray-ban-1-1200.jpg', 'img/montature/marius-morel-1-1200.jpg', 'img/montature/gambini-1-1200.jpg', 'img/montature/dolce-gabbana-1-1200.jpg', 'img/montature/alberto-puccini-1-1200.jpg']
 PAGE_IMAGES = {'esame-della-vista': ['img/studio-strumenti-1600.jpg'], 'eye-examination': ['img/studio-strumenti-1600.jpg'],
                'lenti-progressive': ['img/studio-montature-1600.jpg'], 'progressive-lenses': ['img/studio-montature-1600.jpg'],
-               'lenti-a-contatto': ['img/libro-copertina.jpg'], 'contact-lenses': ['img/libro-copertina.jpg']}
+               'lenti-a-contatto': ['img/libro-copertina.jpg'], 'contact-lenses': ['img/libro-copertina.jpg'],
+               'montature': ['img/montature/silhouette-1-1200.jpg', 'img/montature/porsche-design-1-1200.jpg', 'img/montature/chopard-1-1200.jpg', 'img/montature/furla-1-1200.jpg', 'img/montature/lamarca-1-1200.jpg', 'img/montature/ic-berlin-1-1200.jpg', 'img/montature/titanflex-1-1200.jpg', 'img/montature/airlight-1-1200.jpg'], 'frames': ['img/montature/silhouette-1-1200.jpg', 'img/montature/porsche-design-1-1200.jpg', 'img/montature/chopard-1-1200.jpg', 'img/montature/furla-1-1200.jpg', 'img/montature/lamarca-1-1200.jpg', 'img/montature/ic-berlin-1-1200.jpg', 'img/montature/titanflex-1-1200.jpg', 'img/montature/airlight-1-1200.jpg']}
 entries = []
 for it_url, en_url in pairs:
     for loc in (it_url, en_url):

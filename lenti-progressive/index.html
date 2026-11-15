@@ -586,8 +586,11 @@
   }
   .js .fg-grid.is-collapsed .fg:nth-child(n+7) { display: none; }
   @media (min-width: 64em) { .js .fg-grid.is-collapsed .fg:nth-child(n+7) { display: flex; } .js .fg-grid.is-collapsed .fg:nth-child(n+9) { display: none; } }
+  .fg-foot { display: flex; flex-wrap: wrap; align-items: center; gap: .9rem 1.6rem; margin-top: 1.6rem; }
+  .fg-foot .more { margin-top: 0; color: var(--ice); }
+  .fg-foot .more:hover { color: var(--paper); }
   .fg-more { display: none; }
-  .js .fg-more { display: inline-flex; align-items: center; gap: .6rem; margin-top: 1.6rem; font-family: var(--sans); font-size: 1rem; color: var(--ice); background: transparent; border: 1px solid rgba(197,224,247,.38); border-radius: 999px; padding: .75rem 1.3rem; cursor: pointer; transition: border-color .3s, color .3s, background-color .3s; }
+  .js .fg-more { display: inline-flex; align-items: center; gap: .6rem; margin-top: 0; font-family: var(--sans); font-size: 1rem; color: var(--ice); background: transparent; border: 1px solid rgba(197,224,247,.38); border-radius: 999px; padding: .75rem 1.3rem; cursor: pointer; transition: border-color .3s, color .3s, background-color .3s; }
   .js .fg-more:hover { border-color: var(--azure); color: var(--paper); background: rgba(127,182,234,.08); }
   .js .fg-more[hidden] { display: none; }
   @media (prefers-reduced-motion: no-preference) {
@@ -776,6 +779,14 @@
   .page-body .prose ul.titles { margin-top: 0; padding-left: 0; max-width: 60ch; }
   .page-body .titles a { text-decoration: none; }
   .page-body .titles a:hover { text-decoration: underline; text-underline-offset: .18em; }
+  .brand-list { display: grid; gap: 1rem; }
+  .brand { display: grid; gap: .9rem; padding: 1.15rem 1.15rem 1.2rem; background: #fff; border-radius: 16px; box-shadow: 0 0 0 1px var(--line), 0 26px 46px -40px rgba(10,28,51,.55); }
+  .brand-h { display: flex; flex-wrap: wrap; align-items: baseline; gap: .15rem .9rem; }
+  .brand h3 { font-size: var(--step-2); font-weight: 400; line-height: 1.2; font-variation-settings: "opsz" 24; }
+  .page-body .prose .brand-h p { margin: 0; max-width: none; font-family: var(--sans); font-size: .95rem; color: var(--mist); }
+  .brand-imgs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .6rem; }
+  .brand-imgs img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 10px; background: #F5F7F7; }
+  .page-body .brand-list + p { margin-top: 1.4rem; }
   .page-photo { margin: 2rem 0 0; max-width: 62ch; }
   .page-photo img { display: block; width: 100%; height: auto; border-radius: 18px; box-shadow: 0 30px 60px -45px rgba(10,28,51,.65); }
   .page-photo figcaption { margin-top: .8rem; }
@@ -804,7 +815,7 @@
 
 <header class="site-head" id="top">
   <div class="wrap">
-    <a class="wordmark" href="../#top" aria-label="Rusca, studio ottico – inizio pagina"><span class="name">Rusca</span><span class="role">Studio ottico, Lugano – Crocifisso</span></a>
+    <a class="wordmark" href="../#top"><span class="name">Rusca</span><span class="role">Studio ottico, Lugano – Crocifisso</span></a>
     <nav class="nav" aria-label="Sezioni">
       <a href="../#studio">Lo studio</a><a href="../#metodo">Il metodo</a><a href="../#montature">Montature</a><a href="../#marco-rusca">Marco Rusca</a><a href="../#competenze">Competenze</a>
     </nav>
@@ -881,7 +892,7 @@
     <div class="wrap split">
       <h2 class="reveal">Altri servizi dello studio</h2>
       <div class="prose">
-        <ul class="titles"><li class="reveal" style="--i:0"><a class="t" href="../esame-della-vista/">Esame della vista</a><span class="small">Una refrazione completa, non un test rapido.</span></li><li class="reveal" style="--i:1"><a class="t" href="../lenti-a-contatto/">Lenti a contatto</a><span class="small">Dalla prima prova ai controlli periodici.</span></li></ul>
+        <ul class="titles"><li class="reveal" style="--i:0"><a class="t" href="../esame-della-vista/">Esame della vista</a><span class="small">Una refrazione completa, non un test rapido.</span></li><li class="reveal" style="--i:1"><a class="t" href="../correzioni-difficili/">Correzioni difficili</a><span class="small">Astigmatismi elevati, forti correzioni, casi complessi.</span></li><li class="reveal" style="--i:2"><a class="t" href="../lenti-a-contatto/">Lenti a contatto</a><span class="small">Dalla prima prova ai controlli periodici.</span></li><li class="reveal" style="--i:3"><a class="t" href="../montature/">Montature e marche</a><span class="small">Le marche dello studio, scelte una per una.</span></li></ul>
       </div>
     </div>
   </section>
@@ -912,7 +923,7 @@
   </svg>
   <div class="wrap split">
     <div><p class="name">Rusca</p><p class="tagline">La scelta di chi tiene alla propria vista.</p></div>
-    <div><address>Marco Rusca, ottico diplomato federale SHFA (maestro ottico)<br>Studio di ottica e contattologia, su appuntamento<br>Via Emilio Maraini 27, 6942 Savosa<br><a href="tel:+41919663268">091 966 32 68</a><br><a href="mailto:eye-marcorusca@hotmail.com">eye-marcorusca@hotmail.com</a></address><p class="foot-links"><a href="../esame-della-vista/">Esame della vista</a><a href="../lenti-progressive/">Lenti progressive</a><a href="../lenti-a-contatto/">Lenti a contatto</a></p></div>
+    <div><address>Marco Rusca, ottico diplomato federale SHFA (maestro ottico)<br>Studio di ottica e contattologia, su appuntamento<br>Via Emilio Maraini 27, 6942 Savosa<br><a href="tel:+41919663268">091 966 32 68</a><br><a href="mailto:eye-marcorusca@hotmail.com">eye-marcorusca@hotmail.com</a></address><p class="foot-links"><a href="../esame-della-vista/">Esame della vista</a><a href="../lenti-progressive/">Lenti progressive</a><a href="../lenti-a-contatto/">Lenti a contatto</a><a href="../correzioni-difficili/">Correzioni difficili</a><a href="../montature/">Montature e marche</a></p></div>
   </div>
   <div class="wrap legal">
     <span>© <span id="anno">2026</span> Studio ottico Rusca, Savosa</span>
