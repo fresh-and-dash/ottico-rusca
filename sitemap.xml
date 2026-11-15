@@ -1,51 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://www.otticorusca.ch/</loc>
     <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="it" href="https://www.otticorusca.ch/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.otticorusca.ch/en/"/>
+    <image:image><image:loc>https://www.otticorusca.ch/img/studio-strumenti-1600.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.otticorusca.ch/img/studio-sala-esame-1200.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.otticorusca.ch/img/studio-montature-1600.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.otticorusca.ch/img/studio-attesa-1600.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.otticorusca.ch/img/libro-copertina.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://www.otticorusca.ch/en/</loc>
     <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="it" href="https://www.otticorusca.ch/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.otticorusca.ch/en/"/>
+    <image:image><image:loc>https://www.otticorusca.ch/img/studio-strumenti-1600.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.otticorusca.ch/img/studio-sala-esame-1200.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.otticorusca.ch/img/studio-montature-1600.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.otticorusca.ch/img/studio-attesa-1600.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.otticorusca.ch/img/libro-copertina.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://www.otticorusca.ch/esame-della-vista/</loc>
     <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="it" href="https://www.otticorusca.ch/esame-della-vista/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.otticorusca.ch/en/eye-examination/"/>
+    <image:image><image:loc>https://www.otticorusca.ch/img/studio-strumenti-1600.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://www.otticorusca.ch/en/eye-examination/</loc>
     <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="it" href="https://www.otticorusca.ch/esame-della-vista/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.otticorusca.ch/en/eye-examination/"/>
+    <image:image><image:loc>https://www.otticorusca.ch/img/studio-strumenti-1600.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://www.otticorusca.ch/lenti-progressive/</loc>
     <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="it" href="https://www.otticorusca.ch/lenti-progressive/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.otticorusca.ch/en/progressive-lenses/"/>
+    <image:image><image:loc>https://www.otticorusca.ch/img/studio-montature-1600.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://www.otticorusca.ch/en/progressive-lenses/</loc>
     <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="it" href="https://www.otticorusca.ch/lenti-progressive/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.otticorusca.ch/en/progressive-lenses/"/>
+    <image:image><image:loc>https://www.otticorusca.ch/img/studio-montature-1600.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://www.otticorusca.ch/lenti-a-contatto/</loc>
     <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="it" href="https://www.otticorusca.ch/lenti-a-contatto/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.otticorusca.ch/en/contact-lenses/"/>
+    <image:image><image:loc>https://www.otticorusca.ch/img/libro-copertina.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://www.otticorusca.ch/en/contact-lenses/</loc>
     <lastmod>2026-11-15</lastmod>
     <xhtml:link rel="alternate" hreflang="it" href="https://www.otticorusca.ch/lenti-a-contatto/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.otticorusca.ch/en/contact-lenses/"/>
+    <image:image><image:loc>https://www.otticorusca.ch/img/libro-copertina.jpg</image:loc></image:image>
   </url>
 </urlset>

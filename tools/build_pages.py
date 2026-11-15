@@ -29,6 +29,8 @@ PAGES = [
                     ('steps', [('Il colloquio', 'Come usa gli occhi durante la giornata, a che distanza lavora, se guida di sera, quali occhiali o lenti a contatto porta oggi.'),
                                ('La misura', 'La refrazione vera e propria, un occhio alla volta e poi insieme, con la calma necessaria per non lasciare nulla all’approssimazione.'),
                                ('Il risultato', 'La correzione viene spiegata in parole chiare. Solo dopo si parla di lenti e montatura.')]),
+                    ('photo', {'src': '../img/studio-strumenti', 'alt': 'Refrattometro automatico in primo piano e, sullo sfondo, la poltrona e l’unità d’esame con forottero e lampada a fessura',
+                               'cap': 'Gli strumenti di misura dello studio, a Savosa.'}),
                 ]),
                 ('Quando conviene farlo', None, [
                     ('p', 'In assenza di disturbi, un controllo ogni due anni circa è una buona abitudine. Conviene anticiparlo se nota uno di questi segnali:'),
@@ -60,6 +62,8 @@ PAGES = [
                     ('steps', [('The conversation', 'How you use your eyes during the day, at what distance you work, whether you drive at night, which glasses or contact lenses you wear today.'),
                                ('The measurement', 'The refraction itself, one eye at a time and then together, calmly enough that nothing is left to approximation.'),
                                ('The result', 'The correction is explained in plain words. Only then do we talk about lenses and frames.')]),
+                    ('photo', {'src': '../../img/studio-strumenti', 'alt': 'Automatic refractometer in the foreground, with the examination chair and unit, phoropter and slit lamp behind',
+                               'cap': 'The practice’s measuring instruments, in Savosa.'}),
                 ]),
                 ('When to have one', None, [
                     ('p', 'If you have no complaints, a check about every two years is a good habit. It is worth bringing it forward if you notice any of these signs:'),
@@ -95,6 +99,8 @@ PAGES = [
                             '<strong>La centratura.</strong> Bastano pochi millimetri di scarto perché le zone della lente non cadano dove servono.',
                             '<strong>Il disegno della lente.</strong> Si sceglie in base all’uso reale: guida, ufficio, lettura, sport.',
                             '<strong>La montatura.</strong> Deve avere l’altezza sufficiente per contenere tutte le zone, e va regolata sul viso prima di prendere le misure.']),
+                    ('photo', {'src': '../img/studio-montature', 'alt': 'La parete illuminata delle montature e il banco per la scelta e la regolazione',
+                               'cap': 'La scelta della montatura, nello studio.'}),
                 ]),
                 ('Se non ci si abitua', 'adattamento', [
                     ('p', 'Abituarsi a un nuovo paio di lenti progressive richiede di solito da qualche giorno a un paio di settimane. Se dopo questo periodo restano fastidi, senso di instabilità o zone sfocate, quasi sempre la causa è una di queste:'),
@@ -126,6 +132,8 @@ PAGES = [
                             '<strong>The centring.</strong> A deviation of a few millimetres is enough for the zones of the lens to fall in the wrong place.',
                             '<strong>The lens design.</strong> It is chosen according to real use: driving, office work, reading, sport.',
                             '<strong>The frame.</strong> It must be tall enough to hold all the zones, and it is adjusted to the face before the measurements are taken.']),
+                    ('photo', {'src': '../../img/studio-montature', 'alt': 'The illuminated wall of frames and the counter for choosing and adjusting them',
+                               'cap': 'Choosing the frame, at the practice.'}),
                 ]),
                 ('If you cannot get used to them', 'adapting', [
                     ('p', 'Getting used to a new pair of progressive lenses usually takes from a few days to a couple of weeks. If discomfort, a sense of unsteadiness or blurred areas remain after that, the cause is almost always one of these:'),
@@ -246,6 +254,9 @@ PAGE_CSS = '''
   .page-body .prose ul.titles { margin-top: 0; padding-left: 0; max-width: 60ch; }
   .page-body .titles a { text-decoration: none; }
   .page-body .titles a:hover { text-decoration: underline; text-underline-offset: .18em; }
+  .page-photo { margin: 2rem 0 0; max-width: 62ch; }
+  .page-photo img { display: block; width: 100%; height: auto; border-radius: 18px; box-shadow: 0 30px 60px -45px rgba(10,28,51,.65); }
+  .page-photo figcaption { margin-top: .8rem; }
   .page-book { display: grid; grid-template-columns: 6.5rem 1fr; gap: 1.4rem; align-items: center; max-width: 62ch; }
   @media (min-width: 40em) { .page-book { grid-template-columns: 8.5rem 1fr; gap: 2.2rem; } }
   .page-book img { display: block; width: 100%; height: auto; border-radius: 2px 4px 4px 2px; transform: perspective(700px) rotateY(-14deg); transform-origin: left center; box-shadow: 0 24px 36px -22px rgba(10,28,51,.65), 0 0 0 1px rgba(10,28,51,.08); }
@@ -291,6 +302,10 @@ def body_html(blocks):
             out.append(f'        <p class="reveal">{val}</p>')
         elif kind == 'ul':
             out.append('        <ul class="reveal">' + ''.join(f'<li>{x}</li>' for x in val) + '</ul>')
+        elif kind == 'photo':
+            out.append(f'        <figure class="page-photo reveal"><img src="{val["src"]}-960.jpg" srcset="{val["src"]}-960.jpg 960w, {val["src"]}-1600.jpg 1600w" '
+                       f'sizes="(min-width: 60em) 52vw, 100vw" width="1600" height="1200" loading="lazy" decoding="async" alt="{val["alt"]}">'
+                       f'<figcaption class="small">{val["cap"]}</figcaption></figure>')
         elif kind == 'book':
             out.append(f'        <div class="page-book reveal"><img src="{val["src"]}" width="800" height="1137" loading="lazy" decoding="async" alt="{val["alt"]}">'
                        f'<div><p>{val["p"]}</p><a class="more" href="{val["href"]}">{val["link"]}</a></div></div>')
@@ -459,12 +474,21 @@ for page in PAGES:
     urls.append((build('it', page), build('en', page)))
 
 pairs = [(SITE, SITE + 'en/')] + urls
+HOME_IMAGES = ['img/studio-strumenti-1600.jpg', 'img/studio-sala-esame-1200.jpg', 'img/studio-montature-1600.jpg',
+               'img/studio-attesa-1600.jpg', 'img/libro-copertina.jpg']
+PAGE_IMAGES = {'esame-della-vista': ['img/studio-strumenti-1600.jpg'], 'eye-examination': ['img/studio-strumenti-1600.jpg'],
+               'lenti-progressive': ['img/studio-montature-1600.jpg'], 'progressive-lenses': ['img/studio-montature-1600.jpg'],
+               'lenti-a-contatto': ['img/libro-copertina.jpg'], 'contact-lenses': ['img/libro-copertina.jpg']}
 entries = []
 for it_url, en_url in pairs:
     for loc in (it_url, en_url):
+        slug = loc.rstrip('/').rsplit('/', 1)[-1]
+        imgs = HOME_IMAGES if loc in (SITE, SITE + 'en/') else PAGE_IMAGES.get(slug, [])
+        img_xml = ''.join(f'    <image:image><image:loc>{SITE}{i}</image:loc></image:image>\n' for i in imgs)
         entries.append(f'  <url>\n    <loc>{loc}</loc>\n    <lastmod>{TODAY}</lastmod>\n'
-                       f'    <xhtml:link rel="alternate" hreflang="it" href="{it_url}"/>\n    <xhtml:link rel="alternate" hreflang="en" href="{en_url}"/>\n  </url>')
+                       f'    <xhtml:link rel="alternate" hreflang="it" href="{it_url}"/>\n    <xhtml:link rel="alternate" hreflang="en" href="{en_url}"/>\n'
+                       f'{img_xml}  </url>')
 open(os.path.join(REPO, 'sitemap.xml'), 'w', encoding='utf-8').write(
-    '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
+    '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n'
     + '\n'.join(entries) + '\n</urlset>\n')
 print('pages built:', len(urls) * 2, '| sitemap urls:', len(entries))

@@ -43,7 +43,13 @@
       ],
       "description": "Studio ottico su appuntamento a Savosa, alle porte di Lugano: esame della vista, occhiali da vista, lenti progressive e lenti a contatto. Marco Rusca, ottico diplomato federale (maestro ottico), oltre quarant'anni di pratica.",
       "url": "https://www.otticorusca.ch/",
-      "image": "https://www.otticorusca.ch/og-image.png",
+      "image": [
+        "https://www.otticorusca.ch/img/studio-strumenti-1600.jpg",
+        "https://www.otticorusca.ch/img/studio-sala-esame-1200.jpg",
+        "https://www.otticorusca.ch/img/studio-montature-1600.jpg",
+        "https://www.otticorusca.ch/img/studio-attesa-1600.jpg",
+        "https://www.otticorusca.ch/og-image.png"
+      ],
       "telephone": "+41919663268",
       "email": "eye-marcorusca@hotmail.com",
       "address": {
@@ -691,6 +697,82 @@
   .rv-note p { max-width: 62ch; }
   .rv-attr { font-family: Roboto, Arial, sans-serif; font-size: .95rem; font-weight: 500; color: #5f6368; white-space: nowrap; }
 
+  /* ---------- Lo studio in immagini ---------- */
+  .tour { position: relative; background: var(--ink); color: var(--paper); }
+  .tour-sticky { position: relative; overflow: hidden; isolation: isolate; }
+  .tour-intro { position: relative; z-index: 3; text-align: center; padding: clamp(5rem, 11vw, 8rem) 1.25rem clamp(2rem, 5vw, 3rem); }
+  .tour-kicker { font-family: var(--sans); font-size: .98rem; letter-spacing: .02em; color: var(--azure); }
+  .tour-intro h2 { margin: .55rem auto 0; font-size: var(--step-3); line-height: 1.08; font-weight: 400; letter-spacing: -.015em; font-variation-settings: "opsz" 48; max-width: 17ch; text-wrap: balance; }
+  .tour-frame { position: relative; height: clamp(24rem, 62vw, 50rem); overflow: hidden; }
+  .tour-photo, .tour-photo img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .tour-photo img { object-fit: cover; transform-origin: 50% 50%; }
+  .tour-shade { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(75% 55% at 0% 100%, rgba(7,20,38,.72), rgba(7,20,38,0) 72%), linear-gradient(180deg, rgba(10,28,51,0) 52%, rgba(10,28,51,.72) 100%), radial-gradient(120% 90% at 50% 40%, rgba(10,28,51,0) 60%, rgba(10,28,51,.35) 100%); }
+  .tour-caption { position: absolute; z-index: 2; left: max(1.25rem, calc((100% - 74rem) / 2)); right: 1.25rem; bottom: clamp(1.6rem, 6vh, 3.4rem); max-width: 36rem; }
+  .tour-cap-t { font-size: var(--step-2); line-height: 1.2; font-variation-settings: "opsz" 24; }
+  .tour-cap-d { margin-top: .4rem; font-family: var(--sans); font-size: 1.02rem; line-height: 1.5; color: rgba(244,247,250,.88); }
+  .tour-ring { display: none; }
+  @media (prefers-reduced-motion: no-preference) {
+    .js .tour-iris { height: 230vh; height: 230svh; }
+    .js .tour-sticky { position: sticky; top: 0; height: 100vh; height: 100svh; background: radial-gradient(60% 60% at 50% 50%, #12305A 0%, var(--ink) 55%, #071426 100%); }
+    .js .tour-frame { position: absolute; inset: 0; height: auto; clip-path: circle(var(--r, clamp(90px, 17vmin, 170px)) at 50% 50%); }
+    .js .tour-photo img { transform: translate3d(var(--tx, 0px), var(--ty, 0px), 0) scale(var(--zoom, 1.6)); will-change: transform; }
+    .js .tour-intro { position: absolute; left: 0; right: 0; top: calc(50% + var(--r, clamp(90px, 17vmin, 170px)) + 2rem); padding: 0 1.25rem; opacity: var(--intro-o, 1); transform: translateY(var(--intro-y, 0px)); }
+    .js .tour-caption { opacity: var(--cap-o, 0); transform: translateY(var(--cap-y, 18px)); }
+    .js .tour-shade { opacity: var(--cap-o, 0); }
+    .js .tour-ring { display: block; position: absolute; z-index: 2; left: 50%; top: 50%; width: calc(var(--r, clamp(90px, 17vmin, 170px)) * 2); height: calc(var(--r, clamp(90px, 17vmin, 170px)) * 2); border-radius: 50%; transform: translate(-50%, -50%); pointer-events: none; opacity: var(--ring-o, 1); box-shadow: inset 0 0 50px rgba(7,20,38,.55), 0 0 0 1px rgba(197,224,247,.6), 0 0 0 12px rgba(127,182,234,.06), 0 0 0 13px rgba(197,224,247,.2), 0 0 90px 24px rgba(127,182,234,.16); }
+  }
+  .tour-gallery { background: var(--paper-2); color: var(--ink-2); padding-block: clamp(4rem, 9vw, 7.5rem); }
+  .tour-lead { font-size: var(--step-1); line-height: 1.45; max-width: 54ch; color: var(--ink-3); font-variation-settings: "opsz" 20; }
+  .tour-grid { margin-top: clamp(2rem, 5vw, 3.25rem); display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+  .tg { position: relative; display: block; overflow: hidden; border-radius: 18px; background: var(--ink-3); color: var(--paper); text-decoration: none; isolation: isolate; box-shadow: 0 34px 60px -42px rgba(10,28,51,.7); }
+  .tg-portrait { aspect-ratio: 4 / 5; }
+  .tg-landscape { aspect-ratio: 4 / 3; }
+  @media (min-width: 60em) {
+    .tour-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1.25rem; }
+    .tg-tall { grid-column: 1 / span 6; grid-row: 1 / span 2; aspect-ratio: auto; }
+    .tg-wide { grid-column: 7 / span 6; aspect-ratio: 3 / 2; }
+  }
+  .tg-media { position: absolute; inset: -6% 0; }
+  .tg img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 1.6s var(--ease); }
+  .tg::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(180deg, rgba(10,28,51,0) 48%, rgba(10,28,51,.76) 100%); }
+  .tg-cap { position: absolute; z-index: 2; left: 1.4rem; right: 1.4rem; bottom: 1.25rem; display: grid; gap: .25rem; }
+  .tg-t { font-size: var(--step-2); line-height: 1.2; font-variation-settings: "opsz" 24; }
+  .tg-d { font-family: var(--sans); font-size: 1rem; line-height: 1.45; color: rgba(244,247,250,.88); max-width: 40ch; }
+  .tg-zoom { position: absolute; z-index: 2; top: 1rem; right: 1rem; width: 2.75rem; height: 2.75rem; border-radius: 50%; display: grid; place-items: center; color: var(--paper); background: rgba(10,28,51,.45); border: 1px solid rgba(244,247,250,.35); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); transition: opacity .4s, transform .5s var(--ease); }
+  .tg-zoom svg { width: 1.1rem; height: 1.1rem; }
+  @media (hover: hover) {
+    .tg-zoom { opacity: 0; transform: scale(.85); }
+    .tg:hover .tg-zoom, .tg:focus-visible .tg-zoom { opacity: 1; transform: none; }
+    .tg:hover img { transform: scale(1.045); }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .js .tg { clip-path: inset(9% 7% round 18px); transition: clip-path 1.3s var(--ease); }
+    .js .tg img { transform: scale(1.2); filter: blur(10px); transition: transform 1.6s var(--ease), filter 1.2s var(--ease); }
+    .js .tg.is-in { clip-path: inset(0 round 18px); }
+    .js .tg.is-in img { transform: scale(1); filter: none; }
+    .js .tg.is-in:hover img { transform: scale(1.045); }
+    .js .tour-grid .tg:nth-child(3) { transition-delay: .12s; } .js .tour-grid .tg:nth-child(4) { transition-delay: .24s; }
+  }
+  .tour .only-narrow { display: none; }
+  @media (max-aspect-ratio: 4/5) { .tour .only-narrow { display: block; } .tour .only-wide { display: none; } }
+  /* lightbox */
+  .lightbox { border: 0; padding: 0; margin: 0; width: 100%; height: 100%; max-width: none; max-height: none; background: transparent; color: var(--paper); overflow: hidden; }
+  .lightbox::backdrop { background: rgba(6,16,30,.93); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+  .lightbox[open] { display: grid; place-items: center; animation: lb-in .45s var(--ease); }
+  @keyframes lb-in { from { opacity: 0; transform: scale(.985); } }
+  .lb-fig { margin: 0; display: grid; justify-items: center; gap: 1rem; padding: 4.5rem 1rem 2rem; max-width: min(94vw, 1500px); }
+  .lb-img { display: block; max-width: 100%; max-height: 76vh; width: auto; height: auto; border-radius: 12px; box-shadow: 0 40px 80px -30px rgba(0,0,0,.8); }
+  .lb-fig figcaption { display: grid; gap: .2rem; text-align: center; }
+  .lb-t { font-size: var(--step-2); font-variation-settings: "opsz" 24; }
+  .lb-d { font-family: var(--sans); font-size: 1rem; color: rgba(244,247,250,.82); }
+  .lb-btn { position: fixed; display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: 50%; color: var(--paper); background: rgba(244,247,250,.06); border: 1px solid rgba(244,247,250,.3); cursor: pointer; transition: background-color .3s, border-color .3s; }
+  .lb-btn:hover { background: rgba(127,182,234,.16); border-color: var(--azure); }
+  .lb-btn svg { width: 1.2rem; height: 1.2rem; }
+  .lb-close { top: 1rem; right: 1rem; }
+  .lb-prev, .lb-next { top: 50%; transform: translateY(-50%); }
+  .lb-prev { left: 1rem; } .lb-next { right: 1rem; }
+  @media (max-width: 40em) { .lb-prev, .lb-next { top: auto; bottom: 1rem; transform: none; } }
+
   /* ---------- Il libro ---------- */
   .libro { background: radial-gradient(90% 70% at 22% 45%, #13305A 0%, var(--ink) 58%, #08182D 100%); color: var(--paper); overflow: hidden; isolation: isolate; }
   .libro h2 { color: var(--paper); max-width: 17ch; }
@@ -757,6 +839,9 @@
     .btn::before { display: none; }
     .titles li::before { transition: none; }
     .js .book, .js .book-floor { animation: none; }
+    .tg img { transition: none; }
+    .tg:hover img { transform: none; }
+    .lightbox[open] { animation: none; }
     .book-flip svg { transition: none; }
   }
 </style>
@@ -887,6 +972,45 @@
       </div>
     </div>
   </section>
+
+  <section class="tour" id="lo-studio" aria-labelledby="tour-title">
+    <div class="tour-iris" id="tour-iris">
+      <div class="tour-sticky">
+        <div class="tour-intro">
+          <p class="tour-kicker">Lo studio</p>
+          <h2 id="tour-title">Uno sguardo dentro lo studio.</h2>
+        </div>
+        <div class="tour-frame">
+          <picture class="tour-photo">
+            <source media="(max-aspect-ratio: 4/5)" srcset="img/studio-sala-esame-720.jpg 720w, img/studio-sala-esame-1200.jpg 1200w" sizes="100vw">
+            <img src="img/studio-strumenti-1600.jpg" srcset="img/studio-strumenti-960.jpg 960w, img/studio-strumenti-1600.jpg 1600w" sizes="100vw" width="1600" height="1200" loading="lazy" decoding="async" data-focus="0.8625,0.2" data-focus-narrow="0.742,0.306" alt="La sala d’esame dello studio, con gli strumenti per l’esame della vista">
+          </picture>
+          <div class="tour-shade" aria-hidden="true"></div>
+          <div class="tour-caption only-wide"><p class="tour-cap-t">Gli strumenti di misura</p><p class="tour-cap-d">Dalla misura automatica alla prova soggettiva: ogni valore viene verificato prima di ordinare una lente.</p></div>
+          <div class="tour-caption only-narrow"><p class="tour-cap-t">La sala d’esame</p><p class="tour-cap-d">Una stanza dedicata all’esame della vista, attrezzata per ogni fase.</p></div>
+        </div>
+        <div class="tour-ring" aria-hidden="true"></div>
+      </div>
+    </div>
+    <div class="tour-gallery">
+      <div class="wrap">
+        <p class="tour-lead reveal">Una sala d’esame attrezzata, una scelta di montature selezionate, una sala d’attesa tranquilla. Lo studio si trova in Via Emilio Maraini 27 a Savosa, zona Crocifisso, e riceve solo su appuntamento.</p>
+        <div class="tour-grid">
+          <a class="tg tg-tall tg-portrait only-wide" href="img/studio-sala-esame-1200.jpg"><span class="tg-media"><img src="img/studio-sala-esame-720.jpg" srcset="img/studio-sala-esame-720.jpg 720w, img/studio-sala-esame-1200.jpg 1200w" sizes="(min-width: 60em) 46vw, 100vw" width="1200" height="1600" loading="lazy" decoding="async" alt="La sala d’esame: poltrona e unità d’esame con forottero, lampada a fessura e proiettore di ottotipi"></span><span class="tg-cap"><span class="tg-t">La sala d’esame</span><span class="tg-d">Forottero, lampada a fessura e proiettore di ottotipi, in una stanza dedicata.</span></span><span class="tg-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg></span></a>
+          <a class="tg tg-tall tg-landscape only-narrow" href="img/studio-strumenti-1600.jpg"><span class="tg-media"><img src="img/studio-strumenti-960.jpg" srcset="img/studio-strumenti-960.jpg 960w, img/studio-strumenti-1600.jpg 1600w" sizes="100vw" width="1600" height="1200" loading="lazy" decoding="async" alt="Refrattometro automatico in primo piano e, sullo sfondo, la poltrona e l’unità d’esame"></span><span class="tg-cap"><span class="tg-t">Gli strumenti di misura</span><span class="tg-d">Dalla misura automatica alla prova soggettiva, ogni valore viene verificato.</span></span><span class="tg-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg></span></a>
+          <a class="tg tg-wide tg-landscape" href="img/studio-montature-1600.jpg"><span class="tg-media"><img src="img/studio-montature-960.jpg" srcset="img/studio-montature-960.jpg 960w, img/studio-montature-1600.jpg 1600w" sizes="(min-width: 60em) 46vw, 100vw" width="1600" height="1200" loading="lazy" decoding="async" alt="La parete illuminata delle montature e il banco per la scelta e la regolazione"></span><span class="tg-cap"><span class="tg-t">Le montature</span><span class="tg-d">Una selezione, non un catalogo: si provano con calma e si regolano sul viso.</span></span><span class="tg-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg></span></a>
+          <a class="tg tg-wide tg-landscape" href="img/studio-attesa-1600.jpg"><span class="tg-media"><img src="img/studio-attesa-960.jpg" srcset="img/studio-attesa-960.jpg 960w, img/studio-attesa-1600.jpg 1600w" sizes="(min-width: 60em) 46vw, 100vw" width="1600" height="1200" loading="lazy" decoding="async" alt="La sala d’attesa dello studio, luminosa e tranquilla"></span><span class="tg-cap"><span class="tg-t">La sala d’attesa</span><span class="tg-d">Si riceve su appuntamento, una persona alla volta.</span></span><span class="tg-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg></span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <dialog class="lightbox" id="lightbox" aria-label="Foto dello studio">
+    <figure class="lb-fig"><img class="lb-img" alt=""><figcaption><span class="lb-t"></span><span class="lb-d"></span></figcaption></figure>
+    <button class="lb-btn lb-close" type="button" aria-label="Chiudi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <button class="lb-btn lb-prev" type="button" aria-label="Foto precedente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <button class="lb-btn lb-next" type="button" aria-label="Foto successiva"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+  </dialog>
 
   <section class="section fuoco" id="fuoco">
     <div class="wrap">
@@ -1210,7 +1334,7 @@
 
   /* reveal on scroll */
   var revealIO = new IntersectionObserver(function (entries) { entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('is-in'); revealIO.unobserve(en.target); } }); }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
-  document.querySelectorAll('.reveal').forEach(function (el) { revealIO.observe(el); });
+  document.querySelectorAll('.reveal, .tg').forEach(function (el) { revealIO.observe(el); });
 
   /* count-up */
   var counter = document.querySelector('[data-count]');
@@ -1251,6 +1375,87 @@
       });
       card.addEventListener('pointerleave', function () { card.style.transform = ''; });
     });
+  }
+
+  /* lo studio: an iris opens from the phoropter onto the whole examination room */
+  var tourIris = document.getElementById('tour-iris'), tourItems = Array.prototype.slice.call(document.querySelectorAll('.tg'));
+  var tourMedia = tourItems.map(function (t) { return t.querySelector('.tg-media'); });
+  if (tourIris && !reduce) {
+    var tourStick = tourIris.querySelector('.tour-sticky'), tourImg = tourIris.querySelector('.tour-photo img');
+    var tourP = 0, tourTarget = 0, tourRunning = false;
+    var tourPaint = function () {
+      var W = tourStick.clientWidth, H = tourStick.clientHeight, cx = W / 2, cy = H / 2;
+      var o = clamp(tourP / 0.72, 0, 1); o = o * o * (3 - 2 * o);
+      var r0 = clamp(Math.min(W, H) * 0.17, 90, 170), r1 = Math.sqrt(cx * cx + cy * cy) + 4, r = r0 + (r1 - r0) * o;
+      var narrow = /sala-esame/.test(tourImg.currentSrc || '');
+      var iw = tourImg.naturalWidth || (narrow ? 1200 : 1600), ih = tourImg.naturalHeight || (narrow ? 1600 : 1200);
+      var f = (tourImg.getAttribute(narrow ? 'data-focus-narrow' : 'data-focus') || '.5,.5').split(',');
+      var sc = Math.max(W / iw, H / ih), dw = iw * sc, dh = ih * sc, ox = (W - dw) / 2, oy = (H - dh) / 2;
+      var px = ox + parseFloat(f[0]) * dw, py = oy + parseFloat(f[1]) * dh;
+      var z = 1.6 - 0.6 * o, lx = px + (cx - px) * o, ly = py + (cy - py) * o;
+      var tx = -(lx - cx) * z, ty = -(ly - cy) * z;
+      var bx0 = Math.max(0, cx - r), bx1 = Math.min(W, cx + r), by0 = Math.max(0, cy - r), by1 = Math.min(H, cy + r);
+      var txMin = bx1 - (cx + (ox + dw - cx) * z), txMax = bx0 - (cx + (ox - cx) * z);
+      var tyMin = by1 - (cy + (oy + dh - cy) * z), tyMax = by0 - (cy + (oy - cy) * z);
+      tx = txMin > txMax ? (txMin + txMax) / 2 : clamp(tx, txMin, txMax);
+      ty = tyMin > tyMax ? (tyMin + tyMax) / 2 : clamp(ty, tyMin, tyMax);
+      var a = clamp(tourP / 0.24, 0, 1), c = clamp((tourP - 0.74) / 0.16, 0, 1), st = tourStick.style;
+      st.setProperty('--r', r.toFixed(1) + 'px');
+      st.setProperty('--zoom', z.toFixed(4)); st.setProperty('--tx', tx.toFixed(1) + 'px'); st.setProperty('--ty', ty.toFixed(1) + 'px');
+      st.setProperty('--intro-o', (1 - a).toFixed(3)); st.setProperty('--intro-y', (28 * a).toFixed(1) + 'px');
+      st.setProperty('--ring-o', (1 - clamp((o - 0.45) / 0.4, 0, 1)).toFixed(3));
+      st.setProperty('--cap-o', c.toFixed(3)); st.setProperty('--cap-y', (18 * (1 - c)).toFixed(1) + 'px');
+    };
+    var tourStep = function () {
+      tourP += (tourTarget - tourP) * 0.16;
+      if (Math.abs(tourTarget - tourP) < 0.0005) tourP = tourTarget;
+      tourPaint();
+      if (tourP !== tourTarget) { requestAnimationFrame(tourStep); } else { tourRunning = false; }
+    };
+    var tourScroll = function () {
+      var rc = tourIris.getBoundingClientRect(), vh = window.innerHeight;
+      if (rc.bottom < -vh || rc.top > vh * 2) return;
+      tourTarget = clamp(-rc.top / Math.max(1, rc.height - vh), 0, 1);
+      if (!tourRunning) { tourRunning = true; requestAnimationFrame(tourStep); }
+    };
+    var parPaint = function () {
+      var vh = window.innerHeight;
+      tourItems.forEach(function (t, i) {
+        var rc = t.getBoundingClientRect();
+        if (rc.bottom < 0 || rc.top > vh || !rc.height) return;
+        var k = clamp(((rc.top + rc.height / 2) - vh / 2) / (vh / 2 + rc.height / 2), -1, 1);
+        tourMedia[i].style.transform = 'translate3d(0,' + (k * -4.5).toFixed(2) + '%,0)';
+      });
+    };
+    window.addEventListener('scroll', function () { tourScroll(); requestAnimationFrame(parPaint); }, { passive: true });
+    window.addEventListener('resize', function () { tourScroll(); tourPaint(); parPaint(); });
+    tourImg.addEventListener('load', tourPaint);
+    tourTarget = tourP = 0; tourScroll(); tourPaint(); parPaint();
+  }
+
+  /* lo studio: photos open full screen */
+  var lb = document.getElementById('lightbox');
+  if (lb && typeof lb.showModal === 'function') {
+    var lbImg = lb.querySelector('.lb-img'), lbT = lb.querySelector('.lb-t'), lbD = lb.querySelector('.lb-d'), lbAt = 0, lbList = [];
+    var lbShow = function (i) {
+      lbAt = (i + lbList.length) % lbList.length;
+      var t = lbList[lbAt];
+      lbImg.src = t.getAttribute('href'); lbImg.alt = t.querySelector('img').alt;
+      lbT.textContent = t.querySelector('.tg-t').textContent; lbD.textContent = t.querySelector('.tg-d').textContent;
+    };
+    tourItems.forEach(function (t) {
+      t.addEventListener('click', function (e) {
+        e.preventDefault();
+        lbList = tourItems.filter(function (x) { return x.offsetParent !== null; });
+        lbShow(lbList.indexOf(t)); lb.showModal(); document.body.style.overflow = 'hidden';
+      });
+    });
+    lb.addEventListener('close', function () { document.body.style.overflow = ''; });
+    lb.querySelector('.lb-close').addEventListener('click', function () { lb.close(); });
+    lb.querySelector('.lb-prev').addEventListener('click', function () { lbShow(lbAt - 1); });
+    lb.querySelector('.lb-next').addEventListener('click', function () { lbShow(lbAt + 1); });
+    lb.addEventListener('click', function (e) { if (e.target === lb) lb.close(); });
+    lb.addEventListener('keydown', function (e) { if (e.key === 'ArrowLeft') { lbShow(lbAt - 1); } else if (e.key === 'ArrowRight') { lbShow(lbAt + 1); } });
   }
 
   /* the book: turns over on request and follows the pointer gently */
