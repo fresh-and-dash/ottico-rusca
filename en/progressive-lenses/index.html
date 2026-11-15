@@ -526,6 +526,13 @@
   }
 
   /* ---------- Recensioni Google ---------- */
+  .g-badge { display: inline-flex; align-items: center; flex-wrap: wrap; gap: .35rem .7rem; margin-top: 1.4rem; padding: .55rem .95rem; border-radius: 999px; font-family: var(--sans); font-size: .95rem; color: rgba(244,247,250,.9); text-decoration: none; background: rgba(244,247,250,.06); border: 1px solid rgba(244,247,250,.18); transition: border-color .3s, background-color .3s; }
+  .g-badge[hidden] { display: none; }
+  .g-badge:hover { border-color: var(--azure); background: rgba(127,182,234,.1); }
+  .g-badge b { font-weight: 500; color: var(--paper); }
+  .g-badge .rv-stars-svg { display: block; }
+  .g-badge .g-src { font-family: Roboto, Arial, sans-serif; font-weight: 500; color: rgba(244,247,250,.75); }
+  .js .g-badge:not([hidden]) { animation: rise .8s var(--ease) both; }
   .reviews { background: var(--paper-2); }
   .rv-score { margin-top: 2rem; }
   .rv-num { font-size: clamp(4rem, 8vw, 5.6rem); line-height: .9; letter-spacing: -.03em; color: var(--ink-2); font-variation-settings: "opsz" 72; }
