@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Contact lenses in Lugano | Studio ottico Rusca, Savosa</title>
-<meta name="description" content="Contact lens fitting in Savosa, Lugano: from the first trial to regular check-ups, looked after by Marco Rusca, Swiss federally certified optician (master optician).">
+<meta name="description" content="Contact lenses in Savosa, Lugano, with Marco Rusca, master optician and author of a guide to contact lenses: from the first trial to check-ups.">
 <meta name="theme-color" content="#0A1C33">
 <meta property="og:title" content="Contact lenses in Lugano | Studio ottico Rusca, Savosa">
-<meta property="og:description" content="Contact lens fitting in Savosa, Lugano: from the first trial to regular check-ups, looked after by Marco Rusca, Swiss federally certified optician (master optician).">
+<meta property="og:description" content="Contact lenses in Savosa, Lugano, with Marco Rusca, master optician and author of a guide to contact lenses: from the first trial to check-ups.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Studio ottico Rusca">
 <meta property="og:image" content="https://www.otticorusca.ch/og-image-en.png">
@@ -34,7 +34,7 @@
       "@id": "https://www.otticorusca.ch/en/contact-lenses/",
       "url": "https://www.otticorusca.ch/en/contact-lenses/",
       "name": "Contact lenses in Lugano | Studio ottico Rusca, Savosa",
-      "description": "Contact lens fitting in Savosa, Lugano: from the first trial to regular check-ups, looked after by Marco Rusca, Swiss federally certified optician (master optician).",
+      "description": "Contact lenses in Savosa, Lugano, with Marco Rusca, master optician and author of a guide to contact lenses: from the first trial to check-ups.",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://www.otticorusca.ch/#website"
@@ -47,7 +47,7 @@
       "@type": "Service",
       "name": "Contact lenses",
       "serviceType": "Contact lenses",
-      "description": "Contact lens fitting in Savosa, Lugano: from the first trial to regular check-ups, looked after by Marco Rusca, Swiss federally certified optician (master optician).",
+      "description": "Contact lenses in Savosa, Lugano, with Marco Rusca, master optician and author of a guide to contact lenses: from the first trial to check-ups.",
       "provider": {
         "@type": "Optician",
         "@id": "https://www.otticorusca.ch/#studio",
@@ -528,6 +528,57 @@
   .rv-note p { max-width: 62ch; }
   .rv-attr { font-family: Roboto, Arial, sans-serif; font-size: .95rem; font-weight: 500; color: #5f6368; white-space: nowrap; }
 
+  /* ---------- Il libro ---------- */
+  .libro { background: radial-gradient(90% 70% at 22% 45%, #13305A 0%, var(--ink) 58%, #08182D 100%); color: var(--paper); overflow: hidden; isolation: isolate; }
+  .libro h2 { color: var(--paper); max-width: 17ch; }
+  .libro .prose .lead { margin-top: 1.6rem; }
+  .libro cite { font-style: italic; }
+  .libro-grid { display: grid; gap: clamp(3rem, 8vw, 5rem); align-items: center; }
+  @media (min-width: 60em) { .libro-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 4.5rem; } }
+  .libro-stage { margin: 0; position: relative; display: grid; justify-items: center; gap: 1.2rem; padding-top: .5rem; }
+  .libro-stage::before { content: ""; position: absolute; z-index: -1; left: 50%; top: 40%; width: 150%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; pointer-events: none; background: radial-gradient(closest-side, rgba(127,182,234,.22), rgba(127,182,234,.06) 55%, transparent); }
+  .book { --bw: min(18.5rem, 64vw); --bh: calc(var(--bw) * 1.4215); --bt: calc(var(--bw) * .075); position: relative; width: var(--bw); height: var(--bh); perspective: 1500px; -webkit-tap-highlight-color: transparent; }
+  @media (min-width: 60em) { .book { --bw: clamp(17rem, 23vw, 21.5rem); } }
+  .js .book { cursor: pointer; animation: book-float 7s ease-in-out infinite; }
+  @keyframes book-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  .book-3d { position: absolute; inset: 0; transform-style: preserve-3d; transform: rotateY(-28deg); will-change: transform; }
+  .bf { position: absolute; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+  .b-front, .b-back { inset: 0; overflow: hidden; background: #F7F6F3; }
+  .b-front { transform: translateZ(calc(var(--bt) / 2)); border-radius: 2px 4px 4px 2px; }
+  .b-back { transform: rotateY(180deg) translateZ(calc(var(--bt) / 2)); border-radius: 4px 2px 2px 4px; }
+  .b-front img, .b-back img { display: block; width: 100%; height: 100%; }
+  .b-front::after, .b-back::after { content: ""; position: absolute; inset: 0; pointer-events: none; background-repeat: no-repeat; background-size: 100% 100%, 300% 100%, 100% 100%; }
+  /* hinge groove beside the spine, a sheen that travels with the book, light from the upper left */
+  .b-front::after { background-image: linear-gradient(90deg, rgba(10,28,51,.16) 0, rgba(255,255,255,.4) 1.1%, rgba(10,28,51,.1) 2.6%, rgba(255,255,255,.12) 3.6%, rgba(255,255,255,0) 6%), linear-gradient(105deg, rgba(255,255,255,0) 36%, rgba(255,255,255,.26) 48%, rgba(255,255,255,0) 60%), linear-gradient(160deg, rgba(255,255,255,.1), rgba(10,28,51,.15)); background-position: 0 0, var(--sheen-f, 62%) 0, 0 0; }
+  .b-back::after { background-image: linear-gradient(270deg, rgba(10,28,51,.16) 0, rgba(255,255,255,.4) 1.1%, rgba(10,28,51,.1) 2.6%, rgba(255,255,255,.12) 3.6%, rgba(255,255,255,0) 6%), linear-gradient(105deg, rgba(255,255,255,0) 36%, rgba(255,255,255,.22) 48%, rgba(255,255,255,0) 60%), linear-gradient(200deg, rgba(255,255,255,.08), rgba(10,28,51,.12)); background-position: 0 0, var(--sheen-b, 174%) 0, 0 0; }
+  .b-spine { top: 0; left: calc(50% - var(--bt) / 2); width: var(--bt); height: 100%; transform: rotateY(-90deg) translateZ(calc(var(--bw) / 2)); background: linear-gradient(90deg, #D9D6CE, #F5F4F0 30%, #EFEDE8 70%, #D2CEC4); }
+  .b-edge { top: 2px; left: calc(50% - var(--bt) / 2); width: var(--bt); height: calc(100% - 4px); transform: rotateY(90deg) translateZ(calc(var(--bw) / 2 - 2px)); background: linear-gradient(90deg, rgba(10,28,51,.2), transparent 16%, transparent 84%, rgba(10,28,51,.16)), repeating-linear-gradient(90deg, #F4F0E7 0 1px, #E3DDD0 1px 2px); }
+  .b-top, .b-bottom { left: 2px; top: calc(50% - var(--bt) / 2); width: calc(100% - 4px); height: var(--bt); background: linear-gradient(0deg, rgba(10,28,51,.16), transparent 16%, transparent 84%, rgba(10,28,51,.16)), repeating-linear-gradient(0deg, #F4F0E7 0 1px, #E3DDD0 1px 2px); }
+  .b-top { transform: rotateX(90deg) translateZ(calc(var(--bh) / 2 - 2px)); }
+  .b-bottom { transform: rotateX(-90deg) translateZ(calc(var(--bh) / 2 - 2px)); }
+  .book-floor { width: calc(var(--bw, 18rem) * 1.1); height: 1.6rem; margin-top: -.4rem; border-radius: 50%; pointer-events: none; background: radial-gradient(closest-side, rgba(0,0,0,.6), rgba(0,0,0,0)); filter: blur(5px); }
+  .js .book-floor { animation: book-floor 7s ease-in-out infinite; }
+  @keyframes book-floor { 0%, 100% { transform: scaleX(1); opacity: .9; } 50% { transform: scaleX(.86); opacity: .6; } }
+  .libro-cap { display: grid; justify-items: center; gap: 1rem; text-align: center; font-family: var(--sans); font-size: .98rem; color: rgba(244,247,250,.78); }
+  .libro-cap > span { max-width: 30ch; text-wrap: balance; }
+  .book-flip { display: none; align-items: center; gap: .6rem; font-family: var(--sans); font-size: 1rem; color: var(--ice); background: transparent; border: 1px solid rgba(197,224,247,.38); border-radius: 999px; padding: .7rem 1.25rem; cursor: pointer; transition: border-color .3s, color .3s, background-color .3s; }
+  .js .book-flip { display: inline-flex; }
+  .book-flip:hover { border-color: var(--azure); color: var(--paper); background: rgba(127,182,234,.08); }
+  .book-flip svg { width: 1.15rem; height: 1.15rem; flex: none; transition: transform .7s var(--ease); }
+  .book-flip[aria-pressed="true"] svg { transform: rotate(-180deg); }
+  .libro-q { margin-top: 2.2rem; max-width: 40rem; }
+  .libro-q-h { font-family: var(--sans); font-size: .98rem; color: var(--azure); }
+  .libro-q ul { list-style: none; margin: .9rem 0 0; padding: 0; }
+  .libro-q li { position: relative; padding: .85rem 0 .85rem 2.1rem; border-top: 1px solid var(--line-d); font-size: var(--step-1); line-height: 1.4; font-style: italic; color: var(--paper); font-variation-settings: "opsz" 20; }
+  .libro-q li:last-child { border-bottom: 1px solid var(--line-d); }
+  .libro-q li::before { content: "—"; position: absolute; left: 0; top: .85rem; font-style: normal; color: var(--azure); }
+  .libro .prose .libro-after { margin-top: 1.8rem; }
+  .libro-actions { margin-top: 2.2rem; display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.75rem; }
+  .libro .more { margin-top: 0; color: var(--ice); }
+  .libro .more:hover { color: var(--paper); }
+  .facts-list .fl a, .titles .small a { color: var(--blue-2); text-decoration: underline; text-decoration-color: var(--azure); text-underline-offset: .18em; }
+  .facts-list .fl a:hover, .titles .small a:hover { color: var(--ink-2); }
+
   /* ---------- Reduced motion ---------- */
   @media (prefers-reduced-motion: reduce) {
     .js .iris, .js .iris-mark { display: none; }
@@ -542,6 +593,8 @@
     .js .manifesto .big .w { opacity: 1 !important; transition: none; }
     .btn::before { display: none; }
     .titles li::before { transition: none; }
+    .js .book, .js .book-floor { animation: none; }
+    .book-flip svg { transition: none; }
   }
 
   /* ---------- Service pages ---------- */
@@ -571,6 +624,12 @@
   .page-body .prose ul.titles { margin-top: 0; padding-left: 0; max-width: 60ch; }
   .page-body .titles a { text-decoration: none; }
   .page-body .titles a:hover { text-decoration: underline; text-underline-offset: .18em; }
+  .page-book { display: grid; grid-template-columns: 6.5rem 1fr; gap: 1.4rem; align-items: center; max-width: 62ch; }
+  @media (min-width: 40em) { .page-book { grid-template-columns: 8.5rem 1fr; gap: 2.2rem; } }
+  .page-book img { display: block; width: 100%; height: auto; border-radius: 2px 4px 4px 2px; transform: perspective(700px) rotateY(-14deg); transform-origin: left center; box-shadow: 0 24px 36px -22px rgba(10,28,51,.65), 0 0 0 1px rgba(10,28,51,.08); }
+  .page-book cite { font-style: italic; }
+  .page-body .prose .page-book p { margin: 0; }
+  .page-book .more { margin-top: .8rem; }
   .cta-band { background: var(--paper-2); padding-block: clamp(4rem, 8vw, 6.5rem); }
   .cta-band h2 { font-size: var(--step-3); line-height: 1.08; font-weight: 400; letter-spacing: -0.015em; font-variation-settings: "opsz" 48; max-width: 18ch; text-wrap: balance; }
   .cta-band .actions { margin-top: 1.6rem; display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.75rem; }
@@ -655,6 +714,14 @@
       <h2 class="reveal">Why check-ups matter</h2>
       <div class="prose">
         <p class="reveal">Eyes change over time, and a lens that used to be right may no longer be the most suitable. Regular check-ups verify that your vision is still properly corrected and that the lens is still well tolerated.</p>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="libro">
+    <div class="wrap split">
+      <h2 class="reveal">A book on contact lenses</h2>
+      <div class="prose">
+        <div class="page-book reveal"><img src="../../img/libro-copertina.jpg" width="800" height="1137" loading="lazy" decoding="async" alt="Cover of the book «Lenti a contatto. Guida pratica per tutti» by Marco Rusca"><div><p>Marco Rusca is the author of <cite>Lenti a contatto. Guida pratica per tutti</cite> (Contact lenses: a practical guide for everyone), which answers the most common questions in plain words: whether they are better than glasses, from what age they can be worn, whether every vision problem can be corrected with contact lenses.</p><a class="more" href="../#libro">See the book</a></div></div>
       </div>
     </div>
   </section>

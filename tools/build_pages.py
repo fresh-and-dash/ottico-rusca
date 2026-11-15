@@ -145,7 +145,7 @@ PAGES = [
         'it': {
             'slug': 'lenti-a-contatto', 'name': 'Lenti a contatto',
             'title': 'Lenti a contatto a Lugano | Studio ottico Rusca, Savosa',
-            'desc': 'Applicazione di lenti a contatto a Savosa, Lugano: dalla prima prova ai controlli periodici, seguiti da Marco Rusca, ottico diplomato federale (maestro ottico).',
+            'desc': 'Lenti a contatto a Savosa, Lugano, con Marco Rusca, maestro ottico e autore di una guida sulle lenti a contatto: dalla prima prova ai controlli.',
             'h1': 'Lenti a contatto a Lugano',
             'lead': 'Una lente a contatto si sceglie sull’occhio, non su una scatola. Lo studio segue l’applicazione dalla prima prova ai controlli periodici.',
             'teaser': 'Dalla prima prova ai controlli periodici.',
@@ -166,13 +166,18 @@ PAGES = [
                 ('Perché i controlli contano', None, [
                     ('p', 'L’occhio cambia nel tempo, e una lente che andava bene può non essere più la più adatta. I controlli periodici servono a verificare che la vista sia sempre corretta e che la lente continui a essere ben tollerata.'),
                 ]),
+                ('Un libro sulle lenti a contatto', 'libro', [
+                    ('book', {'src': '../img/libro-copertina.jpg', 'alt': 'Copertina del libro «Lenti a contatto. Guida pratica per tutti» di Marco Rusca',
+                              'p': 'Marco Rusca è l’autore di <cite>Lenti a contatto. Guida pratica per tutti</cite>, una guida che risponde con parole semplici alle domande più frequenti: se sono migliori degli occhiali, da che età si possono portare, se ogni difetto visivo si può correggere con le lenti a contatto.',
+                              'href': '../#libro', 'link': 'Vedere il libro'}),
+                ]),
             ],
             'cta_h': 'Per le sue lenti a contatto, a Savosa, Lugano', 'cta_p': 'Per chi le porta già e per chi comincia. Lo studio riceve solo su appuntamento.',
         },
         'en': {
             'slug': 'contact-lenses', 'name': 'Contact lenses',
             'title': 'Contact lenses in Lugano | Studio ottico Rusca, Savosa',
-            'desc': 'Contact lens fitting in Savosa, Lugano: from the first trial to regular check-ups, looked after by Marco Rusca, Swiss federally certified optician (master optician).',
+            'desc': 'Contact lenses in Savosa, Lugano, with Marco Rusca, master optician and author of a guide to contact lenses: from the first trial to check-ups.',
             'h1': 'Contact lenses in Lugano',
             'lead': 'A contact lens is chosen on the eye, not from a box. The practice looks after the fitting from the first trial to regular check-ups.',
             'teaser': 'From the first trial to regular check-ups.',
@@ -192,6 +197,11 @@ PAGES = [
                 ]),
                 ('Why check-ups matter', None, [
                     ('p', 'Eyes change over time, and a lens that used to be right may no longer be the most suitable. Regular check-ups verify that your vision is still properly corrected and that the lens is still well tolerated.'),
+                ]),
+                ('A book on contact lenses', 'libro', [
+                    ('book', {'src': '../../img/libro-copertina.jpg', 'alt': 'Cover of the book «Lenti a contatto. Guida pratica per tutti» by Marco Rusca',
+                              'p': 'Marco Rusca is the author of <cite>Lenti a contatto. Guida pratica per tutti</cite> (Contact lenses: a practical guide for everyone), which answers the most common questions in plain words: whether they are better than glasses, from what age they can be worn, whether every vision problem can be corrected with contact lenses.',
+                              'href': '../#libro', 'link': 'See the book'}),
                 ]),
             ],
             'cta_h': 'For your contact lenses, in Savosa, Lugano', 'cta_p': 'For those who already wear them and for those starting out. The practice sees clients by appointment only.',
@@ -236,6 +246,12 @@ PAGE_CSS = '''
   .page-body .prose ul.titles { margin-top: 0; padding-left: 0; max-width: 60ch; }
   .page-body .titles a { text-decoration: none; }
   .page-body .titles a:hover { text-decoration: underline; text-underline-offset: .18em; }
+  .page-book { display: grid; grid-template-columns: 6.5rem 1fr; gap: 1.4rem; align-items: center; max-width: 62ch; }
+  @media (min-width: 40em) { .page-book { grid-template-columns: 8.5rem 1fr; gap: 2.2rem; } }
+  .page-book img { display: block; width: 100%; height: auto; border-radius: 2px 4px 4px 2px; transform: perspective(700px) rotateY(-14deg); transform-origin: left center; box-shadow: 0 24px 36px -22px rgba(10,28,51,.65), 0 0 0 1px rgba(10,28,51,.08); }
+  .page-book cite { font-style: italic; }
+  .page-body .prose .page-book p { margin: 0; }
+  .page-book .more { margin-top: .8rem; }
   .cta-band { background: var(--paper-2); padding-block: clamp(4rem, 8vw, 6.5rem); }
   .cta-band h2 { font-size: var(--step-3); line-height: 1.08; font-weight: 400; letter-spacing: -0.015em; font-variation-settings: "opsz" 48; max-width: 18ch; text-wrap: balance; }
   .cta-band .actions { margin-top: 1.6rem; display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.75rem; }
@@ -275,6 +291,9 @@ def body_html(blocks):
             out.append(f'        <p class="reveal">{val}</p>')
         elif kind == 'ul':
             out.append('        <ul class="reveal">' + ''.join(f'<li>{x}</li>' for x in val) + '</ul>')
+        elif kind == 'book':
+            out.append(f'        <div class="page-book reveal"><img src="{val["src"]}" width="800" height="1137" loading="lazy" decoding="async" alt="{val["alt"]}">'
+                       f'<div><p>{val["p"]}</p><a class="more" href="{val["href"]}">{val["link"]}</a></div></div>')
         elif kind == 'steps':
             out.append('        <ol class="steps">' + ''.join(
                 f'<li class="reveal"><span class="n">{i}</span><h3>{t}</h3><p>{d}</p></li>' for i, (t, d) in enumerate(val, 1)) + '</ol>')

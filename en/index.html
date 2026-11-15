@@ -148,14 +148,55 @@
       "@id": "https://www.otticorusca.ch/#marco-rusca",
       "name": "Marco Rusca",
       "jobTitle": "Swiss federally certified optician (master optician)",
-      "hasCredential": {
-        "@type": "EducationalOccupationalCredential",
-        "credentialCategory": "diploma",
-        "name": "Swiss federal diploma in optics (SHFA)"
+      "birthPlace": {
+        "@type": "Place",
+        "name": "Lugano"
       },
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "Swiss Higher School of Optics (Scuola superiore svizzera d’ottica)",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Olten",
+          "addressCountry": "CH"
+        }
+      },
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "diploma",
+          "name": "Swiss federal optician’s diploma (master optician)",
+          "dateCreated": "1986"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "diploma",
+          "name": "Ticino cantonal optician’s diploma"
+        }
+      ],
+      "knowsAbout": [
+        "Contact lenses",
+        "Eye examination",
+        "Progressive lenses"
+      ],
       "worksFor": {
         "@id": "https://www.otticorusca.ch/#studio"
       }
+    },
+    {
+      "@type": "Book",
+      "@id": "https://www.otticorusca.ch/#libro",
+      "name": "Lenti a contatto. Guida pratica per tutti",
+      "author": {
+        "@id": "https://www.otticorusca.ch/#marco-rusca"
+      },
+      "inLanguage": "it",
+      "about": {
+        "@type": "Thing",
+        "name": "Contact lenses"
+      },
+      "image": "https://www.otticorusca.ch/img/libro-copertina.jpg",
+      "url": "https://www.otticorusca.ch/en/#libro"
     },
     {
       "@type": "WebSite",
@@ -187,7 +228,7 @@
           "name": "What does “Swiss federally certified optician (master optician)” mean?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "It is the higher federal diploma of the optician’s profession in Switzerland. Beyond basic training it covers eye examinations and contact lens fitting. Marco Rusca has practised the profession for more than forty years."
+            "text": "It is the higher federal diploma of the optician’s profession in Switzerland. Beyond basic training it covers eye examinations and contact lens fitting. Marco Rusca obtained it in 1986 at the Swiss Higher School of Optics in Olten and has practised the profession for more than forty years."
           }
         },
         {
@@ -651,6 +692,57 @@
   .rv-note p { max-width: 62ch; }
   .rv-attr { font-family: Roboto, Arial, sans-serif; font-size: .95rem; font-weight: 500; color: #5f6368; white-space: nowrap; }
 
+  /* ---------- Il libro ---------- */
+  .libro { background: radial-gradient(90% 70% at 22% 45%, #13305A 0%, var(--ink) 58%, #08182D 100%); color: var(--paper); overflow: hidden; isolation: isolate; }
+  .libro h2 { color: var(--paper); max-width: 17ch; }
+  .libro .prose .lead { margin-top: 1.6rem; }
+  .libro cite { font-style: italic; }
+  .libro-grid { display: grid; gap: clamp(3rem, 8vw, 5rem); align-items: center; }
+  @media (min-width: 60em) { .libro-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 4.5rem; } }
+  .libro-stage { margin: 0; position: relative; display: grid; justify-items: center; gap: 1.2rem; padding-top: .5rem; }
+  .libro-stage::before { content: ""; position: absolute; z-index: -1; left: 50%; top: 40%; width: 150%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; pointer-events: none; background: radial-gradient(closest-side, rgba(127,182,234,.22), rgba(127,182,234,.06) 55%, transparent); }
+  .book { --bw: min(18.5rem, 64vw); --bh: calc(var(--bw) * 1.4215); --bt: calc(var(--bw) * .075); position: relative; width: var(--bw); height: var(--bh); perspective: 1500px; -webkit-tap-highlight-color: transparent; }
+  @media (min-width: 60em) { .book { --bw: clamp(17rem, 23vw, 21.5rem); } }
+  .js .book { cursor: pointer; animation: book-float 7s ease-in-out infinite; }
+  @keyframes book-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  .book-3d { position: absolute; inset: 0; transform-style: preserve-3d; transform: rotateY(-28deg); will-change: transform; }
+  .bf { position: absolute; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+  .b-front, .b-back { inset: 0; overflow: hidden; background: #F7F6F3; }
+  .b-front { transform: translateZ(calc(var(--bt) / 2)); border-radius: 2px 4px 4px 2px; }
+  .b-back { transform: rotateY(180deg) translateZ(calc(var(--bt) / 2)); border-radius: 4px 2px 2px 4px; }
+  .b-front img, .b-back img { display: block; width: 100%; height: 100%; }
+  .b-front::after, .b-back::after { content: ""; position: absolute; inset: 0; pointer-events: none; background-repeat: no-repeat; background-size: 100% 100%, 300% 100%, 100% 100%; }
+  /* hinge groove beside the spine, a sheen that travels with the book, light from the upper left */
+  .b-front::after { background-image: linear-gradient(90deg, rgba(10,28,51,.16) 0, rgba(255,255,255,.4) 1.1%, rgba(10,28,51,.1) 2.6%, rgba(255,255,255,.12) 3.6%, rgba(255,255,255,0) 6%), linear-gradient(105deg, rgba(255,255,255,0) 36%, rgba(255,255,255,.26) 48%, rgba(255,255,255,0) 60%), linear-gradient(160deg, rgba(255,255,255,.1), rgba(10,28,51,.15)); background-position: 0 0, var(--sheen-f, 62%) 0, 0 0; }
+  .b-back::after { background-image: linear-gradient(270deg, rgba(10,28,51,.16) 0, rgba(255,255,255,.4) 1.1%, rgba(10,28,51,.1) 2.6%, rgba(255,255,255,.12) 3.6%, rgba(255,255,255,0) 6%), linear-gradient(105deg, rgba(255,255,255,0) 36%, rgba(255,255,255,.22) 48%, rgba(255,255,255,0) 60%), linear-gradient(200deg, rgba(255,255,255,.08), rgba(10,28,51,.12)); background-position: 0 0, var(--sheen-b, 174%) 0, 0 0; }
+  .b-spine { top: 0; left: calc(50% - var(--bt) / 2); width: var(--bt); height: 100%; transform: rotateY(-90deg) translateZ(calc(var(--bw) / 2)); background: linear-gradient(90deg, #D9D6CE, #F5F4F0 30%, #EFEDE8 70%, #D2CEC4); }
+  .b-edge { top: 2px; left: calc(50% - var(--bt) / 2); width: var(--bt); height: calc(100% - 4px); transform: rotateY(90deg) translateZ(calc(var(--bw) / 2 - 2px)); background: linear-gradient(90deg, rgba(10,28,51,.2), transparent 16%, transparent 84%, rgba(10,28,51,.16)), repeating-linear-gradient(90deg, #F4F0E7 0 1px, #E3DDD0 1px 2px); }
+  .b-top, .b-bottom { left: 2px; top: calc(50% - var(--bt) / 2); width: calc(100% - 4px); height: var(--bt); background: linear-gradient(0deg, rgba(10,28,51,.16), transparent 16%, transparent 84%, rgba(10,28,51,.16)), repeating-linear-gradient(0deg, #F4F0E7 0 1px, #E3DDD0 1px 2px); }
+  .b-top { transform: rotateX(90deg) translateZ(calc(var(--bh) / 2 - 2px)); }
+  .b-bottom { transform: rotateX(-90deg) translateZ(calc(var(--bh) / 2 - 2px)); }
+  .book-floor { width: calc(var(--bw, 18rem) * 1.1); height: 1.6rem; margin-top: -.4rem; border-radius: 50%; pointer-events: none; background: radial-gradient(closest-side, rgba(0,0,0,.6), rgba(0,0,0,0)); filter: blur(5px); }
+  .js .book-floor { animation: book-floor 7s ease-in-out infinite; }
+  @keyframes book-floor { 0%, 100% { transform: scaleX(1); opacity: .9; } 50% { transform: scaleX(.86); opacity: .6; } }
+  .libro-cap { display: grid; justify-items: center; gap: 1rem; text-align: center; font-family: var(--sans); font-size: .98rem; color: rgba(244,247,250,.78); }
+  .libro-cap > span { max-width: 30ch; text-wrap: balance; }
+  .book-flip { display: none; align-items: center; gap: .6rem; font-family: var(--sans); font-size: 1rem; color: var(--ice); background: transparent; border: 1px solid rgba(197,224,247,.38); border-radius: 999px; padding: .7rem 1.25rem; cursor: pointer; transition: border-color .3s, color .3s, background-color .3s; }
+  .js .book-flip { display: inline-flex; }
+  .book-flip:hover { border-color: var(--azure); color: var(--paper); background: rgba(127,182,234,.08); }
+  .book-flip svg { width: 1.15rem; height: 1.15rem; flex: none; transition: transform .7s var(--ease); }
+  .book-flip[aria-pressed="true"] svg { transform: rotate(-180deg); }
+  .libro-q { margin-top: 2.2rem; max-width: 40rem; }
+  .libro-q-h { font-family: var(--sans); font-size: .98rem; color: var(--azure); }
+  .libro-q ul { list-style: none; margin: .9rem 0 0; padding: 0; }
+  .libro-q li { position: relative; padding: .85rem 0 .85rem 2.1rem; border-top: 1px solid var(--line-d); font-size: var(--step-1); line-height: 1.4; font-style: italic; color: var(--paper); font-variation-settings: "opsz" 20; }
+  .libro-q li:last-child { border-bottom: 1px solid var(--line-d); }
+  .libro-q li::before { content: "—"; position: absolute; left: 0; top: .85rem; font-style: normal; color: var(--azure); }
+  .libro .prose .libro-after { margin-top: 1.8rem; }
+  .libro-actions { margin-top: 2.2rem; display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.75rem; }
+  .libro .more { margin-top: 0; color: var(--ice); }
+  .libro .more:hover { color: var(--paper); }
+  .facts-list .fl a, .titles .small a { color: var(--blue-2); text-decoration: underline; text-decoration-color: var(--azure); text-underline-offset: .18em; }
+  .facts-list .fl a:hover, .titles .small a:hover { color: var(--ink-2); }
+
   /* ---------- Reduced motion ---------- */
   @media (prefers-reduced-motion: reduce) {
     .js .iris, .js .iris-mark { display: none; }
@@ -665,6 +757,8 @@
     .js .manifesto .big .w { opacity: 1 !important; transition: none; }
     .btn::before { display: none; }
     .titles li::before { transition: none; }
+    .js .book, .js .book-floor { animation: none; }
+    .book-flip svg { transition: none; }
   }
 </style>
 </head>
@@ -750,7 +844,7 @@
         <li><span class="fv">Federal diploma</span><span class="fl">Swiss federally certified optician (master optician)</span></li>
         <li><span class="fv">Over 40 years</span><span class="fl">of professional practice</span></li>
         <li><span class="fv">Former lecturer</span><span class="fl">at the Centro Professionale Tecnico</span></li>
-        <li><span class="fv">By appointment</span><span class="fl">one person at a time</span></li>
+        <li><span class="fv">Author</span><span class="fl">of <a href="#libro">a practical guide to contact lenses</a></span></li>
       </ul>
     </div>
   </section>
@@ -904,13 +998,53 @@
       </div>
       <div class="prose">
         <p class="lead reveal">There are opticians who sell glasses and opticians who take care of eyesight. Marco Rusca has belonged to the second kind for more than forty years.</p>
-        <p class="reveal" style="--i:1">Swiss federally certified optician (master optician) and, for many years, a lecturer at the Centro Professionale Tecnico: those who teach a profession know it inside out. The practice grew from a simple conviction, formed over decades of practice: eyesight is measured with patience and corrected with precision, and neither can be done well in a hurry.</p>
+        <p class="reveal" style="--i:1">Born in Lugano, he first obtained the Ticino cantonal diploma and then, in 1986, the Swiss federal optician’s diploma (master optician) at the Swiss Higher School of Optics in Olten. He has run his own practice in Lugano-Crocifisso ever since. For many years he combined practice with teaching optics at the Centro Professionale Tecnico: those who teach a profession know it inside out.</p>
+        <p class="reveal" style="--i:2">The practice grew from a simple conviction, formed over decades of practice: eyesight is measured with patience and corrected with precision, and neither can be done well in a hurry.</p>
         <ul class="titles">
-          <li class="reveal" style="--i:0"><span class="t">Swiss federally certified optician (master optician)</span><span class="small">Federal diploma from the Swiss Higher School of Optics (SHFA)</span></li>
+          <li class="reveal" style="--i:0"><span class="t">Swiss federally certified optician (master optician)</span><span class="small">Federal master’s diploma obtained in 1986 at the Swiss Higher School of Optics in Olten</span></li>
           <li class="reveal" style="--i:1"><span class="t">Looks after every client personally</span><span class="small">Examination, choice, fitting and adjustment: from start to finish, never handed on to someone else</span></li>
           <li class="reveal" style="--i:2"><span class="t">Former lecturer at the Centro Professionale Tecnico</span><span class="small">For many years he taught the craft as well as practising it</span></li>
-          <li class="reveal" style="--i:3"><span class="t">More than forty years of practice</span><span class="small">Experience that cannot be improvised, especially in difficult cases</span></li>
+          <li class="reveal" style="--i:3"><span class="t">Author of <cite>Lenti a contatto. Guida pratica per tutti</cite></span><span class="small">A guide for people who wear, or would like to wear, contact lenses. <a href="#libro">See the book</a></span></li>
+          <li class="reveal" style="--i:4"><span class="t">More than forty years of practice</span><span class="small">Experience that cannot be improvised, especially in difficult cases</span></li>
         </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section libro" id="libro">
+    <div class="wrap libro-grid">
+      <figure class="libro-stage reveal">
+        <div class="book" id="book">
+          <div class="book-3d">
+            <div class="bf b-front"><img src="../img/libro-copertina.jpg" width="800" height="1137" loading="lazy" decoding="async" alt="Cover of the book «Lenti a contatto. Guida pratica per tutti» by Marco Rusca"></div>
+            <div class="bf b-back"><img src="../img/libro-retro.jpg" width="800" height="1137" loading="lazy" decoding="async" alt="Back cover: the questions the book answers and a short biography of Marco Rusca"></div>
+            <div class="bf b-spine" aria-hidden="true"></div>
+            <div class="bf b-edge" aria-hidden="true"></div>
+            <div class="bf b-top" aria-hidden="true"></div>
+            <div class="bf b-bottom" aria-hidden="true"></div>
+          </div>
+        </div>
+        <div class="book-floor" aria-hidden="true"></div>
+        <figcaption class="libro-cap"><span>Marco Rusca, <cite>Lenti a contatto. Guida pratica per tutti</cite></span><button class="book-flip" type="button" aria-controls="book" aria-pressed="false" data-front="Turn the book over" data-back="Back to the cover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 0 1-14.3 4.9"/><path d="M4 12A8 8 0 0 1 18.3 7.1"/><path d="M18.6 3v4.3h-4.3"/><path d="M5.4 21v-4.3h4.3"/></svg><span>Turn the book over</span></button></figcaption>
+      </figure>
+      <div class="prose">
+        <h2 class="reveal">A book on contact lenses, written by someone who fits them.</h2>
+        <p class="lead reveal" style="--i:1">Marco Rusca is the author of <cite>Lenti a contatto. Guida pratica per tutti</cite> (Contact lenses: a practical guide for everyone), written to answer clearly, and in plain words, the questions of people who wear contact lenses or are thinking of starting.</p>
+        <div class="libro-q reveal" style="--i:2">
+          <p class="libro-q-h">From the back cover, in translation</p>
+          <ul>
+            <li>Are they better than glasses?</li>
+            <li>Is it true that they stop short-sightedness from progressing?</li>
+            <li>From what age, and until when, can they be worn?</li>
+            <li>Can they be worn for months without a break?</li>
+            <li>Can your vision problem be corrected with contact lenses?</li>
+          </ul>
+        </div>
+        <p class="libro-after reveal" style="--i:3">None of these questions has an answer that applies to everyone. That is why, at the practice, the answer comes after an examination of your eyes and a trial of the lenses.</p>
+        <div class="libro-actions reveal" style="--i:4">
+          <a class="btn" href="#appuntamento">Request an appointment</a>
+          <a class="more" href="contact-lenses/">Contact lenses: how the fitting works</a>
+        </div>
       </div>
     </div>
   </section>
@@ -957,7 +1091,7 @@
       <h2 class="reveal">Frequently asked questions</h2>
       <div class="qa">
         <div class="reveal"><h3>What is the difference between an optician, an optometrist and an ophthalmologist?</h3><p>An ophthalmologist is a medical doctor who diagnoses and treats eye diseases. An optician makes glasses and fits contact lenses; an optometrist is an optician with higher training, specialised in eye examinations. To have your eyesight measured you can go directly to a federally certified optician; if anything calls for a medical check, the practice refers you to an ophthalmologist.</p></div>
-        <div class="reveal"><h3>What does “Swiss federally certified optician (master optician)” mean?</h3><p>It is the higher federal diploma of the optician’s profession in Switzerland. Beyond basic training it covers eye examinations and contact lens fitting. Marco Rusca has practised the profession for more than forty years.</p></div>
+        <div class="reveal"><h3>What does “Swiss federally certified optician (master optician)” mean?</h3><p>It is the higher federal diploma of the optician’s profession in Switzerland. Beyond basic training it covers eye examinations and contact lens fitting. Marco Rusca obtained it in 1986 at the Swiss Higher School of Optics in Olten and has practised the profession for more than forty years.</p></div>
         <div class="reveal"><h3>How often should I have my eyes tested?</h3><p>If you have no complaints, about every two years. Sooner if you notice changes: difficulty reading, headaches, trouble driving at night, tiredness in front of a screen.</p></div>
         <div class="reveal"><h3>Why can’t I get used to my progressive lenses?</h3><p>The three most common causes are a correction that is not quite exact, imprecise centring, or a lens or frame that does not suit how the glasses are really used. It is worth having the measurements and the fitting checked before giving up. <a class="more" href="progressive-lenses/">Progressive lenses: what the result depends on</a></p></div>
         <div class="reveal"><h3>Where is the practice and how do I make an appointment?</h3><p>In Savosa, at Via Emilio Maraini 27, in the Crocifisso area, on the edge of Lugano. The practice sees clients by appointment only: by phone on +41 91 966 32 68 or with the form below.</p></div>
@@ -1118,6 +1252,44 @@
       });
       card.addEventListener('pointerleave', function () { card.style.transform = ''; });
     });
+  }
+
+  /* the book: turns over on request and follows the pointer gently */
+  var book = document.getElementById('book');
+  if (book) {
+    var b3d = book.querySelector('.book-3d'), flip = document.querySelector('.book-flip'), flipLabel = flip ? flip.querySelector('span') : null;
+    var POSE = -28, TURN = -124, onBack = false, running = false;
+    var bt = { x: 0, y: POSE }, bc = { x: 0, y: POSE }, tl = { x: 0, y: 0 };
+    var paintBook = function () {
+      b3d.style.transform = 'rotateX(' + bc.x.toFixed(2) + 'deg) rotateY(' + bc.y.toFixed(2) + 'deg)';
+      book.style.setProperty('--sheen-f', (62 + (bc.y - POSE) * 0.9 + tl.y * 0.8).toFixed(1) + '%');
+      book.style.setProperty('--sheen-b', (62 + (bc.y - POSE - TURN) * 0.9 + tl.y * 0.8).toFixed(1) + '%');
+    };
+    var stepBook = function () {
+      var ty = bt.y + tl.y, tx = bt.x + tl.x;
+      bc.y += (ty - bc.y) * 0.06; bc.x += (tx - bc.x) * 0.06; paintBook();
+      if (Math.abs(ty - bc.y) > 0.05 || Math.abs(tx - bc.x) > 0.05) { requestAnimationFrame(stepBook); } else { running = false; }
+    };
+    var kick = function () {
+      if (reduce) { bc.y = bt.y + tl.y; bc.x = bt.x + tl.x; paintBook(); return; }
+      if (!running) { running = true; requestAnimationFrame(stepBook); }
+    };
+    var turnBook = function () {
+      onBack = !onBack; bt.y = POSE + (onBack ? TURN : 0);
+      if (flip) { flip.setAttribute('aria-pressed', onBack ? 'true' : 'false'); flipLabel.textContent = flip.getAttribute(onBack ? 'data-back' : 'data-front'); }
+      kick();
+    };
+    book.addEventListener('click', turnBook);
+    if (flip) flip.addEventListener('click', turnBook);
+    if (hoverable && !reduce) {
+      var bookStage = book.parentNode;
+      bookStage.addEventListener('pointermove', function (e) {
+        var r = book.getBoundingClientRect(), x = clamp((e.clientX - r.left) / r.width, -0.5, 1.5), y = clamp((e.clientY - r.top) / r.height, -0.5, 1.5);
+        tl.y = (x - 0.5) * 14; tl.x = (0.5 - y) * 9; kick();
+      });
+      bookStage.addEventListener('pointerleave', function () { tl.y = 0; tl.x = 0; kick(); });
+    }
+    paintBook();
   }
 
   /* manifesto: words come in as you scroll */
