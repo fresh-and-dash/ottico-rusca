@@ -147,6 +147,76 @@
       },
       "sameAs": [
         "https://www.local.ch/it/d/savosa/6942/ottico/rusca-marco-NcHW8Whr9MO1ePPfZew7Yw"
+      ],
+      "brand": [
+        {
+          "@type": "Brand",
+          "name": "Silhouette"
+        },
+        {
+          "@type": "Brand",
+          "name": "Porsche Design"
+        },
+        {
+          "@type": "Brand",
+          "name": "Furla"
+        },
+        {
+          "@type": "Brand",
+          "name": "Lamarca"
+        },
+        {
+          "@type": "Brand",
+          "name": "Titanflex"
+        },
+        {
+          "@type": "Brand",
+          "name": "Airlight"
+        },
+        {
+          "@type": "Brand",
+          "name": "Clark"
+        },
+        {
+          "@type": "Brand",
+          "name": "Trevi 1971"
+        },
+        {
+          "@type": "Brand",
+          "name": "Chopard"
+        },
+        {
+          "@type": "Brand",
+          "name": "ic! berlin"
+        },
+        {
+          "@type": "Brand",
+          "name": "Police"
+        },
+        {
+          "@type": "Brand",
+          "name": "Humphrey’s"
+        },
+        {
+          "@type": "Brand",
+          "name": "Ray-Ban"
+        },
+        {
+          "@type": "Brand",
+          "name": "Marius Morel"
+        },
+        {
+          "@type": "Brand",
+          "name": "Gambini"
+        },
+        {
+          "@type": "Brand",
+          "name": "Dolce&Gabbana"
+        },
+        {
+          "@type": "Brand",
+          "name": "Alberto Puccini"
+        }
       ]
     },
     {
@@ -721,6 +791,51 @@
   .rv-note p { max-width: 62ch; }
   .rv-attr { font-family: Roboto, Arial, sans-serif; font-size: .95rem; font-weight: 500; color: #5f6368; white-space: nowrap; }
 
+  /* ---------- Montature: la galleria ---------- */
+  .fg-wrap { margin-top: clamp(2.8rem, 6vw, 4.2rem); }
+  .fg-kicker { font-family: var(--sans); font-size: .98rem; color: var(--azure); }
+  .fg-filter { display: none; }
+  .js .fg-filter { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+  .fg-filter button { flex: none; font-family: var(--sans); font-size: .95rem; line-height: 1; white-space: nowrap; color: rgba(244,247,250,.88); background: transparent; border: 1px solid rgba(244,247,250,.24); border-radius: 999px; padding: .62rem 1.05rem; cursor: pointer; transition: background-color .35s var(--ease), border-color .35s var(--ease), color .35s var(--ease); }
+  .fg-filter button:hover { border-color: var(--azure); color: var(--paper); }
+  .fg-filter button[aria-pressed="true"] { background: var(--ice); border-color: var(--ice); color: var(--ink); }
+  @media (max-width: 47.99em) {
+    .js .fg-filter { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-inline: -1.25rem; padding: 0 1.25rem .3rem; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 1.25rem, #000 calc(100% - 2.5rem), transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 1.25rem, #000 calc(100% - 2.5rem), transparent 100%); }
+    .fg-filter::-webkit-scrollbar { display: none; }
+  }
+  .fg-grid { margin-top: 1.6rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; }
+  @media (min-width: 48em) { .fg-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; } }
+  @media (min-width: 64em) { .fg-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; } }
+  .fg { position: relative; display: flex; flex-direction: column; overflow: hidden; isolation: isolate; border-radius: 16px; background: #F5F7F7; color: var(--ink-2); text-decoration: none; box-shadow: 0 30px 50px -36px rgba(0,0,0,.75); transition: transform .6s var(--ease), box-shadow .6s var(--ease); }
+  .fg[hidden] { display: none !important; }
+  .fg-media { display: block; aspect-ratio: 16 / 10; overflow: hidden; }
+  .fg-media img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease), filter 1s var(--ease); }
+  .fg::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(110deg, transparent 38%, rgba(255,255,255,.55) 50%, transparent 62%); transform: translateX(-120%); transition: transform 1s var(--ease); }
+  .fg-cap { display: grid; gap: .12rem; padding: .1rem 1.1rem 1.05rem; }
+  .fg-b { font-size: 1.2rem; line-height: 1.2; color: var(--ink-2); font-variation-settings: "opsz" 24; }
+  .fg-d { font-family: var(--sans); font-size: .9rem; line-height: 1.4; color: var(--mist); }
+  @media (max-width: 30em) { .fg-cap { padding: 0 .8rem .8rem; } .fg-b { font-size: 1.04rem; } .fg-d { font-size: .82rem; } }
+  @media (hover: hover) {
+    .fg:hover { transform: translateY(-4px); box-shadow: 0 44px 64px -36px rgba(0,0,0,.85), 0 0 0 1px rgba(127,182,234,.55); }
+    .fg:hover .fg-media img { transform: scale(1.05); }
+    .fg:hover::after { transform: translateX(120%); }
+  }
+  .js .fg-grid.is-collapsed .fg:nth-child(n+7) { display: none; }
+  @media (min-width: 64em) { .js .fg-grid.is-collapsed .fg:nth-child(n+7) { display: flex; } .js .fg-grid.is-collapsed .fg:nth-child(n+9) { display: none; } }
+  .fg-more { display: none; }
+  .js .fg-more { display: inline-flex; align-items: center; gap: .6rem; margin-top: 1.6rem; font-family: var(--sans); font-size: 1rem; color: var(--ice); background: transparent; border: 1px solid rgba(197,224,247,.38); border-radius: 999px; padding: .75rem 1.3rem; cursor: pointer; transition: border-color .3s, color .3s, background-color .3s; }
+  .js .fg-more:hover { border-color: var(--azure); color: var(--paper); background: rgba(127,182,234,.08); }
+  .js .fg-more[hidden] { display: none; }
+  @media (prefers-reduced-motion: no-preference) {
+    .js .fg { opacity: 0; translate: 0 18px; transition: opacity .8s var(--ease) calc(var(--d, 0) * 80ms), translate .8s var(--ease) calc(var(--d, 0) * 80ms), transform .6s var(--ease), box-shadow .6s var(--ease); }
+    .js .fg .fg-media img { filter: blur(8px); transform: scale(1.08); }
+    .js .fg.is-in { opacity: 1; translate: 0 0; }
+    .js .fg.is-in .fg-media img { filter: none; transform: none; }
+    .js .fg.is-in:hover .fg-media img { transform: scale(1.05); }
+    .fg-grid.is-filtering .fg:not([hidden]) { animation: fg-pop .55s var(--ease) both; animation-delay: calc(var(--k, 0) * 45ms); }
+  }
+  @keyframes fg-pop { from { opacity: 0; transform: translateY(10px) scale(.97); } }
+
   /* ---------- Lo studio in immagini ---------- */
   .tour { position: relative; background: var(--ink); color: var(--paper); }
   .tour-sticky { position: relative; overflow: hidden; isolation: isolate; }
@@ -865,6 +980,7 @@
     .portrait-frame img { transition: none; }
     .js .book, .js .book-floor { animation: none; }
     .tg img { transition: none; }
+    .fg, .fg-media img, .fg::after { transition: none; }
     .tg:hover img { transform: none; }
     .lightbox[open] { animation: none; }
     .book-flip svg { transition: none; }
@@ -1032,7 +1148,7 @@
     </div>
   </section>
 
-  <dialog class="lightbox" id="lightbox" aria-label="Photos of the practice">
+  <dialog class="lightbox" id="lightbox" aria-label="Photos">
     <figure class="lb-fig"><img class="lb-img" alt=""><figcaption><span class="lb-t"></span><span class="lb-d"></span></figcaption></figure>
     <button class="lb-btn lb-close" type="button" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
     <button class="lb-btn lb-prev" type="button" aria-label="Previous photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
@@ -1090,44 +1206,59 @@
         <h2 class="reveal">The right frame exists. But it is chosen after the measurement.</h2>
         <div class="prose"><p class="lead reveal" style="--i:1">Every frame places constraints on the lenses: size, curvature, distance from the eyes. With a strong prescription, a large lens becomes thick and heavy; with a progressive, too little height compromises the reading area. That is why, here, the frame is chosen together with the optician, after the examination and not before.</p></div>
       </div>
-      <div class="frames" id="frames">
-        <article class="frame-card reveal" style="--i:0">
-          <span class="tag">Acetate</span>
-          <svg viewBox="0 0 320 130" fill="none" stroke="url(#tortoise)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M26 46 C26 26 44 20 78 20 C116 20 134 30 134 60 C134 92 110 110 78 110 C44 110 26 92 26 62 Z" fill="url(#lensfill)"/>
-            <path d="M294 46 C294 26 276 20 242 20 C204 20 186 30 186 60 C186 92 210 110 242 110 C276 110 294 92 294 62 Z" fill="url(#lensfill)"/>
-            <path d="M134 52 C142 36 178 36 186 52"/><path d="M26 48 C14 46 8 50 6 58"/><path d="M294 48 C306 46 312 50 314 58"/>
-            <circle cx="30" cy="44" r="2.2" fill="#C5E0F7" stroke="none"/><circle cx="290" cy="44" r="2.2" fill="#C5E0F7" stroke="none"/>
-          </svg>
-          <h3>Panto</h3><p>The classic that makes a face look younger. A tall lens: the most comfortable choice for progressives.</p>
-        </article>
-        <article class="frame-card reveal" style="--i:1">
-          <span class="tag">Metal</span>
-          <svg viewBox="0 0 320 130" fill="none" stroke="url(#brass)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="80" cy="66" r="46" fill="url(#lensfill)"/><circle cx="240" cy="66" r="46" fill="url(#lensfill)"/>
-            <path d="M126 58 C140 42 180 42 194 58"/><path d="M118 84 c -6 4 -9 10 -8 16"/><path d="M202 84 c 6 4 9 10 8 16"/>
-            <path d="M34 60 C22 60 14 64 10 72"/><path d="M286 60 C298 60 306 64 310 72"/>
-          </svg>
-          <h3>Round</h3><p>Light and discreet. With strong prescriptions the diameter needs careful assessment before the lenses are ordered.</p>
-        </article>
-        <article class="frame-card reveal" style="--i:2">
-          <span class="tag">Acetate</span>
-          <svg viewBox="0 0 320 130" fill="none" stroke="url(#tortoise)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="20" y="34" width="112" height="66" rx="14" fill="url(#lensfill)"/><rect x="188" y="34" width="112" height="66" rx="14" fill="url(#lensfill)"/>
-            <path d="M132 50 C140 42 180 42 188 50"/><path d="M20 48 C10 48 6 52 4 60"/><path d="M300 48 C310 48 314 52 316 60"/>
-            <circle cx="26" cy="42" r="2.2" fill="#C5E0F7" stroke="none"/><circle cx="294" cy="42" r="2.2" fill="#C5E0F7" stroke="none"/>
-          </svg>
-          <h3>Rectangular</h3><p>Structure and character. A shallow lens calls for latest-generation progressives, calculated for the chosen frame.</p>
-        </article>
-        <article class="frame-card reveal" style="--i:3">
-          <span class="tag">Titanium</span>
-          <svg viewBox="0 0 320 130" fill="none" stroke="url(#brass)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="18" y="38" width="118" height="58" rx="26" fill="url(#lensfill)"/><rect x="184" y="38" width="118" height="58" rx="26" fill="url(#lensfill)"/>
-            <path d="M136 54 C144 46 176 46 184 54"/><path d="M126 82 c -5 3 -7 8 -6 14"/><path d="M194 82 c 5 3 7 8 6 14"/>
-            <path d="M18 52 C10 52 6 56 4 64"/><path d="M302 52 C310 52 314 56 316 64"/>
-          </svg>
-          <h3>Slim</h3><p>Almost invisible, weighing just a few grams. For those who wear glasses twelve hours a day and want to forget them.</p>
-        </article>
+      <div class="fg-wrap">
+        <div class="fg-top reveal">
+          <p class="fg-kicker">Some of the frames at the practice</p>
+          <div class="fg-filter" role="group" aria-label="Filter by brand">
+            <button type="button" aria-pressed="true" data-brand="*">All</button>
+            <button type="button" aria-pressed="false" data-brand="silhouette">Silhouette</button>
+            <button type="button" aria-pressed="false" data-brand="porsche-design">Porsche Design</button>
+            <button type="button" aria-pressed="false" data-brand="furla">Furla</button>
+            <button type="button" aria-pressed="false" data-brand="lamarca">Lamarca</button>
+            <button type="button" aria-pressed="false" data-brand="titanflex">Titanflex</button>
+            <button type="button" aria-pressed="false" data-brand="airlight">Airlight</button>
+            <button type="button" aria-pressed="false" data-brand="trevi-coliseum">Trevi Coliseum</button>
+            <button type="button" aria-pressed="false" data-brand="chopard">Chopard</button>
+            <button type="button" aria-pressed="false" data-brand="ic-berlin">ic! berlin</button>
+            <button type="button" aria-pressed="false" data-brand="police">Police</button>
+            <button type="button" aria-pressed="false" data-brand="humphreys">Humphrey’s</button>
+            <button type="button" aria-pressed="false" data-brand="ray-ban">Ray-Ban</button>
+            <button type="button" aria-pressed="false" data-brand="marius-morel">Marius Morel</button>
+            <button type="button" aria-pressed="false" data-brand="gambini">Gambini</button>
+            <button type="button" aria-pressed="false" data-brand="dolce-gabbana">Dolce&amp;Gabbana</button>
+            <button type="button" aria-pressed="false" data-brand="alberto-puccini">Alberto Puccini</button>
+          </div>
+        </div>
+        <div class="fg-grid is-collapsed" id="frames">
+          <a class="fg" href="../img/montature/silhouette-1-1200.jpg" data-brand="silhouette" style="--d:0"><span class="fg-media"><img src="../img/montature/silhouette-1-600.jpg" srcset="../img/montature/silhouette-1-600.jpg 600w, ../img/montature/silhouette-1-1200.jpg 1200w" sizes="(min-width: 64em) 17rem, (min-width: 48em) 30vw, 46vw" width="1200" height="900" loading="lazy" decoding="async" alt="Silhouette frame: rimless, bronze"></span><span class="fg-cap"><span class="fg-b">Silhouette</span><span class="fg-d">Rimless, bronze</span></span></a>
+          <a class="fg" href="../img/montature/porsche-design-1-1200.jpg" data-brand="porsche-design" style="--d:1"><span class="fg-media"><img src="../img/montature/porsche-design-1-600.jpg" srcset="../img/montature/porsche-design-1-600.jpg 600w, ../img/montature/porsche-design-1-1200.jpg 1200w" sizes="(min-width: 64em) 17rem, (min-width: 48em) 30vw, 46vw" width="1200" height="900" loading="lazy" decoding="async" alt="Porsche Design frame: black titanium, red temples"></span><span class="fg-cap"><span class="fg-b">Porsche Design</span><span class="fg-d">Black titanium, red temples</span></span></a>
+          <a class="fg" href="../img/montature/furla-1-1200.jpg" data-brand="furla" style="--d:2"><span class="fg-media"><img src="../img/montature/furla-1-600.jpg" srcset="../img/montature/furla-1-600.jpg 600w, ../img/montature/furla-1-1200.jpg 1200w" sizes="(min-width: 64em) 17rem, (min-width: 48em) 30vw, 46vw" width="1200" height="900" loading="lazy" decoding="async" alt="Furla frame: square, black acetate"></span><span class="fg-cap"><span class="fg-b">Furla</span><span class="fg-d">Square, black acetate</span></span></a>
+          <a class="fg" href="../img/montature/lamarca-1-1200.jpg" data-brand="lamarca" style="--d:3"><span class="fg-media"><img src="../img/montature/lamarca-1-600.jpg" srcset="../img/montature/lamarca-1-600.jpg 600w, ../img/montature/lamarca-1-1200.jpg 1200w" sizes="(min-width: 64em) 17rem, (min-width: 48em) 30vw, 46vw" width="1200" height="900" loading="lazy" decoding="async" alt="Lamarca frame: cat-eye, black with green and red"></span><span class="fg-cap"><span class="fg-b">Lamarca</span><span class="fg-d">Cat-eye, black with green and red</span></span></a>
+          <a class="fg" href="../img/montature/titanflex-1-1200.jpg" data-brand="titanflex" style="--d:0"><span class="fg-media"><img src="../img/montature/titanflex-1-600.jpg" srcset="../img/montature/titanflex-1-600.jpg 600w, ../img/montature/titanflex-1-1200.jpg 1200w" sizes="(min-width: 64em) 17rem, (min-width: 48em) 30vw, 46vw" width="1200" height="900" loading="lazy" decoding="async" alt="Titanflex frame: rectangular, graphite metal"></span><span class="fg-cap"><span class="fg-b">Titanflex</span><span class="fg-d">Rectangular, graphite metal</span></span></a>
+          <a class="fg" href="../img/montature/airlight-1-1200.jpg" data-brand="airlight" style="--d:1"><span class="fg-media"><img src="../img/montature/airlight-1-600.jpg" srcset="../img/montature/airlight-1-600.jpg 600w, ../img/montature/airlight-1-1200.jpg 1200w" sizes="(min-width: 64em) 17rem, (min-width: 48em) 30vw, 46vw" width="1200" height="900" loading="lazy" decoding="async" alt="Airlight frame: oval, red steel"></span><span class="fg-cap"><span class="fg-b">Airlight</span><span class="fg-d">Oval, red steel</span></span></a>
+          <a class="fg" href="../img/montature/trevi-coliseum-1-1200.jpg" data-brand="trevi-coliseum" style="--d:2"><span class="fg-media"><img src="../img/montature/trevi-coliseum-1-600.jpg" srcset="../img/montature/trevi-coliseum-1-600.jpg 600w, ../img/montature/trevi-coliseum-1-1200.jpg 1200w" sizes="(min-width: 64em) 17rem, (min-width: 48em) 30vw, 46vw" width="1200" height="900" loading="lazy" decoding="async" alt="Clark frame: tortoiseshell with blue"></span><span class="fg-cap"><span class="fg-b">Clark</span><span class="fg-d">Tortoiseshell with blue</span></span></a>
+          <a class="fg" href="../img/montature/chopard-1-1200.jpg" data-brand="chopard" style="--d:3"><span class="fg-media"><img src="../img/montature/chopard-1-600.jpg" srcset="../img/montature/chopard-1-600.jpg 600w, ../img/montature/chopard-1-1200.jpg 1200w" sizes="(min-width: 64em) 17rem, (min-width: 48em) 30vw, 46vw" width="1200" height="900" loading="lazy" decoding="async" alt="Chopard frame: rimless, rose gold colour"></span><span class="fg-cap"><span class="fg-b">Chopard</span><span class="fg-d">Rimless, rose gold colour</span></span></a>
+          <a class="fg" href="../img/montature/ic-berlin-1-1200.jpg" data-brand="ic-berlin" style="--d:0"><span class="fg-media"><img src="../img/montature/ic-berlin-1-600.jpg" srcset="../img/montature/ic-berlin-1-600.jpg 600w, ../img/montature/ic-berlin-1-1200.jpg 1200w" sizes="(min-width: 64em) 17rem, (min-width: 48em) 30vw, 46vw" width="1200" height="900" loading="lazy" decoding="async" alt="ic! berlin frame: round, thin metal"></span><span class="fg-cap"><span class="fg-b">ic! berlin</span><span class="fg-d">Round, thin metal</span></span></a>
+          <a class="fg" href="../img/montature/police-1-1200.jpg" data-brand="police" style="--d:1"><span class="fg-media"><img src="../img/montature/police-1-600.jpg" srcset="../img/montature/police-1-600.jpg 600w, ../img/montature/police-1-1200.jpg 1200w" sizes="(min-width: 64em) 17rem, (min-width: 48em) 30vw, 46vw" width="1200" height="900" loading="lazy" decoding="async" alt="Police frame: round, transparent green"></span><span class="fg-cap"><span class="fg-b">Police</span><span class="fg-d">Round, transparent green</span></span></a>
+          <a class="fg" href="../img/montature/humphreys-1-1200.jpg" data-brand="humphreys" style="--d:2"><span class="fg-media"><img src="../img/montature/humphreys-1-600.jpg" srcset="../img/montature/humphreys-1-600.jpg 600w, ../img/montature/humphreys-1-1200.jpg 1200w" sizes="(min-width: 64em) 17rem, (min-width: 48em) 30vw, 46vw" width="1200" height="900" loading="lazy" decoding="async" alt="Humphrey’s frame: round, blue-to-green gradient"></span><span class="fg-cap"><span class="fg-b">Humphrey’s</span><span class="fg-d">Round, blue-to-green gradient</span></span></a>
+          <a class="fg" href="../img/montature/ray-ban-1-1200.jpg" data-brand="ray-ban" style="--d:3"><span class="fg-media"><img src="../img/montature/ray-ban-1-600.jpg" srcset="../img/montature/ray-ban-1-600.jpg 600w, ../img/montature/ray-ban-1-1200.jpg 1200w" sizes="(min-width: 64em) 17rem, (min-width: 48em) 30vw, 46vw" width="1200" height="900" loading="lazy" decoding="async" alt="Ray-Ban frame: rectangular, black"></span><span class="fg-cap"><span class="fg-b">Ray-Ban</span><span class="fg-d">Rectangular, black</span></span></a>
+          <a class="fg" href="../img/montature/marius-morel-1-1200.jpg" data-brand="marius-morel" style="--d:0"><span class="fg-media"><img src="../img/montature/marius-morel-1-600.jpg" srcset="../img/montature/marius-morel-1-600.jpg 600w, ../img/montature/marius-morel-1-1200.jpg 1200w" sizes="(min-width: 64em) 17rem, (min-width: 48em) 30vw, 46vw" width="1200" height="900" loading="lazy" decoding="async" alt="Marius Morel 1880 frame: round, horn-coloured acetate"></span><span class="fg-cap"><span class="fg-b">Marius Morel 1880</span><span class="fg-d">Round, horn-coloured acetate</span></span></a>
+          <a class="fg" href="../img/montature/gambini-1-1200.jpg" data-brand="gambini" style="--d:1"><span class="fg-media"><img src="../img/montature/gambini-1-600.jpg" srcset="../img/montature/gambini-1-600.jpg 600w, ../img/montature/gambini-1-1200.jpg 1200w" sizes="(min-width: 64em) 17rem, (min-width: 48em) 30vw, 46vw" width="1200" height="900" loading="lazy" decoding="async" alt="Gambini frame: round, transparent blue"></span><span class="fg-cap"><span class="fg-b">Gambini</span><span class="fg-d">Round, transparent blue</span></span></a>
+          <a class="fg" href="../img/montature/dolce-gabbana-1-1200.jpg" data-brand="dolce-gabbana" style="--d:2"><span class="fg-media"><img src="../img/montature/dolce-gabbana-1-600.jpg" srcset="../img/montature/dolce-gabbana-1-600.jpg 600w, ../img/montature/dolce-gabbana-1-1200.jpg 1200w" sizes="(min-width: 64em) 17rem, (min-width: 48em) 30vw, 46vw" width="1200" height="900" loading="lazy" decoding="async" alt="Dolce&amp;Gabbana frame: square, black and gold"></span><span class="fg-cap"><span class="fg-b">Dolce&amp;Gabbana</span><span class="fg-d">Square, black and gold</span></span></a>
+          <a class="fg" href="../img/montature/alberto-puccini-1-1200.jpg" data-brand="alberto-puccini" style="--d:3"><span class="fg-media"><img src="../img/montature/alberto-puccini-1-600.jpg" srcset="../img/montature/alberto-puccini-1-600.jpg 600w, ../img/montature/alberto-puccini-1-1200.jpg 1200w" sizes="(min-width: 64em) 17rem, (min-width: 48em) 30vw, 46vw" width="1200" height="900" loading="lazy" decoding="async" alt="Alberto Puccini frame: square, black with rhinestones"></span><span class="fg-cap"><span class="fg-b">Alberto Puccini</span><span class="fg-d">Square, black with rhinestones</span></span></a>
+          <a class="fg" href="../img/montature/silhouette-2-1200.jpg" data-brand="silhouette" style="--d:0"><span class="fg-media"><img src="../img/montature/silhouette-2-600.jpg" srcset="../img/montature/silhouette-2-600.jpg 600w, ../img/montature/silhouette-2-1200.jpg 1200w" sizes="(min-width: 64em) 17rem, (min-width: 48em) 30vw, 46vw" width="1200" height="900" loading="lazy" decoding="async" alt="Silhouette frame: oval, transparent amber"></span><span class="fg-cap"><span class="fg-b">Silhouette</span><span class="fg-d">Oval, transparent amber</span></span></a>
+          <a class="fg" href="../img/montature/porsche-design-2-1200.jpg" data-brand="porsche-design" style="--d:1"><span class="fg-media"><img src="../img/montature/porsche-design-2-600.jpg" srcset="../img/montature/porsche-design-2-600.jpg 600w, ../img/montature/porsche-design-2-1200.jpg 1200w" sizes="(min-width: 64em) 17rem, (min-width: 48em) 30vw, 46vw" width="1200" height="900" loading="lazy" decoding="async" alt="Porsche Design frame: rimless, black"></span><span class="fg-cap"><span class="fg-b">Porsche Design</span><span class="fg-d">Rimless, black</span></span></a>
+          <a class="fg" href="../img/montature/furla-2-1200.jpg" data-brand="furla" style="--d:2"><span class="fg-media"><img src="../img/montature/furla-2-600.jpg" srcset="../img/montature/furla-2-600.jpg 600w, ../img/montature/furla-2-1200.jpg 1200w" sizes="(min-width: 64em) 17rem, (min-width: 48em) 30vw, 46vw" width="1200" height="900" loading="lazy" decoding="async" alt="Furla frame: round, black acetate"></span><span class="fg-cap"><span class="fg-b">Furla</span><span class="fg-d">Round, black acetate</span></span></a>
+          <a class="fg" href="../img/montature/lamarca-2-1200.jpg" data-brand="lamarca" style="--d:3"><span class="fg-media"><img src="../img/montature/lamarca-2-600.jpg" srcset="../img/montature/lamarca-2-600.jpg 600w, ../img/montature/lamarca-2-1200.jpg 1200w" sizes="(min-width: 64em) 17rem, (min-width: 48em) 30vw, 46vw" width="1200" height="900" loading="lazy" decoding="async" alt="Lamarca frame: round, blue and orange mosaic"></span><span class="fg-cap"><span class="fg-b">Lamarca</span><span class="fg-d">Round, blue and orange mosaic</span></span></a>
+          <a class="fg" href="../img/montature/titanflex-2-1200.jpg" data-brand="titanflex" style="--d:0"><span class="fg-media"><img src="../img/montature/titanflex-2-600.jpg" srcset="../img/montature/titanflex-2-600.jpg 600w, ../img/montature/titanflex-2-1200.jpg 1200w" sizes="(min-width: 64em) 17rem, (min-width: 48em) 30vw, 46vw" width="1200" height="900" loading="lazy" decoding="async" alt="Titanflex frame: round, bronze metal"></span><span class="fg-cap"><span class="fg-b">Titanflex</span><span class="fg-d">Round, bronze metal</span></span></a>
+          <a class="fg" href="../img/montature/airlight-2-1200.jpg" data-brand="airlight" style="--d:1"><span class="fg-media"><img src="../img/montature/airlight-2-600.jpg" srcset="../img/montature/airlight-2-600.jpg 600w, ../img/montature/airlight-2-1200.jpg 1200w" sizes="(min-width: 64em) 17rem, (min-width: 48em) 30vw, 46vw" width="1200" height="900" loading="lazy" decoding="async" alt="Airlight frame: round, blue metal"></span><span class="fg-cap"><span class="fg-b">Airlight</span><span class="fg-d">Round, blue metal</span></span></a>
+          <a class="fg" href="../img/montature/trevi-coliseum-2-1200.jpg" data-brand="trevi-coliseum" style="--d:2"><span class="fg-media"><img src="../img/montature/trevi-coliseum-2-600.jpg" srcset="../img/montature/trevi-coliseum-2-600.jpg 600w, ../img/montature/trevi-coliseum-2-1200.jpg 1200w" sizes="(min-width: 64em) 17rem, (min-width: 48em) 30vw, 46vw" width="1200" height="900" loading="lazy" decoding="async" alt="Trevi 1971 frame: cat-eye, red and lilac"></span><span class="fg-cap"><span class="fg-b">Trevi 1971</span><span class="fg-d">Cat-eye, red and lilac</span></span></a>
+          <a class="fg" href="../img/montature/silhouette-3-1200.jpg" data-brand="silhouette" style="--d:3"><span class="fg-media"><img src="../img/montature/silhouette-3-600.jpg" srcset="../img/montature/silhouette-3-600.jpg 600w, ../img/montature/silhouette-3-1200.jpg 1200w" sizes="(min-width: 64em) 17rem, (min-width: 48em) 30vw, 46vw" width="1200" height="900" loading="lazy" decoding="async" alt="Silhouette frame: oval, transparent aqua green"></span><span class="fg-cap"><span class="fg-b">Silhouette</span><span class="fg-d">Oval, transparent aqua green</span></span></a>
+          <a class="fg" href="../img/montature/porsche-design-3-1200.jpg" data-brand="porsche-design" style="--d:0"><span class="fg-media"><img src="../img/montature/porsche-design-3-600.jpg" srcset="../img/montature/porsche-design-3-600.jpg 600w, ../img/montature/porsche-design-3-1200.jpg 1200w" sizes="(min-width: 64em) 17rem, (min-width: 48em) 30vw, 46vw" width="1200" height="900" loading="lazy" decoding="async" alt="Porsche Design frame: oval titanium, black"></span><span class="fg-cap"><span class="fg-b">Porsche Design</span><span class="fg-d">Oval titanium, black</span></span></a>
+          <a class="fg" href="../img/montature/furla-3-1200.jpg" data-brand="furla" style="--d:1"><span class="fg-media"><img src="../img/montature/furla-3-600.jpg" srcset="../img/montature/furla-3-600.jpg 600w, ../img/montature/furla-3-1200.jpg 1200w" sizes="(min-width: 64em) 17rem, (min-width: 48em) 30vw, 46vw" width="1200" height="900" loading="lazy" decoding="async" alt="Furla frame: square, tortoiseshell"></span><span class="fg-cap"><span class="fg-b">Furla</span><span class="fg-d">Square, tortoiseshell</span></span></a>
+          <a class="fg" href="../img/montature/lamarca-3-1200.jpg" data-brand="lamarca" style="--d:2"><span class="fg-media"><img src="../img/montature/lamarca-3-600.jpg" srcset="../img/montature/lamarca-3-600.jpg 600w, ../img/montature/lamarca-3-1200.jpg 1200w" sizes="(min-width: 64em) 17rem, (min-width: 48em) 30vw, 46vw" width="1200" height="900" loading="lazy" decoding="async" alt="Lamarca frame: diamond-shaped, blue and ochre"></span><span class="fg-cap"><span class="fg-b">Lamarca</span><span class="fg-d">Diamond-shaped, blue and ochre</span></span></a>
+        </div>
+        <button class="fg-more" type="button" aria-controls="frames" aria-expanded="false" data-more="Show all 27 frames" data-less="Show fewer">Show all 27 frames</button>
       </div>
       <p class="frames-note reveal">The frames in the practice are a selection, not a catalogue: they are tried on calmly, with the correction already defined, and adjusted to the face before the lenses are ordered.</p>
     </div>
@@ -1361,7 +1492,7 @@
 
   /* reveal on scroll */
   var revealIO = new IntersectionObserver(function (entries) { entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('is-in'); revealIO.unobserve(en.target); } }); }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
-  document.querySelectorAll('.reveal, .tg, .portrait').forEach(function (el) { revealIO.observe(el); });
+  document.querySelectorAll('.reveal, .tg, .portrait, .fg').forEach(function (el) { revealIO.observe(el); });
 
   /* count-up */
   var counter = document.querySelector('[data-count]');
@@ -1460,6 +1591,34 @@
     tourTarget = tourP = 0; tourScroll(); tourPaint(); parPaint();
   }
 
+  /* montature: filter by brand, show all */
+  var frameItems = Array.prototype.slice.call(document.querySelectorAll('.fg'));
+  var fgGrid = document.getElementById('frames'), fgMore = document.querySelector('.fg-more');
+  var fgBtns = Array.prototype.slice.call(document.querySelectorAll('.fg-filter button'));
+  if (fgGrid && fgBtns.length) {
+    var fgOpen = false;
+    var fgSet = function (b) {
+      fgBtns.forEach(function (x) { x.setAttribute('aria-pressed', x.getAttribute('data-brand') === b ? 'true' : 'false'); });
+      var k = 0;
+      frameItems.forEach(function (it) {
+        var on = b === '*' || it.getAttribute('data-brand') === b;
+        it.hidden = !on;
+        if (on) { it.style.setProperty('--k', k++); it.classList.add('is-in'); }
+      });
+      fgGrid.classList.toggle('is-collapsed', b === '*' && !fgOpen);
+      if (fgMore) fgMore.hidden = b !== '*';
+      if (!reduce) { fgGrid.classList.remove('is-filtering'); void fgGrid.offsetWidth; fgGrid.classList.add('is-filtering'); }
+    };
+    fgBtns.forEach(function (x) { x.addEventListener('click', function () { fgSet(x.getAttribute('data-brand')); }); });
+    if (fgMore) fgMore.addEventListener('click', function () {
+      fgOpen = !fgOpen;
+      fgGrid.classList.toggle('is-collapsed', !fgOpen);
+      fgMore.setAttribute('aria-expanded', fgOpen ? 'true' : 'false');
+      fgMore.textContent = fgMore.getAttribute(fgOpen ? 'data-less' : 'data-more');
+      if (!fgOpen) { var top = fgGrid.getBoundingClientRect().top; if (top < 0) window.scrollBy(0, top - 120); }
+    });
+  }
+
   /* lo studio: photos open full screen */
   var lb = document.getElementById('lightbox');
   if (lb && typeof lb.showModal === 'function') {
@@ -1468,15 +1627,18 @@
       lbAt = (i + lbList.length) % lbList.length;
       var t = lbList[lbAt];
       lbImg.src = t.getAttribute('href'); lbImg.alt = t.querySelector('img').alt;
-      lbT.textContent = t.querySelector('.tg-t').textContent; lbD.textContent = t.querySelector('.tg-d').textContent;
+      lbT.textContent = t.querySelector('.tg-t, .fg-b').textContent; lbD.textContent = t.querySelector('.tg-d, .fg-d').textContent;
     };
-    tourItems.forEach(function (t) {
-      t.addEventListener('click', function (e) {
-        e.preventDefault();
-        lbList = tourItems.filter(function (x) { return x.offsetParent !== null; });
-        lbShow(lbList.indexOf(t)); lb.showModal(); document.body.style.overflow = 'hidden';
+    var lbGroup = function (items) {
+      items.forEach(function (t) {
+        t.addEventListener('click', function (e) {
+          e.preventDefault();
+          lbList = items.filter(function (x) { return x.offsetParent !== null; });
+          lbShow(lbList.indexOf(t)); lb.showModal(); document.body.style.overflow = 'hidden';
+        });
       });
-    });
+    };
+    lbGroup(tourItems); lbGroup(frameItems);
     lb.addEventListener('close', function () { document.body.style.overflow = ''; });
     lb.querySelector('.lb-close').addEventListener('click', function () { lb.close(); });
     lb.querySelector('.lb-prev').addEventListener('click', function () { lbShow(lbAt - 1); });

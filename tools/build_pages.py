@@ -480,7 +480,8 @@ for page in PAGES:
 
 pairs = [(SITE, SITE + 'en/')] + urls
 HOME_IMAGES = ['img/studio-strumenti-1600.jpg', 'img/studio-sala-esame-1200.jpg', 'img/studio-montature-1600.jpg',
-               'img/studio-attesa-1600.jpg', 'img/libro-copertina.jpg']
+               'img/studio-attesa-1600.jpg', 'img/libro-copertina.jpg',
+               'img/montature/silhouette-1-1200.jpg', 'img/montature/porsche-design-1-1200.jpg', 'img/montature/furla-1-1200.jpg', 'img/montature/lamarca-1-1200.jpg', 'img/montature/titanflex-1-1200.jpg', 'img/montature/airlight-1-1200.jpg', 'img/montature/trevi-coliseum-1-1200.jpg', 'img/montature/chopard-1-1200.jpg', 'img/montature/ic-berlin-1-1200.jpg', 'img/montature/police-1-1200.jpg', 'img/montature/humphreys-1-1200.jpg', 'img/montature/ray-ban-1-1200.jpg', 'img/montature/marius-morel-1-1200.jpg', 'img/montature/gambini-1-1200.jpg', 'img/montature/dolce-gabbana-1-1200.jpg', 'img/montature/alberto-puccini-1-1200.jpg']
 PAGE_IMAGES = {'esame-della-vista': ['img/studio-strumenti-1600.jpg'], 'eye-examination': ['img/studio-strumenti-1600.jpg'],
                'lenti-progressive': ['img/studio-montature-1600.jpg'], 'progressive-lenses': ['img/studio-montature-1600.jpg'],
                'lenti-a-contatto': ['img/libro-copertina.jpg'], 'contact-lenses': ['img/libro-copertina.jpg']}
