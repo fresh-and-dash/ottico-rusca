@@ -68,9 +68,7 @@ en = en[:_ld_a] + EN_JSONLD + en[_ld_b:]
 # head
 T = [
     ('<html lang="it-CH">', '<html lang="en">'),
-    # media strip
-    ('<span class="press-l">Ospite della</span>', '<span class="press-l">Guest of</span>'),
-    ('<span class="press-d">Radiotelevisione svizzera, alla radio e in televisione</span>', '<span class="press-d">Swiss Italian-language public radio and television, on radio and TV</span>'),
+    ('<span class="fv">Ospite</span><span class="fl">alla Radio svizzera italiana e Televisione svizzera italiana</span>', '<span class="fv">Guest</span><span class="fl">on Swiss Italian-language public radio and television</span>'),
     # portrait of Marco Rusca
     ('alt="Ritratto di Marco Rusca, ottico diplomato federale (maestro ottico)"', 'alt="Portrait of Marco Rusca, Swiss federally certified optician (master optician)"'),
     ('<span class="portrait-badge"><b>Diploma federale</b><span>Olten, 1986</span></span>', '<span class="portrait-badge"><b>Federal diploma</b><span>Olten, 1986</span></span>'),
